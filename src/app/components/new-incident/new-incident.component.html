@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row content">
+        <h4 class="text-center">NEW INCIDENT</h4>
+        <div class="col-md-4">
+            <div class="list-group">    
+                <button  class="list-group-item" id="basicInfo" (click)="setButton('BasicInfo')">Basic Information</button>
+                <button  class="list-group-item" id="devices" (click)="setButton('Devices')">Devices</button>
+                <button  class="list-group-item" id="resolution" (click)="setButton('Resolution')">Resolution</button>
+                <button  class="list-group-item" id="calls" (click)="setButton('Calls')">Calls</button>
+                <button  class="list-group-item" id="crew" (click)="setButton('Crew')">Crew</button>
+                <button class="list-group-item" id="multimedia" (click)="setButton('Multimedia')">Multimedia Attachments</button>
+                <button class="list-group-item" id="equpment" (click)="setButton('Equipment')">Equipment</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <app-basic-information [hidden]="pressedButton != 'BasicInfo'"></app-basic-information>
+            <app-devices [hidden]="pressedButton != 'Devices'" ></app-devices>
+            <app-resolution [hidden]="pressedButton != 'Resolution' "></app-resolution>
+            <app-calls [hidden]="pressedButton != 'Calls' "></app-calls>
+            <app-crew [hidden]="pressedButton != 'Crew' "></app-crew>
+            <app-multimedia [hidden]="pressedButton != 'Multimedia' "></app-multimedia>
+            <app-equipment [hidden]="pressedButton != 'Equipment' "></app-equipment>
+        </div>
+    </div>
+</div>

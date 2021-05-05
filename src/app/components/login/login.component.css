@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.col1{
+    margin: auto;
+}
+.content{
+    margin: 8%;
+    background-color: #fff;
+    padding: 4rem 1rem 4rem 1rem;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.signin-text{
+    font-style: normal;
+    font-weight: 600 !important;
+}
+
+.form-control{
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #1D69AB;
+    border-style: solid  !important;
+    border-width: 0 0 1px 0 !important;
+    padding: 0px !important;
+    color: #495057;
+    height: auto;
+    border-radius: 0;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+.form-control:focus{
+    color: #1D69AB;
+    background-color: #fff;
+    border-color: #fff;
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-class{
+    border-color: #1D69AB;
+    color: #1D69AB ;
+    width: 30%;
+    margin-bottom: 20px;
+
+}
+
+.btn-class:hover{
+    background-color: #1D69AB;
+    color: #fff;
+}
+
+.text-danger{
+    cursor: pointer;
+}
+
+.btn-lg:hover{
+    background-color: rgb(228, 32, 32);
+    color: #fff;
+}
+
+.buttondiv{
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+.btn-lg{
+    margin-left: 120px;
+    margin-top: 20px;
+}
+
+h4{
+    color: #1D69AB;
+    font-family: "Dancing Script";
+    font-size: xx-large;
+    margin-right: 90px;
+}
+
+img{
+    margin-left: 50px;
+}
