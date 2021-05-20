@@ -1,46 +1,39 @@
 <div class="container-fluid">
     <div class="row content">
         <div class="col">
-            <h4 class="text-center text-uppercase">INCIDENTS</h4>
-            <button class="btn btn-class" routerLink="/newincident">New</button>
+            <h4 id="heding" class="">INCIDENTS</h4>
+            <button class="btn btn-class" routerLink="/incidents/newincident">New&nbsp;<i class="fa fa-plus"></i></button>
             <span class="allmine">
-                <button class="btn btn-class">All</button>
-                <button class="btn btn-class">Mine</button>
+                <button style="width: 10%;" class="btn btn-class">All</button>
+                <button  style="width: 10%;" class="btn btn-class">Mine</button>
             </span> 
-            <button id="filter" class="btn btn-class">Filter</button> 
-            <table class="table  table-hover">
+            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button> 
+            <table #tableEl="mdbTable" id="incidentsTable" mdbTable class="table  table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Phone No.</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Address</th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[2]" >Phone No.&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">WR1</th>
-                    <td>13 aug 2018</td>
-                    <td>351-5661-21</td>
-                    <td>Draft</td>
-                    <td>Janka Cmelika 29b</td>
-                </tr>
-                <tr>
-                    <th scope="row">WR2</th>
-                    <td>13 aug 2018</td>
-                    <td>351-5661-21</td>
-                    <td>Submited</td>
-                    <td>Joja Cmelika 29b</td>
-                </tr>
-                <tr>
-                    <th scope="row">WR3</th>
-                    <td>13 sep 2018</td>
-                    <td>351-1123-21</td>
-                    <td>Draft</td>
-                    <td>Bobana Cmelika 29b</td>
+                <tr *ngFor='let incident of incidents; let i = index'>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.id}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.startDate | date}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.phoneNo}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.status}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.address}}</td>
                 </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="incidents"></mdb-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

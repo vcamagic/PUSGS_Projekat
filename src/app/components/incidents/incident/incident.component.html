@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row content">
+         <div class="row mt-2">
+             <div class="col-sm-3">
+                 Reason
+             </div>
+             <div class="col-sm-9">
+                 <select #reason>
+                     <option value="powerOutage">Power Outage</option>
+                     <option value="breakdown">Breakdown</option>
+                     <option value="lightFlickering">Light Flickering</option>
+                     <option value="powerRestore">Power Restore</option>
+                     <option value="partialOutage">Partial Outage</option>
+                     <option value="voltageProblem">Voltage Problem</option>
+                 </select>
+             </div>
+         </div>
+         <div class="row mt-2">
+             <div class="col-sm-3">
+                 Comment
+             </div>
+             <div class="col-sm-9">
+                 <input type="text" style="width: 100%;" name="comment" #comment>
+             </div>
+         </div>
+         <div class="row mt-2">
+             <div class="col-sm-3">
+                 Hazard
+             </div>
+             <div class="col-sm-9">
+                 <input type="text" style="width: 100%;" name="hazard" #hazard>
+             </div>
+         </div>
+    </div>
+    <div class="row mt-5 content">
+         <div class="col-md-12 user">
+             <div class="row">
+                 <div class="col-md-6">
+                     <label><b>Customer Information</b></label>
+                     <div class="row">
+                         <label>Name</label>
+                     </div>
+                     <input type="text" name="name" #name>
+                     <div class="row">
+                         <label>Last Name</label>
+                     </div>
+                     <input type="text"  name="lastname" #lastname>
+                     <div class="row">
+                         <label>Address</label> 
+                     </div>
+                     <input type="text"  name="address" #address>  
+                 </div>
+                 <div class="col-md-6 float-right">
+                     <div style="margin-top: 35px;" class="row">
+                         <label>Account</label>
+                     </div>
+                     <input type="number" readonly name="account" #account>
+                     <div class="row">
+                         <label>Priority</label>
+                     </div>
+                     <input type="text" readonly  name="priority" #priority>
+                     <span >
+                         <button style="margin-top: 10px;" class="btn btn-class" (click)='save(reason.value, comment.value, hazard.value, name.value, lastname.value, address.value, priority.value)'>Save&nbsp;<i class="fa fa-save"></i></button>
+                         <button style="margin-top: 10px;" class="btn btn-class" routerLink="/login">Cancle&nbsp;<i class="fa fa-close"></i></button>
+                     </span>
+                 </div>
+             </div>
+         </div>
+    </div>
+ </div>
+ 

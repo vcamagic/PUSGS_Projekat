@@ -1,0 +1,25 @@
+.content{
+    margin: 2%;
+    margin-top: 80px;
+    background-color: #fff;
+    padding: 2rem 2rem 2rem 2rem;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+    justify-content: center;
+}
+
+.btn-class{
+    border-color:  #1D69AB;
+    color:  #1D69AB; ;
+    width: 50%;
+}
+
+.btn-class:hover{
+    background-color: #1D69AB;
+    color: white;
+}
+
+input{
+    border: none;
+    width: 100%;
+   border-bottom: 2px solid #1D69AB;
+}

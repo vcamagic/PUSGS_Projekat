@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { LoginComponent } from './components/login/login.component';
-import { NewIncidentComponent } from './components/new-incident/new-incident.component';
+import { NewIncidentComponent } from './components/incidents/new-incident/new-incident.component';
+import { IncidentComponent } from './components/incidents/incident/incident.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path: "login",
+    path : "login",
     component: LoginComponent
   },
   {
@@ -19,9 +20,13 @@ const routes: Routes = [
     component: IncidentsComponent
   },
   {
-    path:"newincident",
+    path:"incidents/newincident",
     component: NewIncidentComponent
-  }
+  },
+  {
+    path:"reportincident",
+    component: IncidentComponent
+  },
 ];
 
 @NgModule({

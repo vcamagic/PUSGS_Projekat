@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
-import { NewIncidentComponent } from './components/new-incident/new-incident.component';
-import { BasicInformationComponent } from './components/basic-information/basic-information.component';
-import { DevicesComponent } from './components/devices/devices.component';
-import { ResolutionComponent } from './components/resolution/resolution.component';
-import { CallsComponent } from './components/calls/calls.component';
-import { CrewComponent } from './components/crew/crew.component';
-import { MultimediaComponent } from './components/multimedia/multimedia.component';
-import { EquipmentComponent } from './components/equipment/equipment.component';
+import { NewIncidentComponent } from './components/incidents/new-incident/new-incident.component'
+import { BasicInformationComponent } from './components/incidents/basic-information/basic-information.component';
+import { DevicesComponent } from './components/incidents/devices/devices.component';
+import { ResolutionComponent } from './components/incidents/resolution/resolution.component';
+import { CallsComponent } from './components/incidents/calls/calls.component';
+import { CrewComponent } from './components/incidents/crew/crew.component';
+import { MultimediaComponent } from './components/incidents/multimedia/multimedia.component';
+import{IncidentComponent} from './components/incidents/incident/incident.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -23,19 +27,23 @@ import { EquipmentComponent } from './components/equipment/equipment.component';
     NavbarComponent,
     IncidentsComponent,
     NewIncidentComponent,
-    BasicInformationComponent,
-    DevicesComponent,
     ResolutionComponent,
     CallsComponent,
     CrewComponent,
+    DevicesComponent,
+    BasicInformationComponent,
     MultimediaComponent,
-    EquipmentComponent,
+    IncidentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

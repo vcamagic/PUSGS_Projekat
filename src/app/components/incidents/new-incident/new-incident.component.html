@@ -8,8 +8,7 @@
                 <button  class="list-group-item" id="resolution" (click)="setButton('Resolution')">Resolution</button>
                 <button  class="list-group-item" id="calls" (click)="setButton('Calls')">Calls</button>
                 <button  class="list-group-item" id="crew" (click)="setButton('Crew')">Crew</button>
-                <button class="list-group-item" id="multimedia" (click)="setButton('Multimedia')">Multimedia Attachments</button>
-                <button class="list-group-item" id="equpment" (click)="setButton('Equipment')">Equipment</button>
+                <button class="list-group-item" id="multimedia" (click)="setButton('Multimedia')">Multimedia Attachments</button>             
             </div>
         </div>
         <div class="col-md-8">
@@ -19,7 +18,6 @@
             <app-calls [hidden]="pressedButton != 'Calls' "></app-calls>
             <app-crew [hidden]="pressedButton != 'Crew' "></app-crew>
             <app-multimedia [hidden]="pressedButton != 'Multimedia' "></app-multimedia>
-            <app-equipment [hidden]="pressedButton != 'Equipment' "></app-equipment>
         </div>
     </div>
 </div>

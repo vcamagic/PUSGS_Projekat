@@ -14,6 +14,7 @@ export class NewIncidentComponent implements OnInit {
   }
 
   setButton(pressedButton:string){
+
       if(pressedButton == "BasicInfo"){
         this.pressedButton = "BasicInfo";
       }
@@ -35,6 +36,7 @@ export class NewIncidentComponent implements OnInit {
       else if( pressedButton == "Equipment"){
         this.pressedButton = "Equipment";
       }
+      
   }
 
   ngOnInit(): void {

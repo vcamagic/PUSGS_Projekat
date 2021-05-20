@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
+
+.content{
+    margin: 2%;
+    background-color: #fff;
+    padding: 2rem 2rem 2rem 2rem;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+    justify-content: center;
+}
+
 .col1{
     margin: auto;
 }
-.content{
-    margin: 8%;
-    background-color: #fff;
-    padding: 4rem 1rem 4rem 1rem;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
-}
+
 
 .signin-text{
     font-style: normal;
@@ -84,3 +88,6 @@ h4{
 img{
     margin-left: 50px;
 }
+
+
+

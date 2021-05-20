@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .content{
-    margin: 2%;
+    margin: 8%;
     background-color: #fff;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 4rem 1rem 4rem 1rem;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
-    justify-content: center;
 }
 
 .table{
     font-family: 'Poppins', sans-serif;
     margin-top: 10px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+    background: white;
 }
 
 #filter{
@@ -19,16 +19,26 @@
 }
 
 .btn-class{
-    border-color: #1D69AB;
-    color: #1D69AB ;
+    border-color:  #1D69AB;
+    color:  #1D69AB; ;
     width: 10%;
 }
 
 .btn-class:hover{
     background-color: #1D69AB;
-    color: #fff;
+    color: white;
 }
 
 .allmine{
     margin-left: 100px;
+}
+
+#heding{
+    text-align: center;
+    font-size: xx-large;
+    font-stretch: extra-expanded;
+}
+
+th:hover{
+    cursor: pointer;
 }

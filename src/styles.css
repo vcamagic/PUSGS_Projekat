@@ -4,5 +4,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     font-size: large;
-    background-color: #1D69AB;
+    background-image: url('https://wallpapercave.com/wp/wp8063327.jpg');
+    background-size: cover; 
+    background-attachment: fixed;
 }

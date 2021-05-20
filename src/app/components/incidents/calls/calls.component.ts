@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallsComponent implements OnInit {
 
- new:string;
+  new:string;
  
   constructor() { 
     this.new = "no";
