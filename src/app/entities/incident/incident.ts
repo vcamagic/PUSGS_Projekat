@@ -25,11 +25,21 @@ export class Incident {
     multimedia : any[] = [];
     crew : any[] = [];
 
-    constructor(id : string, startDate: Date,phoneNo : string,address:string, status: string){
+
+    constructor(id : string, startDate: Date,phoneNo : string,address:string, status: string, type: string, priority: string, confirmed: boolean, eta: string, ata: string, etr:string, affectedCustomers:number, callsNum:number, voltage:number){
         this.id=id;
         this.startDate = startDate;
         this.phoneNo = phoneNo;
         this.address = address
         this.status = status;
+        this.type = type;
+        this.priority = priority;
+        this.confirmed = confirmed;
+        this.eta = eta;
+        this.ata = ata;
+        this.etr = etr;
+        this.affectedCustomers = affectedCustomers;
+        this.callsNum = callsNum;
+        this.voltage = voltage;
     }
 }

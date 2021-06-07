@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
 import { Call } from 'src/app/entities/call/call';
 import { IncidentsService } from 'src/app/services/incidents.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-incident',
@@ -10,7 +11,7 @@ import { IncidentsService } from 'src/app/services/incidents.service';
 })
 export class IncidentComponent implements OnInit {
 
-  constructor(private incidentsService: IncidentsService) { }
+  constructor(private incidentsService: IncidentsService, public loginService: LoginService) { }
 
   ngOnInit(): void {
   }

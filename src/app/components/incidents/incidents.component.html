@@ -8,23 +8,41 @@
                 <button  style="width: 10%;" class="btn btn-class">Mine</button>
             </span> 
             <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button> 
-            <table #tableEl="mdbTable" id="incidentsTable" mdbTable class="table  table-hover">
+            <table #tableEl="mdbTable" id="incidentsTable" mdbTable mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
-                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
+                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[2]" >Phone No.&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[5]" >Type&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[6]" >Priority&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[7]" >Confirmed&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[8]" >ETA&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[9]" >ATA&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[10]" >ETR&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[11]" >Affected Customers&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[12]" >No. Of Calls&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[13]" >Voltage&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr *ngFor='let incident of incidents; let i = index'>
+             <tbody>
+                <tr mdbTableCol *ngFor='let incident of incidents; let i = index'>
                     <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.id}}</td>
                     <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.startDate | date}}</td>
                     <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.phoneNo}}</td>
                     <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.status}}</td>
                     <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.address}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.type}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.priority}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.confirmed}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.eta}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.ata}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.etr}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.affectedCustomers}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.callsNum}}</td>
+                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.voltage}}</td>
                 </tr>
                 </tbody>
                 <tfoot>

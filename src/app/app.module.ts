@@ -19,6 +19,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     BasicInformationComponent,
     MultimediaComponent,
     IncidentComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

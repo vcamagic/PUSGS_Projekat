@@ -10,10 +10,12 @@ export class LoginService {
 
   userList : Array<User>;
   exists : Boolean;
+  logedIn : boolean;
 
   constructor( private router: Router) {
     this.userList = new Array<User>();
     this.exists = false;
+    this.logedIn = false;
     this.userList.push(new User("pera@gmail.com","pera123",UserType.CrewMember,'Petar','Petrovic','Djure Jaksica 152',new Date(1982,8,23)));
     this.userList.push(new User("vcamagic@yahoo.com","zvucnik123",UserType.Admin, 'Vladimir','Camagic','Janka Cmelika 29b',new Date(1998,5,28)));
     this.userList.push(new User("djole@uns.ac.rs","djole123",UserType.Dispatcher,'Djordje','Djordjevic','Bore Petkovica 88',new Date(1990,12,22)));
@@ -33,6 +35,11 @@ export class LoginService {
     }
 
     alert("Login succesful!");
+    this.logedIn = true;
     this.router.navigate(['dashboard']);
+  }
+
+  getLoginStatus(): boolean{
+    return this.logedIn;
   }
 }
