@@ -6,21 +6,27 @@ export enum UserType{
 }
 
 export class User {
-    email: string;
-    password: string;
-    userType: UserType;
-    name : string;
-    lastname: string;
-    address: string;
-    dateOfBirth: Date;
+    id : number = 0;
+    email: string = "";
+    password: string = "";
+    userType: UserType = UserType.Worker;
+    name : string = "";
+    lastname: string = "";
+    address: string = "";
+    dateOfBirth: string = "";
+    teamName : string = "";
+    loggedin : boolean = false;
 
-    constructor(email:string,password:string,userType:UserType, name:string,lastname:string,address: string,dateOfBirth: Date){
-        this.email=email;
-        this.password=password;
-        this.userType=userType;
-        this.name=name;
-        this.lastname=lastname;
-        this.address=address;
-        this.dateOfBirth = dateOfBirth;
+    //did admin approve account
+    approved : boolean = true;
+
+
+    constructor(name? : string, lastname? : string){
+        if(name && lastname){
+            this.name = name;
+            this.lastname = lastname;
+        }
     }
+
+ 
 }

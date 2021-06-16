@@ -2,23 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User, UserType } from '../entities/user/user';
 import { Router } from '@angular/router';
+import { TeamMember } from '../entities/team-member/team-member';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  userList : Array<User>;
-  exists : Boolean;
-  logedIn : boolean;
+  userData : User = new User();
+  userList : Array<User> = new Array<User>();
+  teamMembers : TeamMember[] = [];
+  exists : Boolean = false;
+  logedIn : boolean = false;
 
-  constructor( private router: Router) {
-    this.userList = new Array<User>();
-    this.exists = false;
-    this.logedIn = false;
-    this.userList.push(new User("pera@gmail.com","pera123",UserType.CrewMember,'Petar','Petrovic','Djure Jaksica 152',new Date(1982,8,23)));
-    this.userList.push(new User("vcamagic@yahoo.com","zvucnik123",UserType.Admin, 'Vladimir','Camagic','Janka Cmelika 29b',new Date(1998,5,28)));
-    this.userList.push(new User("djole@uns.ac.rs","djole123",UserType.Dispatcher,'Djordje','Djordjevic','Bore Petkovica 88',new Date(1990,12,22)));
+  constructor(private http:HttpClient ,private router: Router) {
+    
   }
 
   login(email: string, password: string){

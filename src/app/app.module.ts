@@ -20,6 +20,7 @@ import {Ng2OrderModule} from 'ng2-order-pipe';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TeamMemberComponent } from './entities/team-member/team-member.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MultimediaComponent,
     IncidentComponent,
     DashboardComponent,
+    TeamMemberComponent,
   ],
   imports: [
     BrowserModule,
