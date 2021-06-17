@@ -2,19 +2,20 @@ export enum UserType{
     CrewMember,
     Dispatcher,
     Worker,
-    Admin
+    Admin,
+    Default
 }
 
 export class User {
-    email: string;
-    password: string;
-    userType: UserType;
-    name : string;
-    lastname: string;
-    address: string;
-    dateOfBirth: Date;
+    email: string = "";
+    password: string= "";
+    userType: string = "";
+    name : string = "";
+    lastname: string = "";
+    address: string = "";
+    dateOfBirth:string = "";
 
-    constructor(email:string,password:string,userType:UserType, name:string,lastname:string,address: string,dateOfBirth: Date){
+    constructor(email:string,password:string,userType:string, name:string,lastname:string,address: string,dateOfBirth: string){
         this.email=email;
         this.password=password;
         this.userType=userType;

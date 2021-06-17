@@ -20,6 +20,7 @@ import {Ng2OrderModule} from 'ng2-order-pipe';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NgxPaginationModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

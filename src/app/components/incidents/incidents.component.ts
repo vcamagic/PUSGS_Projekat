@@ -4,7 +4,7 @@ import {Incident} from '../../entities/incident/incident'
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { MdbTablePaginationComponent, MdbTableDirective} from 'angular-bootstrap-md'
 import { DOCUMENT } from '@angular/common';
-import { LoginService } from 'src/app/services/login.service';
+
 
 
 
@@ -19,7 +19,7 @@ export class IncidentsComponent implements OnInit, AfterViewInit {
   @ViewChild(MdbTablePaginationComponent, {static:true}) mdbTablePagination = new MdbTablePaginationComponent(this.cdRef);
   /*@ViewChild(MdbTableDirective, { static:true }) mdbTable = new MdbTableDirective(this.IncTable,this.renderer);*/
   @ViewChild(MdbTableDirective,{static:true}) mdbTable = new MdbTableDirective(this.IncTable,this.renderer);
- 
+
 
   incidents : Array<Incident> = new Array<Incident>();
   pervious: Array<Incident> = new Array<Incident>();
@@ -49,6 +49,6 @@ export class IncidentsComponent implements OnInit, AfterViewInit {
 
   onSort(){
     // resetting other headers
-    
+
   }
 }

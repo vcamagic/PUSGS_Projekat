@@ -1,0 +1,29 @@
+[
+  {
+    "email": "vcamagic@yahoo.com",
+    "password": "zvucnik123",
+    "userType": "Admin",
+    "name" : "Vladimir",
+    "lastname": "Camagic",
+    "address": "9 Maj 96, Zrenjanin",
+    "dateOfBirth": "28.05.1998"
+  },
+  {
+    "email": "pera@outlook.com",
+    "password": "pera123",
+    "userType": "Dispatcher",
+    "name" : "Pera",
+    "lastname": "Petrovic",
+    "address": "Janka Cmelika 18",
+    "dateOfBirth": "24.11.1988"
+  },
+  {
+    "email": "djole@gmail.com",
+    "password": "djole123",
+    "userType": "CrewMember",
+    "name" : "Djordje",
+    "lastname": "Djordjevic",
+    "address": "Bul Osl 29",
+    "dateOfBirth": "11.02.1997"
+  }
+]
