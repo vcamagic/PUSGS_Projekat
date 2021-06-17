@@ -4,7 +4,7 @@
           <div>
            <img src="https://i.imgur.com/hE96XUs.png" alt="image">
             <h4 class="h4 text-center">We light up the future!</h4>
-            <button class="btn btn-class btn-lg" routerLink='/reportincident'>Report Outage&nbsp;<i class="fa fa-phone"></i></button>
+            <button class="btn btn-class btn-lg" (click)="open(content)">Report Outage&nbsp;<i class="fa fa-phone"></i></button>
           </div>
        </div>
        <div class="col-md-6">
@@ -33,3 +33,47 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 style="color: #1D69AB;font-family: Arial, Helvetica, sans-serif;" class="modal-title" id="modal-basic-title">Report Outage</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form = "ngForm">
+      <div class="row">
+          <div class="form-group">
+              <label>Reason</label>
+              <select class="form-control" name="reason"   required>
+                  <option value="No electricity">No Electricity</option>
+                  <option value="Malfunction">Malfunction</option>
+                  <option value="Flickering lights">Flickering lights</option>
+                  <option value="Electricity return">Electricity return</option>
+                  <option value="Partial current">Partial current</option>
+                  <option value="Voltage problems">Voltage problems</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Comment</label>
+              <input class="form-control" name="comment" required>
+          </div>
+          <div class="form-group">
+              <label>Hazard</label>
+              <input class="form-control" name="hazard"   required>
+          </div>
+          <div class="form-group">
+              <label>Address</label>
+             <!-- <select (change)="addressChange()" class="form-control" name="address" #address="ngModel" [(ngModel)] = "callService.formData.address">
+                  <option *ngFor="let item of settings.streets" [ngValue]="item.name">{{item.name}}</option>
+              </select>-->
+          </div>
+      </div>
+    </form>
+    
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-lg" (click)="report()">Report</button>
+  </div>
+</ng-template>
