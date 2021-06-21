@@ -17,13 +17,17 @@ export class IncidentComponent implements OnInit {
   }
 
 
-  save(reason: string, hazard : string, comment : string, name : string, lastName : string, address : string, priority : string ){
+  /*save(reason: string, hazard : string, comment : string, name : string, lastName : string, address : string, priority : string ){
     this.incidentsService.incdients.forEach( (incident) => {
         if(incident.address === address){
           incident.calls.push(new Call(this.incidentsService.incdients.length,reason,hazard,comment,name,lastName,address,+priority));
         }
     });
     this.incidentsService.router.navigate(['login']);
+  }*/
+
+  save(reason : string , comment : string, hazard: string , name: string, lastname: string, address: string, priority: string){
+
   }
 
 }

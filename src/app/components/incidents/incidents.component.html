@@ -6,9 +6,9 @@
             <span class="allmine">
                 <button style="width: 10%;" class="btn btn-class">All</button>
                 <button  style="width: 10%;" class="btn btn-class">Mine</button>
-            </span> 
-            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button> 
-            <table #tableEl="mdbTable" id="incidentsTable" mdbTable mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
+            </span>
+            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+            <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
                      <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
@@ -28,31 +28,30 @@
                 </tr>
                 </thead>
              <tbody>
-                <tr mdbTableCol *ngFor='let incident of incidents; let i = index'>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.id}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.startDate | date}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.phoneNo}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.status}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.address}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.type}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.priority}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.confirmed}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.eta}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.ata}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.etr}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.affectedCustomers}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.callsNum}}</td>
-                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{incident.voltage}}</td>
+                <tr mdbTableCol *ngFor="let incident of incidents | slice: (page - 1) * 5 : page * 5 ">
+                    <td >{{incident.id}}</td>
+                    <td >{{incident.startDate}}</td>
+                    <td >{{incident.phoneNo}}</td>
+                    <td>{{incident.status}}</td>
+                    <td >{{incident.address}}</td>
+                    <td>{{incident.type}}</td>
+                    <td >{{incident.priority}}</td>
+                    <td >{{incident.confirmed}}</td>
+                    <td>{{incident.eta}}</td>
+                    <td >{{incident.ata}}</td>
+                    <td>{{incident.etr}}</td>
+                    <td >{{incident.affectedCustomers}}</td>
+                    <td >{{incident.callsNum}}</td>
+                    <td >{{incident.voltage}}</td>
                 </tr>
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <td colspan="5">
-                            <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="incidents"></mdb-table-pagination>
-                        </td>
-                    </tr>
+
                 </tfoot>
             </table>
+
+        </div>
+
         </div>
     </div>
-</div>
+

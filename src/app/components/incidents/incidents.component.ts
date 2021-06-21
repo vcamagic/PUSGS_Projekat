@@ -2,8 +2,8 @@ import { Component, OnInit, Directive, EventEmitter, Input, Output, QueryList, V
 import { Router } from '@angular/router';
 import {Incident} from '../../entities/incident/incident'
 import { IncidentsService } from 'src/app/services/incidents.service';
-import { MdbTablePaginationComponent, MdbTableDirective} from 'angular-bootstrap-md'
 import { DOCUMENT } from '@angular/common';
+import { element } from 'protractor';
 
 
 
@@ -13,39 +13,36 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './incidents.component.html',
   styleUrls: ['./incidents.component.css']
 })
-export class IncidentsComponent implements OnInit, AfterViewInit {
-  @ViewChild("incidentsTable") IncTable : ElementRef = new ElementRef(document.getElementById("incidentsTable"));
-  /*@ViewChild(MdbTablePaginationComponent, { static:true }) mdbTablePagination = new MdbTablePaginationComponent(this.cdRef);*/
-  @ViewChild(MdbTablePaginationComponent, {static:true}) mdbTablePagination = new MdbTablePaginationComponent(this.cdRef);
-  /*@ViewChild(MdbTableDirective, { static:true }) mdbTable = new MdbTableDirective(this.IncTable,this.renderer);*/
-  @ViewChild(MdbTableDirective,{static:true}) mdbTable = new MdbTableDirective(this.IncTable,this.renderer);
+export class IncidentsComponent implements OnInit{
 
 
-  incidents : Array<Incident> = new Array<Incident>();
-  pervious: Array<Incident> = new Array<Incident>();
+  incidents : Incident[] = [];
+  page = 1;
+  pageSize = 4;
+  collectionSize = 0;
   headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedCustomers', 'callsNum', 'voltage'];
 
-  constructor(private incidentsService: IncidentsService, private cdRef: ChangeDetectorRef, private renderer: Renderer2) { }
+  constructor(public incidentsService: IncidentsService) {
+
+  }
 
   ngOnInit(): void {
-    this.getIncidents();
-
-    this.mdbTable.setDataSource(this.incidents);
-    this.incidents = this.mdbTable.getDataSource();
-    this.pervious = this.mdbTable.getDataSource();
+    this.incidentsService.getAllIncidents();
   }
 
-  ngAfterViewInit(){
-     this.mdbTablePagination?.setMaxVisibleItemsNumberTo(5);
 
-     this.mdbTablePagination?.calculateFirstItemIndex();
-     this.mdbTablePagination?.calculateLastItemIndex();
-     this.cdRef.detectChanges();
-  }
+ /* getAllIncidents(){
+    this.incidentsService.getAllIncidents().subscribe(
+      data => {
+        this.incidents = data;
+        console.log(this.incidents);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }*/
 
-  getIncidents(){
-    this.incidents = this.incidentsService.getIncidents();
-  }
 
   onSort(){
     // resetting other headers

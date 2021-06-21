@@ -67,4 +67,12 @@ export class LoginComponent implements OnInit {
     this.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);
     this.router.navigate(['incidents']);
   }
+
+  open(content : any){
+
+  }
+
+  report(){
+
+  }
 }

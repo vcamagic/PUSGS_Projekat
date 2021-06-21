@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Incident } from '../entities/incident/incident'
-
+import { Incident } from '../entities/incident/incident';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 
@@ -9,30 +11,25 @@ import { Incident } from '../entities/incident/incident'
   providedIn: 'root'
 })
 export class IncidentsService {
-  incdients: Array<Incident>;
+  incidentList : Incident[];
 
-  constructor(public router: Router) {
-    this.incdients = new Array<Incident>();
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-    this.incdients.push(new Incident('1',new Date(2021,5,29),'351-1231',"Kralja Petra 12",'Drafted','Hazarddd','2',true,'15-05-2020','15-05-2020','15-05-2020',213,6,120));
-   }
+  constructor(private http : HttpClient) {
+      this.incidentList = [];
+      this.getAllIncidents();
+  }
 
-  getIncidents(): Array<Incident>{
-    return this.incdients;
+   getAllIncidents(){
+    /*return this.http.get('http://localhost:4200/assets/incidents.json').pipe(
+      map( data => {
+        console.log(data);
+        return data as Array<Incident>;
+      })
+    );*/
+
+      this.http.get(`http://localhost:4200/assets/incidents.json`).toPromise().then( res =>{
+          this.incidentList = res as Incident[];
+        }
+      ).catch(() => 'error.');
   }
 
 }

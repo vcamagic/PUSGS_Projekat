@@ -3,7 +3,7 @@ import {} from "../element/element"
 
 export class Incident {
     id : string;
-    startDate : Date;
+    startDate : string;
     phoneNo : string;
     address : string;
     status : string;
@@ -26,7 +26,7 @@ export class Incident {
     crew : any[] = [];
 
 
-    constructor(id : string, startDate: Date,phoneNo : string,address:string, status: string, type: string, priority: string, confirmed: boolean, eta: string, ata: string, etr:string, affectedCustomers:number, callsNum:number, voltage:number){
+    constructor(id : string, startDate: string,phoneNo : string,address:string, status: string, type: string, priority: string, confirmed: boolean, eta: string, ata: string, etr:string, affectedCustomers:number, callsNum:number, voltage:number){
         this.id=id;
         this.startDate = startDate;
         this.phoneNo = phoneNo;

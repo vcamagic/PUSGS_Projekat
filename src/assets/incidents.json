@@ -1,0 +1,944 @@
+[
+  {
+    "id" : "1",
+    "startDate" : "21.05.2021",
+    "phoneNo" : "351-213-121",
+    "address" : "Joje joje 29",
+    "status" : "Confirmed",
+    "type" : "Blackout",
+    "priority": "2",
+    "confirmed" : true,
+    "eta": "21.05.2021",
+    "ata": "21.05.2021",
+    "timeOfIncident": "21.05.2021 : 13:21",
+    "etr": "21.05.2021",
+    "callsNum": 2,
+    "voltage": 130,
+    "affectedCustomers" : 1890,
+    "scheduleTime" : "21.05.2021 : 13:21",
+    "creator" : "Bole",
+    "elements" : [
+      {
+        "id" : 21,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "1",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  },
+  {
+    "id" : "2",
+    "startDate" : "22.12.2020",
+    "phoneNo" : "351-12331-121",
+    "address" : "Brape Brapica",
+    "status" : "Confirmed",
+    "type" : "Brpa",
+    "priority": "31",
+    "confirmed" : true,
+    "eta": "22.12.2020",
+    "ata": "22.12.2020",
+    "timeOfIncident": "22.12.2020 : 13:21",
+    "etr": "22.12.2020",
+    "callsNum": 3,
+    "voltage": 150,
+    "affectedCustomers" : 200,
+    "scheduleTime" : "22.12.2020 : 13:21",
+    "creator" : "Biba",
+    "elements" : [
+      {
+        "id" : 231,
+        "type" : "connector",
+        "name" : "EX21",
+        "address" : "Joje Joje 21",
+        "coordinateX" : "45.1312312",
+        "coordinateY" : "46.121312312"
+      }
+    ],
+    "calls" : [
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "2",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      },
+      {
+        "id" : "3",
+        "reason" : "kdasdo",
+        "hazard" : "koaskdads",
+        "comment" : "akdosads",
+        "name"  : "Pera",
+        "lastName" : "Peric",
+        "address" : "jiajsdd",
+        "priority" : "21"
+      }
+    ],
+    "resolution" : [
+      {
+        "resolution" : "just fix"
+      }
+    ],
+    "multimedia" :  [],
+    "crew" : []
+  }
+]
