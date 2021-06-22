@@ -4,6 +4,7 @@ import { IncidentsComponent } from './components/incidents/incidents.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewIncidentComponent } from './components/incidents/new-incident/new-incident.component';
 import { IncidentComponent } from './components/incidents/incident/incident.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path : "login",
     component: LoginComponent
+  },
+  {
+    path:"register",
+    component: RegisterComponent
   },
   {
     path: "incidents",
@@ -27,6 +32,7 @@ const routes: Routes = [
     path:"reportincident",
     component: IncidentComponent
   },
+  
 ];
 
 @NgModule({

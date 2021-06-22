@@ -21,7 +21,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './components/register/register.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
     MultimediaComponent,
     IncidentComponent,
     DashboardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
