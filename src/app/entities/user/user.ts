@@ -1,27 +1,24 @@
-export enum UserType{
-    CrewMember,
-    Dispatcher,
-    Worker,
-    Admin,
-    Default
-}
 
 export class User {
+    username : string = "";
     email: string = "";
     password: string= "";
     userType: string = "";
-    name : string = "";
-    lastname: string = "";
+    nameAndLastname = ""
     address: string = "";
     dateOfBirth:string = "";
+    activeStatus: string = "";
+    imageData: string = "";
 
-    constructor(email:string,password:string,userType:string, name:string,lastname:string,address: string,dateOfBirth: string){
+    constructor(username:string,email:string,password:string,userType:string, nameAndLastname:string,address: string,dateOfBirth: string,activeStatus: string,imageData: string){
+        this.username = username;
         this.email=email;
         this.password=password;
         this.userType=userType;
-        this.name=name;
-        this.lastname=lastname;
+        this.nameAndLastname = nameAndLastname;
         this.address=address;
         this.dateOfBirth = dateOfBirth;
+        this.activeStatus = activeStatus;
+        this.imageData = imageData;
     }
 }

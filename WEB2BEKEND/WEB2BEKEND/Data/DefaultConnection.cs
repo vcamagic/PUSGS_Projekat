@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace WEB2BEKEND.Data
         }
 
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Incident> Incidents { get; set; }
 
     }
 }

@@ -31,8 +31,10 @@ namespace WEB2BEKEND
 
             services.AddDbContext<DefaultConnection>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-        }
+
+            services.AddCors();
+            services.AddMvc();
+         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,7 +44,10 @@ namespace WEB2BEKEND
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(builder => builder.AllowAnyOrigin());
+           // app.UseMvc();
+
+           app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -52,6 +57,8 @@ namespace WEB2BEKEND
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }

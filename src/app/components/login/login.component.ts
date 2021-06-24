@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
-import{User, UserType} from '../../entities/user/user';
+import{User} from '../../entities/user/user';
 import {CallsService} from 'src/app/services/calls.service';
+import { threadId } from 'node:worker_threads';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import {CallsService} from 'src/app/services/calls.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  userList : Array<User> = [];
+  userList : User[] = [];
   exists : Boolean;
   loginForm : FormGroup;
 
@@ -27,15 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(
-      data => {
-        this.userList = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    this.getUsers();
   }
+
 
   print(){
   this.userList.forEach(element => {
@@ -62,6 +57,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['dashboard']);
   }
 
+  getUsers() {
+    this.userService.getAllUsers()
+      .subscribe(users => this.userList = users);
+  }
 
   onSubmit() {
     this.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);

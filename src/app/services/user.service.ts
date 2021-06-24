@@ -14,12 +14,10 @@ export class UserService {
 
   }
 
-  getAllUsers() : Observable<User[]> {
-    return this.http.get('http://localhost:4200/assets/users.json').pipe(
-      map( data => {
-        return data as Array<User>;
-      })
-    );
+  readonly usersUrl = 'https://localhost:44396/api/Users';
+
+  getAllUsers(): Observable<User[]>  {
+    return this.http.get<User[]>(this.usersUrl);
   }
 
 }

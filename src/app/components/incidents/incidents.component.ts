@@ -27,22 +27,18 @@ export class IncidentsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.incidentsService.getAllIncidents();
+    this.getIncidents();
   }
 
 
- /* getAllIncidents(){
-    this.incidentsService.getAllIncidents().subscribe(
-      data => {
-        this.incidents = data;
-        console.log(this.incidents);
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }*/
+  getIncidents() {
+    this.incidentsService.getAllIncidents()
+      .subscribe(incidents => this.incidents = incidents);
+  }
 
+  all(){
+    console.log(this.incidents);
+  }
 
   onSort(){
     // resetting other headers

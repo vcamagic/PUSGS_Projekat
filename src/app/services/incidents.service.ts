@@ -11,25 +11,15 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class IncidentsService {
-  incidentList : Incident[];
+  incidentList : Incident[] = [];
 
   constructor(private http : HttpClient) {
-      this.incidentList = [];
       this.getAllIncidents();
   }
 
-   getAllIncidents(){
-    /*return this.http.get('http://localhost:4200/assets/incidents.json').pipe(
-      map( data => {
-        console.log(data);
-        return data as Array<Incident>;
-      })
-    );*/
-
-      this.http.get(`http://localhost:4200/assets/incidents.json`).toPromise().then( res =>{
-          this.incidentList = res as Incident[];
-        }
-      ).catch(() => 'error.');
+  readonly incidentsUrl = 'https://localhost:44396/api/Incidents';
+   getAllIncidents(): Observable<Incident[]>{
+    return this.http.get<Incident[]>(this.incidentsUrl);
   }
 
 }
