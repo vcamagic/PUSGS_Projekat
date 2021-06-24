@@ -8,36 +8,41 @@ namespace WEB2BEKEND.Models
 {
     public class User
     {
-        [Key]       
-        public string Username { get; set; }
-    
-        public string Password { get; set; }
-      
-        public string NameAndLastname { get; set; }
-      
-        public DateTime BirthDate { get; set; }
-        
-        public string Address { get; set; }
-        
-        public string ImageData { get; set; }
-        
-        public string Email { get; set; }
-       
-        public string UserType { get; set; }
-
-        public string ActiveStatus { get; set; }
+    [Key]
+    public string Username { get; set; }
 
 
-        public User()
-        {
-            Username = "+";
-            Password = "+";
-            NameAndLastname = "+";
-            BirthDate = DateTime.Now;
-            Address = "+";
-            Email = "+";
-            UserType = "+";
-            ActiveStatus = "Pending";
-        }
+    public string FirstName { get; set; }
+
+    public string LastName { get; set; }
+
+    public string Email { get; set; }
+    public string Password { get; set; }
+
+    public string BirthDate { get; set; }
+
+    public string Address { get; set; }
+
+    public string InputState { get; set; }
+
+    public string Picture { get; set; }
+
+
+
+
+
+
+    public User()
+    {
+      Username = "";
+      Password = "";
+      FirstName = "";
+      LastName = "";
+      BirthDate = "";
+      Address = "";
+      Email = "";
+      InputState = "";
+
     }
+  }
 }

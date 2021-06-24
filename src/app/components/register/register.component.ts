@@ -10,13 +10,15 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   imageUri! : string;
+  picturehelp : any;
   fileToUpload : any;
   selectedFile : any = null; 
-  credentials : any;
+  invalidLogin!: boolean;
   files: any;
   progress: any;
   message: any;
   imagePath!: {dbPath: ''};
+  credentials : any;
   
 
 
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
     LastName : '',
     Email : '',
     Password : '',
-    BirthdayDate : '',
+    BirthDate : '',
     Address : '',
     State : '',
     Picture:''
@@ -39,7 +41,7 @@ export class RegisterComponent implements OnInit {
     lastname : new FormControl(),
     email : new FormControl(),
     password : new FormControl(),
-    birthdayDate : new FormControl(),
+    birthDate : new FormControl(),
     address : new FormControl(),
     inputState : new FormControl(),
     inputImage : new FormControl(),
@@ -64,9 +66,11 @@ export class RegisterComponent implements OnInit {
   
       const reader = new FileReader();
       
-      reader.onload = e => {this.user.Picture = reader.result!.toString().split(',')[1]; 
-      console.log(this.user.Picture);this.imageUri=this.user.Picture };
-    
+      reader.onload = e => {
+        this.user.Picture = reader.result!.toString().split(',')[1]; 
+        this.picturehelp = this.user.Picture;
+     console.log(this.user.Picture);this.imageUri=this.user.Picture };
+      
   
       reader.readAsDataURL(file);
       console.log(file);
@@ -76,8 +80,25 @@ export class RegisterComponent implements OnInit {
   }
   submit()
   {
+   
     this.user = this.registerForm.value;
+    this.user.Picture = this.picturehelp;
     console.log(this.user);
+    this.credentials = JSON.stringify(this.user);
+    this.http.post("https://localhost:44396/api/Users/Register",this.credentials, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }).subscribe(response => {
+      const token = (<any>response).token;
+      localStorage.setItem("jwt", token);
+      const username = (<any>response).username;
+      localStorage.setItem("username", username);
+      this.invalidLogin = false;
+      this.router.navigate(["login"]);
+    }, err => {
+      this.invalidLogin = true;
+    });
     
   }
   ngOnInit(): void {

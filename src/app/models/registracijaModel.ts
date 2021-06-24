@@ -5,7 +5,7 @@ export class RegistracijaModel{
     LastName!: string;
     Email! : string;
     Password! : string;
-    BirthdayDate! : string;
+    BirthDate! : string;
     Address! : string;
     State!:any;
     Picture!:any;
@@ -17,7 +17,7 @@ export class InfoModel{
     lastname!: string;
     email! : string;
     password! : string;
-    birthdayDate! : string;
+    birthDate! : string;
     address! : string;
     
 }

@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using WEB2BEKEND.Data;
 using WEB2BEKEND.Models;
@@ -27,5 +31,58 @@ namespace WEB2BEKEND.Controllers
          return await _context.Users.ToListAsync();
 
       }
+
+    [HttpPost]
+    [Route("Register")]
+    public async Task<ActionResult<User>> Register([FromBody] User userForm)
+    {
+      if (userForm == null)
+      {
+        return BadRequest("Invalid client request");
+      }
+      User user = userForm;
+      string state = "";
+      if (user.InputState == "Admin")
+      {
+        state = "Admin";
+      }
+      else
+      {
+        state = user.InputState;
+      }
+      _context.Users.Add(user);
+
+      await _context.SaveChangesAsync();
+
+      var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
+      var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+
+      var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Role,state)
+            };
+
+      var tokenOptions = new JwtSecurityToken(
+          issuer: "https://localhost:5001",
+          audience: "https://localhost:5001",
+          claims: claims,
+          expires: DateTime.Now.AddMinutes(60),
+          signingCredentials: signingCredentials
+          );
+
+      var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+      CurrentUser loggedInUser = new CurrentUser
+      {
+        Token = tokenString,
+        Username = user.Username,
+        FirstName = user.FirstName,
+        LastName = user.LastName
+      };
+
+      return Ok(loggedInUser);
+
+    }
   }
 }

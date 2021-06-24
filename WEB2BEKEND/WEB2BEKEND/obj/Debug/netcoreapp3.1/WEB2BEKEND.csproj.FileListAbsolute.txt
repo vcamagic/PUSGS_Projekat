@@ -121,3 +121,11 @@ C:\Users\Vlada\Desktop\PUSGS_Project\PUSGSproject\WEB2BEKEND\WEB2BEKEND\obj\Debu
 C:\Users\Vlada\Desktop\PUSGS_Project\PUSGSproject\WEB2BEKEND\WEB2BEKEND\obj\Debug\netcoreapp3.1\WEB2BEKEND.dll
 C:\Users\Vlada\Desktop\PUSGS_Project\PUSGSproject\WEB2BEKEND\WEB2BEKEND\obj\Debug\netcoreapp3.1\WEB2BEKEND.pdb
 C:\Users\Vlada\Desktop\PUSGS_Project\PUSGSproject\WEB2BEKEND\WEB2BEKEND\obj\Debug\netcoreapp3.1\WEB2BEKEND.genruntimeconfig.cache
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\pc\Desktop\web2_git\PUSGS_Projekat\WEB2BEKEND\WEB2BEKEND\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
