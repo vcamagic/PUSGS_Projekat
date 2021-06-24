@@ -8,6 +8,7 @@ export class RegistracijaModel{
     BirthdayDate! : string;
     Address! : string;
     State!:any;
+    Picture!:any;
 }
 
 export class InfoModel{

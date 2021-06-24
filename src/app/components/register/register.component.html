@@ -9,13 +9,13 @@
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="firstname">FirstName</label><br>
+            <label for="firstname">Firstname</label><br>
             <input type="text" formControlName ="firstname" class="form-control">
             
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="lastname">LastName</label><br>
+            <label for="lastname">Lastname</label><br>
             <input type="text" formControlName ="lastname" class="form-control" >
         </div>
         <pre></pre>
@@ -31,12 +31,12 @@
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="birthdayDate">Datum rodjenja</label><br>
+            <label for="birthdayDate">BirthdayDate</label><br>
             <input type="text" formControlName ="birthdayDate" class="form-control" >
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="address">Adresa</label><br>
+            <label for="address">Adress</label><br>
             <input type="text" formControlName ="address" class="form-control" >
         </div>
         <pre></pre>
@@ -46,12 +46,21 @@
               <option selected>Worker</option>
               <option>Team member</option>
               <option>Dispatcher</option>
-              
             </select>
           </div>
+          <div class="input-group right">
+
+            <div class="custom-file " >
+              <input type="file" class=" custom-file-input"(change)="onFileChanged($event)" #fileInput>
+              <label *ngIf=!user.Picture class="custom-file-label">Choose image</label>
+              <label *ngIf=user.Picture class="custom-file-label">Image chosen</label>
+            </div>
+          </div>
+          <br>
+
         <pre></pre>
             <label for="checkid" >
-               <input   type="checkbox"  ngModel/>  Send email conformation
+               <input   type="checkbox" />  Send email conformation
             </label>
       
         <pre></pre>
