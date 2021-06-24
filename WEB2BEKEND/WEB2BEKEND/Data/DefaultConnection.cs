@@ -20,5 +20,7 @@ namespace WEB2BEKEND.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Incident> Incidents { get; set; }
 
+        public DbSet<Element> Elements { get; set; }
+
     }
 }

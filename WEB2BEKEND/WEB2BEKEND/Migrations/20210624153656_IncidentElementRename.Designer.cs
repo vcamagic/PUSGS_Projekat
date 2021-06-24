@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB2BEKEND.Data;
 
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    partial class DefaultConnectionModelSnapshot : ModelSnapshot
+    [Migration("20210624153656_IncidentElementRename")]
+    partial class IncidentElementRename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,9 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("IncidentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -43,7 +48,9 @@ namespace WEB2BEKEND.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Elements");
+                    b.HasIndex("IncidentId");
+
+                    b.ToTable("Element");
                 });
 
             modelBuilder.Entity("WEB2BEKEND.Models.Incident", b =>
@@ -117,38 +124,6 @@ namespace WEB2BEKEND.Migrations
                     b.ToTable("IncidentCall");
                 });
 
-            modelBuilder.Entity("WEB2BEKEND.Models.IncidentElement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("IncidentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("X")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Y")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IncidentId");
-
-                    b.ToTable("IncidentElement");
-                });
-
             modelBuilder.Entity("WEB2BEKEND.Models.IncidentResolution", b =>
                 {
                     b.Property<int>("Id")
@@ -217,17 +192,17 @@ namespace WEB2BEKEND.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WEB2BEKEND.Models.Element", b =>
+                {
+                    b.HasOne("WEB2BEKEND.Models.Incident", null)
+                        .WithMany("Elements")
+                        .HasForeignKey("IncidentId");
+                });
+
             modelBuilder.Entity("WEB2BEKEND.Models.IncidentCall", b =>
                 {
                     b.HasOne("WEB2BEKEND.Models.Incident", null)
                         .WithMany("Call")
-                        .HasForeignKey("IncidentId");
-                });
-
-            modelBuilder.Entity("WEB2BEKEND.Models.IncidentElement", b =>
-                {
-                    b.HasOne("WEB2BEKEND.Models.Incident", null)
-                        .WithMany("Elements")
                         .HasForeignKey("IncidentId");
                 });
 

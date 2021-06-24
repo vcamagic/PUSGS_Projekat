@@ -28,7 +28,7 @@ namespace WEB2BEKEND
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+   
             services.AddDbContext<DefaultConnection>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

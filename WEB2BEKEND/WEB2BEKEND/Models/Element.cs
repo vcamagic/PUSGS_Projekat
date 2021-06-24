@@ -7,10 +7,15 @@ using System.Threading.Tasks;
 
 namespace WEB2BEKEND.Models
 {
-  public class Multimedia
+  public class Element
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+    public string Type { get; set; }
+    public string Name { get; set; }
+    public string Address { get; set; }
+    public string X { get; set; }
+    public string Y { get; set; }
   }
 }
