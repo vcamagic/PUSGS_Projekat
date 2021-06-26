@@ -22,7 +22,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RegisterComponent } from './components/register/register.component'
+import { RegisterComponent } from './components/register/register.component';
+import { VerificationUserComponent } from './components/verification-user/verification-user.component'
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { RegisterComponent } from './components/register/register.component'
     IncidentComponent,
     DashboardComponent,
     RegisterComponent,
+    VerificationUserComponent,
   ],
   imports: [
     BrowserModule,
