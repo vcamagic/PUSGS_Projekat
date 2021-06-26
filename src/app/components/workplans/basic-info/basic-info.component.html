@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>Type:  </label>
+                    <select class="form-control" id="workplanType">
+                      <option value="planned">Planned work</option>
+                      <option value="unplanned">Unplanned work</option>
+                    </select>
+                  </div>
+                               
+                  <div class="form-group">
+                    <label>Status:  </label>
+                    <span  class="span-bold"> <b> Draft </b> </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Incident:  </label>
+                        
+                        <span  class="span-bold"> <b> INC1 </b> </span>
+                        <input type="button" value="..." readonly style="border:none" class="form-control" id="incidentButton" placeholder="Number">
+               
+                        </div>
+
+                        <div class="form-group">
+                            <label>Work request:  </label>
+                            
+                            <span  class="span-bold"> <b> WR150 </b> </span>
+                            <input type="button" value="..." readonly style="border:none" class="form-control" id="incidentButton" placeholder="Number">
+                   
+                            </div>
+ 
+
+                <div class="form-group">
+                    <label>Start date: 
+                    </label>
+                    <input class="form-control" type="date" formControlName="startDate">
+                </div>
+
+                <div class="form-group">
+                    <label>End date: 
+                    </label>
+                    <input class="form-control" type="date" formControlName="endDate">
+                </div>
+
+               
+
+             
+
+                <div class="form-group">
+                    <label>Created by:
+                    </label>
+                    <input class="form-control" type="text"   formControlName="createdByUser" readonly >
+                </div>
+
+                <div class="form-group">
+                    <label>Purpose: 
+                    </label>
+                    <input class="form-control" type="text" formControlName="purpose">
+                </div>
+
+                <div class="form-group">
+                    <label>Notes:
+                    </label>
+                    <input class="form-control" type="text" formControlName="notes">
+                </div> 
+
+                </div>
+
+                <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>Company: 
+                    </label>
+                    <input class="form-control" type="text" formControlName="company">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone No: 
+                    </label>
+                    <input class="form-control" type="text" formControlName="phoneNum">
+                </div>
+
+                <div class="form-group">
+                    <label>Date Created: 
+                    </label>
+                    <input class="form-control"  type="date" formControlName="dateCreated" readonly>
+                </div>
+
+
+            </div>
+
+
+            
+
+        </div>
+    </form>
+</div>

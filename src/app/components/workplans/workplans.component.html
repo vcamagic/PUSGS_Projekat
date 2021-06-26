@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col">
+            <h4 id="heding" class="">WORKPLANS</h4>
+            <button class="btn btn-class" routerLink="/workplans/newworkplan">New&nbsp;<i class="fa fa-plus"></i></button>
+            <span class="allmine">
+                <button style="width: 10%;" class="btn btn-class">All</button>
+                <button  style="width: 10%;" class="btn btn-class">Mine</button>
+            </span>
+            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+            <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
+                <thead>
+                <tr>
+                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[2]" >Phone No.&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
+                </tr>
+                </thead>
+             <tbody>
+                <tr mdbTableCol *ngFor="let workplan of workplans | slice: (page - 1) * 5 : page * 5 ">
+                    <td >{{workplan.id}}</td>
+                    <td >{{workplan.startDate}}</td>
+                    <td >{{workplan.phoneNo}}</td>
+                    <td>{{workplan.status}}</td>
+                    <td >{{workplan.address}}</td>
+
+                </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+        </div>
+
+        </div>
+    </div>
+
