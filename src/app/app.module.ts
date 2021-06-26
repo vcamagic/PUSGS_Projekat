@@ -22,7 +22,14 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RegisterComponent } from './components/register/register.component'
+import { RegisterComponent } from './components/register/register.component';
+import { HistoryOfStateChangesComponent } from './components/workplans/history-of-state-changes/history-of-state-changes.component';
+import { MultimediaAttachmentsComponent } from './components/workplans/multimedia-attachments/multimedia-attachments.component';
+import { EquipmentComponent } from './components/workplans/equipment/equipment.component';
+import { SwitchingInstructionsComponent } from './components/workplans/switching-instructions/switching-instructions.component';
+import { WorkplanComponent } from './components/workplans/workplans.component';
+import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
+import { BasicInfoComponent } from './components/workplans/basic-info/basic-info.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +47,15 @@ import { RegisterComponent } from './components/register/register.component'
     IncidentComponent,
     DashboardComponent,
     RegisterComponent,
+    WorkplanComponent,
+    HistoryOfStateChangesComponent,
+    MultimediaAttachmentsComponent,
+    EquipmentComponent,
+    SwitchingInstructionsComponent,
+    WorkplanComponent,
+    BasicInformationComponent,
+    NewWorkplanComponent,
+    BasicInfoComponent,
   ],
   imports: [
     BrowserModule,

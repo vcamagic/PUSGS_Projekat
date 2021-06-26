@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row content">
+      <div class="row">
+        <h4 class="text-center">NEW WORKPLAN</h4>
+        <div class="col-md-4">
+            <div class="list-group">
+                <button  class="list-group-item" id="basicInfo" (click)="setButton('BasicInfo')">Basic Information</button>
+                <button  class="list-group-item" id="devices" (click)="setButton('HistoryOfDataChanges')">History of data changes</button>
+                <button  class="list-group-item" id="resolution" (click)="setButton('MultimediaAtt')">Multimedia attachments</button>
+                <button  class="list-group-item" id="calls" (click)="setButton('Equi')">Equipment</button>
+                <button  class="list-group-item" id="crew" (click)="setButton('SwitchInstr')">Switching instructions</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <app-basic-info [hidden]="pressedButton != 'BasicInfo'"></app-basic-info>
+            <app-history-of-state-changes [hidden]="pressedButton != 'HistoryOfDataChanges'" ></app-history-of-state-changes>
+            <app-multimedia-attachments [hidden]="pressedButton != 'MultimediaAtt' "></app-multimedia-attachments>
+            <app-equipment [hidden]="pressedButton != 'Equi' "></app-equipment>
+            <app-switching-instructions [hidden]="pressedButton != 'SwitchInstr' "></app-switching-instructions>
+       
+      </div>
+      <div class="row">
+        <hr>
+        <button  class="btn btn-class ml-auto" routerLink="/workplans">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
+        <button class="btn btn-class">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+      </div>
+    </div>
+</div>
