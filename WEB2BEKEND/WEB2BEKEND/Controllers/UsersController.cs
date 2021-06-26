@@ -54,7 +54,7 @@ namespace WEB2BEKEND.Controllers
 
       await _context.SaveChangesAsync();
 
-      var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
+     /* var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
       var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
 
@@ -79,9 +79,9 @@ namespace WEB2BEKEND.Controllers
         Username = user.Username,
         FirstName = user.FirstName,
         LastName = user.LastName
-      };
+      };*/
 
-      return Ok(loggedInUser);
+      return Ok(user);
 
     }
   }

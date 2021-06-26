@@ -14,7 +14,10 @@
     margin: auto;
 }
 
-
+.col-md-4{
+    margin-left: 15px;
+    line-height: 36px;
+}
 .signin-text{
     font-style: normal;
     font-weight: 600 !important;
