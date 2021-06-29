@@ -23,6 +23,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './components/register/register.component'
+import { JwtModule } from '@auth0/angular-jwt'
+
+export function tokenGetter(){
+  return localStorage.getItem('jwt');
+}
 
 @NgModule({
   declarations: [
@@ -40,6 +45,7 @@ import { RegisterComponent } from './components/register/register.component'
     IncidentComponent,
     DashboardComponent,
     RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,14 @@ import { RegisterComponent } from './components/register/register.component'
     Ng2SearchPipeModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter : tokenGetter,
+        allowedDomains: ["localhost:44396"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

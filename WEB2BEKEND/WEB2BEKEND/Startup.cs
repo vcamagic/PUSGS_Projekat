@@ -59,8 +59,8 @@ namespace WEB2BEKEND
           ValidateLifetime = true,
           ValidateIssuerSigningKey = true,
 
-          ValidIssuer = "https://localhost:5001",
-          ValidAudience = "https://localhost:5001",
+          ValidIssuer = "https://localhost:44396",
+          ValidAudience = "https://localhost:44396",
           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"))
 
         };
@@ -79,7 +79,7 @@ namespace WEB2BEKEND
 
 
       services.AddDbContext<DefaultConnection>(options =>
-         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); 
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,12 +93,12 @@ namespace WEB2BEKEND
       app.UseHttpsRedirection();
       app.UseDefaultFiles();
       app.UseCors("CORS");
-      app.UseStaticFiles();
+     /* app.UseStaticFiles();
       app.UseStaticFiles(new StaticFileOptions()
       {
         FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
         RequestPath = new PathString("/Images")
-      });
+      });*/
       app.UseRouting();
 
       app.UseAuthentication();

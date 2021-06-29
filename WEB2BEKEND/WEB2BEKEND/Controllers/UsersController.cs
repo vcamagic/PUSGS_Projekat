@@ -84,5 +84,38 @@ namespace WEB2BEKEND.Controllers
       return Ok(loggedInUser);
 
     }
+
+    [HttpPost, Route("login")]
+    public IActionResult Login([FromBody]User user)
+    {
+      if (user == null)
+      {
+        return BadRequest("Invalid client request.");
+      }
+      List<User> users = _context.Users.ToList();
+      foreach(User u in users)
+      {
+        if(u.Email == user.Email && u.Password == user.Password)
+        {
+          var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKey@345"));
+          var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+          var tokenOptions = new JwtSecurityToken(
+                issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims: new List<Claim>(),
+                expires: DateTime.Now.AddMinutes(5),
+                signingCredentials: signingCredentials
+            ) ;
+
+          var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+          return Ok(new { Token = tokenString});
+
+        }
+
+      }
+      return Unauthorized();
+    }
   }
 }

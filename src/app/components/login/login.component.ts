@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
@@ -15,17 +15,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginComponent implements OnInit {
   userList : User[] = [];
-  exists : Boolean;
-  loginForm : FormGroup;
+  invalidLogin? : Boolean;
+ // loginForm : FormGroup;
 
 
 
   constructor(private router: Router,  private modalService: NgbModal,private userService : UserService,private callservice: CallsService) {
-    this.exists = false;
-    this.loginForm = new FormGroup({
+    /*this.loginForm = new FormGroup({
       'email': new FormControl("",Validators.email),
       'password': new FormControl("",[Validators.required,Validators.minLength(5)])
-    });
+    });*/
   }
 
   ngOnInit(): void {
@@ -40,22 +39,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(email: string, password: string){
-    this.print();
-    this.userList.forEach(element => {
-      if(element.email == email){
-          if(element.password == password)
-            this.exists=true;
-      }
-    });
-
-    if(!this.exists){
-      alert("Username or password invalid.");
-      return;
-    }
-
-    alert("Login succesful!");
-    this.router.navigate(['dashboard']);
+  login(form: NgForm){
+    this.userService.login(form);
+    this.invalidLogin=this.userService.invalidLogin;
   }
 
   getUsers() {
@@ -63,10 +49,10 @@ export class LoginComponent implements OnInit {
       .subscribe(users => this.userList = users);
   }
 
-  onSubmit() {
+ /* onSubmit() {
     this.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value);
     this.router.navigate(['incidents']);
-  }
+  }*/
 
   open(content : any){
 
