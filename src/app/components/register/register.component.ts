@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  imageUrl!: "/assets/Placeholder.jpg"
   imageUri! : string;
   picturehelp : any;
   fileToUpload : any;
@@ -66,9 +67,10 @@ export class RegisterComponent implements OnInit {
   
       const reader = new FileReader();
       
-      reader.onload = e => {
+      reader.onload = (e:any) => {
         this.user.Picture = reader.result!.toString().split(',')[1]; 
         this.picturehelp = this.user.Picture;
+        this.imageUrl = e.target!.result;
      console.log(this.user.Picture);this.imageUri=this.user.Picture };
       
   

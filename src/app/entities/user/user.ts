@@ -22,3 +22,19 @@ export class User {
         this.imageData = imageData;
     }
 }
+export class RegisteredUser
+{
+        UserName! : string;
+        FirstName! : string;
+        LastName!: string;
+        Email! : string;
+        Password! : string;
+        BirthDate! : string;
+        Address! : string;
+        State!:any;
+        Picture!:any;
+        activeStatus!: string;
+
+       
+    
+}
