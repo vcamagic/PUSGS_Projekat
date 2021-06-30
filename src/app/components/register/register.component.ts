@@ -3,6 +3,7 @@ import { FormBuilder, Validators,FormControl, FormGroup,NgForm } from '@angular/
 import {RegistracijaModel} from 'src/app/models/registracijaModel';
 import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -37,11 +38,11 @@ export class RegisterComponent implements OnInit {
   };
 
   registerForm = new FormGroup({
-    username : new FormControl(),
-    firstname : new FormControl(),
-    lastname : new FormControl(),
-    email : new FormControl(),
-    password : new FormControl(),
+    username : new FormControl('', Validators.required),
+    firstname : new FormControl('', Validators.required),
+    lastname : new FormControl('', Validators.required),
+    email : new FormControl('', Validators.required),
+    password : new FormControl('', Validators.required),
     birthDate : new FormControl(),
     address : new FormControl(),
     inputState : new FormControl(),
