@@ -61,7 +61,7 @@ namespace WEB2BEKEND
 
           ValidIssuer = "https://localhost:44396",
           ValidAudience = "https://localhost:44396",
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"))
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
 
         };
       });

@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { VerificationUserComponent } from './components/verification-user/verification-user.component';
 import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
 import { WorkplanComponent } from './components/workplans/workplans.component';
+import { AuthGuard } from 'src/guards/auth-guard';
 
 
 const routes: Routes = [
@@ -26,15 +27,18 @@ const routes: Routes = [
   },
   {
     path: "incidents",
-    component: IncidentsComponent
+    component: IncidentsComponent,
+
   },
   {
     path:"incidents/newincident",
-    component: NewIncidentComponent
+    component: NewIncidentComponent,
+
   },
   {
     path:"reportincident",
-    component: IncidentComponent
+    component: IncidentComponent,
+
   },
   {
     path: "workplans",

@@ -29,6 +29,8 @@ export class UserService {
       'password': form.value.password
     };
 
+
+    console.log(credentials);
     this.http.post(this.usersUrl + "/login",credentials).subscribe(res =>{
       const token = (<any>res).token;
       localStorage.setItem("jwt",token);

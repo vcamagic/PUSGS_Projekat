@@ -1,3 +1,5 @@
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,7 @@ namespace WEB2BEKEND.Controllers
       }
 
       [HttpGet]
+      [Authorize]
       public async Task<ActionResult<IEnumerable<User>>> GetUsers()
       {
          return await _context.Users.ToListAsync();
@@ -92,29 +95,28 @@ namespace WEB2BEKEND.Controllers
       {
         return BadRequest("Invalid client request.");
       }
-      List<User> users = _context.Users.ToList();
-      foreach(User u in users)
+      
+      
+      if(_context.Users.Any(x => x.Email == user.Email && x.Password == user.Password))
       {
-        if(u.Email == user.Email && u.Password == user.Password)
-        {
-          var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKey@345"));
-          var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+        var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-          var tokenOptions = new JwtSecurityToken(
-                issuer: "https://localhost:5001",
-                audience: "https://localhost:5001",
-                claims: new List<Claim>(),
-                expires: DateTime.Now.AddMinutes(5),
-                signingCredentials: signingCredentials
-            ) ;
+        var tokenOptions = new JwtSecurityToken(
+              issuer: "https://localhost:44396",
+              audience: "https://localhost:44396",
+              claims: new List<Claim>(),
+              expires: DateTime.Now.AddMinutes(5),
+              signingCredentials: signingCredentials
+          ) ;
 
-          var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-          return Ok(new { Token = tokenString});
-
-        }
+        return Ok(new { Token = tokenString});
 
       }
+
+      
       return Unauthorized();
     }
   }

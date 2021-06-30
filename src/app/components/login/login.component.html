@@ -18,7 +18,7 @@
                   <label for="passowrd" style="color: black;">Password</label>
                   <input type="password" name="password" id="password" ngModel class="form-control" placeholder="Enter password" required>
               </div>
-              <div *ngIf="invalidLogin" class="alert alert-danger">Invalid email or password.</div>
+              <div *ngIf="userService.invalidLogin" class="alert alert-danger">Invalid email or password.</div>
               <div class="row mb-4 px-3"> <small class="font-weight-bold" style="color: black;">Don't have an account? <a class="text-danger" [routerLink]="['/register']" routerLinkActive="router-link-active">Register.</a></small> <small class="font-weight-bold"><a class="text-danger" href="#">Forgot your password?</a></small> </div>
               <div class="row m4-4 px-3">
                 <button [disabled]="!loginForm.valid" class="btn btn-class" type="submit">Login</button>

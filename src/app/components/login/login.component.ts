@@ -15,12 +15,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginComponent implements OnInit {
   userList : User[] = [];
-  invalidLogin? : Boolean;
  // loginForm : FormGroup;
 
 
 
-  constructor(private router: Router,  private modalService: NgbModal,private userService : UserService,private callservice: CallsService) {
+  constructor(private router: Router,  private modalService: NgbModal,public userService : UserService,private callservice: CallsService) {
     /*this.loginForm = new FormGroup({
       'email': new FormControl("",Validators.email),
       'password': new FormControl("",[Validators.required,Validators.minLength(5)])
@@ -41,7 +40,6 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm){
     this.userService.login(form);
-    this.invalidLogin=this.userService.invalidLogin;
   }
 
   getUsers() {
