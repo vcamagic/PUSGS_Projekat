@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../entities/user/user';
+import { HttpClient,HttpParams } from '@angular/common/http';
+import { User ,RegisteredUser} from '../entities/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,28 @@ export class UserService {
     err => {
       this.invalidLogin = true;
     });
+  }
+  getAllRegisteredUsers(): Observable<RegisteredUser[]>  {
+    return this.http.get<RegisteredUser[]>(this.usersUrl);
+  }
+  activateUser(username:string) {
+    const params = new HttpParams().append('username',username);
+
+    this.http.put("https://localhost:44396/api/Users/Verification",null,{params: params})
+    .subscribe(
+      error=>console.log('greska',error)
+    );
+
+    return;
+  }
+  declineUser(username:string) {
+    const params = new HttpParams().append('username',username);
+    this.http.put("https://localhost:44396/api/Users/Declineverification",null,{params: params})
+    .subscribe(
+      error=>console.log('greska',error)
+    );
+
+    return;
   }
 
 }

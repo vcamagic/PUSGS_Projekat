@@ -24,7 +24,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './components/register/register.component'
 import { JwtModule } from '@auth0/angular-jwt'
-
+import { VerificationUserComponent } from './components/verification-user/verification-user.component';
+import { WorkplanComponent } from './components/workplans/workplans.component';
+import { BasicInfoComponent } from './components/workplans/basic-info/basic-info.component';
+import { EquipmentComponent } from './components/workplans/equipment/equipment.component';
+import { HistoryOfStateChangesComponent } from './components/workplans/history-of-state-changes/history-of-state-changes.component';
+import { MultimediaAttachmentsComponent } from './components/workplans/multimedia-attachments/multimedia-attachments.component';
+import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
+import { SwitchingInstructionsComponent } from './components/workplans/switching-instructions/switching-instructions.component'
 export function tokenGetter(){
   return localStorage.getItem('jwt');
 }
@@ -45,7 +52,14 @@ export function tokenGetter(){
     IncidentComponent,
     DashboardComponent,
     RegisterComponent,
-
+    VerificationUserComponent,
+    WorkplanComponent,
+    BasicInfoComponent,
+    EquipmentComponent,
+    HistoryOfStateChangesComponent,
+    MultimediaAttachmentsComponent,
+    NewWorkplanComponent,
+    SwitchingInstructionsComponent,
   ],
   imports: [
     BrowserModule,
