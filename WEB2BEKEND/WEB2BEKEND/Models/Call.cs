@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace WEB2BEKEND.Models
 {
-  public class IncidentCall
+  public class Call
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-
     public string Reason { get; set; }
     public string Hazard { get; set; }
     public string Comment { get; set; }

@@ -22,5 +22,7 @@ namespace WEB2BEKEND.Data
 
         public DbSet<Element> Elements { get; set; }
 
+        public DbSet<Call> Calls { get; set; }
+
     }
 }
