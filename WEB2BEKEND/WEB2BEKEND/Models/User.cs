@@ -27,6 +27,8 @@ namespace WEB2BEKEND.Models
 
     public string Picture { get; set; }
 
+    public string ActiveStatus { get; set; }
+
 
 
 
@@ -42,7 +44,7 @@ namespace WEB2BEKEND.Models
       Address = "";
       Email = "";
       InputState = "";
-
+      ActiveStatus = "Pending";
     }
   }
 }
