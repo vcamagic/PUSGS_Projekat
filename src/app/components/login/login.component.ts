@@ -14,6 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  num : number = 1;
   userList : User[] = [];
  // loginForm : FormGroup;
 
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm){
+    this.num++;
     this.userService.login(form);
   }
 

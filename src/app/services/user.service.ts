@@ -38,9 +38,17 @@ export class UserService {
       this.router.navigate(["/incidents"])
     },
     err => {
+      console.log(err);
       this.invalidLogin = true;
     });
   }
+
+  logout(){
+    localStorage.removeItem("jwt");
+    this.invalidLogin = true;
+    this.router.navigate(["/login"]);
+  }
+
   getAllRegisteredUsers(): Observable<RegisteredUser[]>  {
     return this.http.get<RegisteredUser[]>(this.usersUrl);
   }

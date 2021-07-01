@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace WEB2BEKEND.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Incident>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<Incident>>> GetIncidents()
     {
       return await _context.Incidents.ToListAsync();
 

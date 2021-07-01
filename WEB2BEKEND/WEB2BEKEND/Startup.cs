@@ -59,8 +59,8 @@ namespace WEB2BEKEND
           ValidateLifetime = true,
           ValidateIssuerSigningKey = true,
 
-          ValidIssuer = "https://localhost:44396",
-          ValidAudience = "https://localhost:44396",
+          ValidIssuer = "https://localhost:44326",
+          ValidAudience = "https://localhost:4200",
           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
 
         };

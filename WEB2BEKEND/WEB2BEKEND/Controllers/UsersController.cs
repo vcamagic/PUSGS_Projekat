@@ -28,7 +28,6 @@ namespace WEB2BEKEND.Controllers
       }
 
       [HttpGet]
-      [Authorize]
       public async Task<ActionResult<IEnumerable<User>>> GetUsers()
       {
          return await _context.Users.ToListAsync();
@@ -104,7 +103,7 @@ namespace WEB2BEKEND.Controllers
 
         var tokenOptions = new JwtSecurityToken(
               issuer: "https://localhost:44396",
-              audience: "https://localhost:44396",
+              audience: "https://localhost:4200",
               claims: new List<Claim>(),
               expires: DateTime.Now.AddMinutes(5),
               signingCredentials: signingCredentials

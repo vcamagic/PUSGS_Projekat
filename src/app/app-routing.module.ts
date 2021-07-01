@@ -28,17 +28,17 @@ const routes: Routes = [
   {
     path: "incidents",
     component: IncidentsComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path:"incidents/newincident",
     component: NewIncidentComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path:"reportincident",
     component: IncidentComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path: "workplans",

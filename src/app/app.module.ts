@@ -32,6 +32,9 @@ import { HistoryOfStateChangesComponent } from './components/workplans/history-o
 import { MultimediaAttachmentsComponent } from './components/workplans/multimedia-attachments/multimedia-attachments.component';
 import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
 import { SwitchingInstructionsComponent } from './components/workplans/switching-instructions/switching-instructions.component'
+import { AuthGuard } from 'src/guards/auth-guard';
+
+
 export function tokenGetter(){
   return localStorage.getItem('jwt');
 }
@@ -75,12 +78,12 @@ export function tokenGetter(){
     JwtModule.forRoot({
       config: {
         tokenGetter : tokenGetter,
-        allowedDomains: ["localhost:44396"],
+        allowedDomains: ["localhost:44396","localhost:5000"],
         disallowedRoutes: []
       }
     })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
