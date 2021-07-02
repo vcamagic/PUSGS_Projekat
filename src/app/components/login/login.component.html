@@ -21,7 +21,7 @@
               <div *ngIf="userService.invalidLogin && num!=1" class="alert alert-danger">Invalid email or password.</div>
               <div class="row mb-4 px-3"> <small class="font-weight-bold" style="color: black;">Don't have an account? <a class="text-danger" [routerLink]="['/register']" routerLinkActive="router-link-active">Register.</a></small> <small class="font-weight-bold"><a class="text-danger" href="#">Forgot your password?</a></small> </div>
               <div class="row m4-4 px-3">
-                <button [disabled]="!loginForm.valid" class="btn btn-class" type="submit">Login</button>
+                <button  class="btn btn-class" type="submit">Login</button>
               </div>
             </form>
               <div class="socials row mb-4  px-3">
@@ -40,11 +40,11 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #form = "ngForm" (ngSubmit)="login(form)">
+    <form [formGroup]="reportForm" (ngSubmit)="report()">
       <div class="row">
           <div class="form-group">
               <label>Reason</label>
-              <select class="form-control" name="reason"   required>
+              <select class="form-control" name="reason"  formControlName="reason" id="reason"  required>
                   <option value="No electricity">No Electricity</option>
                   <option value="Malfunction">Malfunction</option>
                   <option value="Flickering lights">Flickering lights</option>
@@ -55,23 +55,32 @@
           </div>
           <div class="form-group">
               <label>Comment</label>
-              <input class="form-control" name="comment" required>
+              <input class="form-control" name="comment" formControlName="comment" id="comment" required>
           </div>
           <div class="form-group">
               <label>Hazard</label>
-              <input class="form-control" name="hazard"   required>
+              <input class="form-control" name="hazard"  formControlName="hazard" id="hazard"  required>
           </div>
           <div class="form-group">
               <label>Address</label>
+              <select class="form-control" name="address"  formControlName="address" id="address"  required>
+                <option value="Jbc 20">Jbc 20</option>
+                <option value="Bul osl 21">Bul osl 21</option>
+                <option value="Rumenacka 219">Rumenacka 219</option>
+                <option value="Strazilovksa 15">Strazilovksa 15</option>
+                <option value="Kralja Petra 182">Kralja Petra 182</option>
+                <option value="Kisacka 88">Kisacka 88</option>
+              </select>
              <!-- <select (change)="addressChange()" class="form-control" name="address" #address="ngModel" [(ngModel)] = "callService.formData.address">
                   <option *ngFor="let item of settings.streets" [ngValue]="item.name">{{item.name}}</option>
               </select>-->
           </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg" type="submit">Report</button>
+      </div>
     </form>
 
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger btn-lg" type="submit">Report</button>
-  </div>
+
 </ng-template>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Call } from '../entities/call/call';
 
@@ -10,7 +11,7 @@ import { Call } from '../entities/call/call';
 export class CallsService {
 
   incidentList : Call[] = [];
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
 
 
   }
@@ -22,6 +23,12 @@ export class CallsService {
   }
 
   postData(call: Call){
-    return this.http.post(`${this.callsUrl}`,call);
+    this.http.post(this.callsUrl + "/AddCall",call).subscribe(res =>{
+      this.router.navigate(["/login"]);
+    },
+    err => {
+      console.log(err);
+
+    });
   }
 }

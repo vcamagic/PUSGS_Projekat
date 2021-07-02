@@ -1,7 +1,7 @@
 
 import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

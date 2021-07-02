@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
   num : number = 1;
   userList : User[] = [];
   call : Call = new Call("","","","");
- // loginForm : FormGroup;
+  loginForm? : FormGroup;
+
+  reportForm : FormGroup;
 
 
 
@@ -27,6 +29,12 @@ export class LoginComponent implements OnInit {
       'email': new FormControl("",Validators.email),
       'password': new FormControl("",[Validators.required,Validators.minLength(5)])
     });*/
+    this.reportForm = new FormGroup({
+      'reason': new FormControl(),
+      'comment': new FormControl(),
+      'hazard': new FormControl(),
+      'address': new FormControl()
+    });
   }
 
   ngOnInit(): void {
@@ -61,7 +69,8 @@ export class LoginComponent implements OnInit {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {});
   }
 
-  report(form: NgForm){
-    this.call = new Call(form.value.reason,form.value.hazard,form.value.comment,form.value.address);
+  report(){
+    this.call = new Call(this.reportForm.controls["reason"].value,this.reportForm.controls["hazard"].value,this.reportForm.controls["comment"].value,this.reportForm.controls["address"].value)
+    this.callservice.postData(this.call);
   }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,35 @@ namespace WEB2BEKEND.Controllers
     }
 
 
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Call>>> GetCalls()
+    {
+      return await _context.Calls.ToListAsync();
+    }
+
+    // GET: api/Books/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Call>> GetCalls(int id)
+    {
+      var call = await _context.Calls.FindAsync(id);
+
+      if (call == null)
+      {
+        return NotFound();
+      }
+
+      return call;
+    }
+
+
     [HttpPost]
-    public async Task<IActionResult> PostCall(Call call)
+    [Route("AddCall")]
+    public async Task<IActionResult> AddCall(Call call)
     {
       _context.Calls.Add(call);
       await _context.SaveChangesAsync();
 
-      return Ok();
+      return CreatedAtAction("GetCalls", new { id = call.Id }, call);
     }
 
   }

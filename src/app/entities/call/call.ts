@@ -13,6 +13,6 @@ export class Call {
         this.reason = reason;
         this.hazard = hazard;
         this.comment = comment;
-        this.address= address;
+        this.address = address;
     }
 }
