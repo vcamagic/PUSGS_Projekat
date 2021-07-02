@@ -32,6 +32,32 @@ import { HistoryOfStateChangesComponent } from './components/workplans/history-o
 import { MultimediaAttachmentsComponent } from './components/workplans/multimedia-attachments/multimedia-attachments.component';
 import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
 import { SwitchingInstructionsComponent } from './components/workplans/switching-instructions/switching-instructions.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
 import { AuthGuard } from 'src/guards/auth-guard';
 
 
@@ -75,15 +101,40 @@ export function tokenGetter(){
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     NgbModule,
+    NgMultiSelectDropDownModule,
+    NgSelectModule,
     JwtModule.forRoot({
       config: {
         tokenGetter : tokenGetter,
         allowedDomains: ["localhost:44396","localhost:5000"],
         disallowedRoutes: []
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MatIconModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatSortModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    DatePipe,
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
