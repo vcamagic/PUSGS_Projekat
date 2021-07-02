@@ -7,6 +7,7 @@ import{User} from '../../entities/user/user';
 import {CallsService} from 'src/app/services/calls.service';
 import { threadId } from 'node:worker_threads';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Call } from 'src/app/entities/call/call';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
   num : number = 1;
   userList : User[] = [];
+  call : Call = new Call("","","","");
  // loginForm : FormGroup;
 
 
@@ -59,7 +61,7 @@ export class LoginComponent implements OnInit {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {});
   }
 
-  report(){
-
+  report(form: NgForm){
+    this.call = new Call(form.value.reason,form.value.hazard,form.value.comment,form.value.address);
   }
 }

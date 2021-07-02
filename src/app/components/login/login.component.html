@@ -40,7 +40,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #form = "ngForm">
+    <form #form = "ngForm" (ngSubmit)="login(form)">
       <div class="row">
           <div class="form-group">
               <label>Reason</label>
@@ -72,6 +72,6 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-danger btn-lg" (click)="report()">Report</button>
+    <button type="button" class="btn btn-danger btn-lg" type="submit">Report</button>
   </div>
 </ng-template>

@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Call } from '../entities/call/call';
 
 @Injectable({
@@ -6,15 +9,19 @@ import { Call } from '../entities/call/call';
 })
 export class CallsService {
 
-  calls : Array<Call> = new Array<Call>();
-  constructor() {
-    this.getCalls();
+  incidentList : Call[] = [];
+  constructor(private http: HttpClient) {
+
+
   }
 
+  readonly callsUrl = 'https://localhost:44396/api/Calls';
 
-  getCalls(){
-    this.calls.push(new Call(1,"Power Outage", "No struja no fun.","Brrr","Brka", "Brkic", "br br 21",21));
-    this.calls.push(new Call(2,"Power Outage", "No struja no fun.","Brrr","Brka", "Brkic", "br br 21",21));
-    this.calls.push(new Call(2,"Power Outage", "No struja no fun.","Brrr","Brka", "Brkic", "br br 21",21));
+  getAllIncidents(): Observable<Call[]>{
+    return this.http.get<Call[]>(this.callsUrl);
+  }
+
+  postData(call: Call){
+    return this.http.post(`${this.callsUrl}`,call);
   }
 }

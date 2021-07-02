@@ -1,5 +1,5 @@
 export class Call {
-    id : number;
+    id? : number;
     reason : string;
     hazard : string;
     comment : string;
@@ -8,14 +8,11 @@ export class Call {
     address? : string;
     priority?: number;
 
-    constructor( id : number, reason : string,  hazard : string, comment : string, name  : string, lastName : string, address : string, priority: number){
-        this.id = id;
+    constructor( reason : string,  hazard : string, comment :string ,address : string){
+
         this.reason = reason;
         this.hazard = hazard;
         this.comment = comment;
-        this.name = name;
-        this.lastName = lastName;
-        this.address = address;
-        this.priority = priority;
+        this.address= address;
     }
 }
