@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row content">
+    <div class="row">
+      <h4 class="text-center">NEW WORKREQUEST</h4>
+      <div class="col-md-4">
+          <div class="list-group">
+              <button  class="list-group-item" id="basicInfo" (click)="setButton('BasicInfo')">Basic Information</button>
+              <button  class="list-group-item" id="history" (click)="setButton('History')">History of Changes</button>
+              <button  class="list-group-item" id="equipment" (click)="setButton('Equipment')">Equipment</button>
+              <button class="list-group-item" id="multimedia" (click)="setButton('Multimedia')">Multimedia Attachments</button>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <app-basic-info-wr [hidden]="pressedButton != 'BasicInfo'"></app-basic-info-wr>
+          <app-history-wr [hidden]="pressedButton != 'History'" ></app-history-wr>
+          <app-equipment-wr [hidden]="pressedButton != 'Equipment'"></app-equipment-wr>
+          <app-multimedia-wr [hidden]="pressedButton != 'Multimedia' "></app-multimedia-wr>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+      <button  class="btn btn-class ml-auto" routerLink="/workrequests">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
+      <button class="btn btn-class">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>

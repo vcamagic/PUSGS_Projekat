@@ -9,8 +9,12 @@ import { VerificationUserComponent } from './components/verification-user/verifi
 import { NewWorkplanComponent } from './components/workplans/new-workplan/new-workplan.component';
 import { WorkplanComponent } from './components/workplans/workplans.component';
 import { AuthGuard } from 'src/guards/auth-guard';
-
-
+import { WorkRequestsComponent } from './components/work-requests/work-requests.component';
+import {NewRequestComponent } from './components/work-requests/new-request/new-request.component';
+import {BasicInfoWrComponent } from './components/work-requests/basic-info-wr/basic-info-wr.component';
+import {MultimediaWrComponent } from './components/work-requests/multimedia-wr/multimedia-wr.component';
+import { HistoryWrComponent } from './components/work-requests/history-wr/history-wr.component';
+import {EquipmentWrComponent} from './components/work-requests/equipment-wr/equipment-wr.component';
 const routes: Routes = [
   {
     path:"",
@@ -52,7 +56,36 @@ const routes: Routes = [
     path:"verify",
     component: VerificationUserComponent
   },
-];
+  {
+    path:"workrequests",
+    component: WorkRequestsComponent,
+  },
+  {      
+    path: 'workrequests/new',
+        component: NewRequestComponent,
+  },
+       
+  {
+    path:'workrequests/new/basic-info',
+    component: BasicInfoWrComponent
+  },
+  {
+    path:'workrequests/new/history',
+    component:HistoryWrComponent
+  },
+  {
+    path:'workrequests/new/multimedia',
+    component:MultimediaWrComponent
+  },
+  {
+    path:'workrequests/new/equipment',
+    component:EquipmentWrComponent
+  },
+
+     
+     
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

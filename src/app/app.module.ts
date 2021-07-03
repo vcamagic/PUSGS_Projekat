@@ -59,6 +59,12 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 import { AuthGuard } from 'src/guards/auth-guard';
+import { WorkRequestsComponent } from './components/work-requests/work-requests.component';
+import { BasicInfoWrComponent } from './components/work-requests/basic-info-wr/basic-info-wr.component';
+import { EquipmentWrComponent } from './components/work-requests/equipment-wr/equipment-wr.component';
+import { HistoryWrComponent } from './components/work-requests/history-wr/history-wr.component';
+import { MultimediaWrComponent } from './components/work-requests/multimedia-wr/multimedia-wr.component';
+import { NewRequestComponent } from './components/work-requests/new-request/new-request.component';
 
 
 export function tokenGetter(){
@@ -89,6 +95,12 @@ export function tokenGetter(){
     MultimediaAttachmentsComponent,
     NewWorkplanComponent,
     SwitchingInstructionsComponent,
+    WorkRequestsComponent,
+    BasicInfoWrComponent,
+    EquipmentWrComponent,
+    HistoryWrComponent,
+    MultimediaWrComponent,
+    NewRequestComponent,
   ],
   imports: [
     BrowserModule,
