@@ -10,8 +10,8 @@ using WEB2BEKEND.Data;
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    [Migration("20210703172519_workreq")]
-    partial class workreq
+    [Migration("20210703234642_ignore-changes")]
+    partial class ignorechanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -278,10 +278,8 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.WorkRequest", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("WrId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
@@ -331,7 +329,10 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WrId");
 
                     b.ToTable("WorkRequests");
                 });

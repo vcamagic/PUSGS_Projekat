@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB2BEKEND.Data;
 
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    partial class DefaultConnectionModelSnapshot : ModelSnapshot
+    [Migration("20210703231823_workreq2")]
+    partial class workreq2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,7 +278,7 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.WorkRequest", b =>
                 {
-                    b.Property<string>("WrId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
@@ -330,7 +332,7 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WrId");
+                    b.HasKey("Id");
 
                     b.ToTable("WorkRequests");
                 });

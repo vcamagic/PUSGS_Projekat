@@ -26,5 +26,47 @@ namespace WEB2BEKEND.Controllers
       return await _context.WorkRequests.ToListAsync();
 
     }
+    [HttpPost]
+    [Route("AddWorkRequest")]
+    public async Task<ActionResult<WorkRequest>> AddSafetyDocument(WorkRequest wr)
+    {
+
+
+      WorkRequest workRequest = new WorkRequest()
+      {
+        WrId = Guid.NewGuid().ToString(),
+        Type = wr.Type,
+        Status = wr.Status,
+        Incident = wr.Incident,
+        Street = wr.Street, //ne pise u spec sta je
+        DateCreated = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"),
+        CreatedByUser = wr.CreatedByUser,
+        PhoneNum = wr.PhoneNum,
+        StartDate = wr.StartDate,
+        Details = wr.Details,
+        Notes = wr.Notes,
+        EndDate = wr.EndDate,
+        Purpose = wr.Purpose,
+        Company = wr.Company,
+        History = wr.History,
+        State = wr.State,
+        Multimedia = wr.Multimedia,
+        Equipment = wr.Equipment,
+
+
+      };
+
+
+
+
+      _context.WorkRequests.Add(workRequest);
+
+      await _context.SaveChangesAsync();
+
+      
+
+      return CreatedAtAction("GetWorkRequests", workRequest);
+
+    }
   }
 }

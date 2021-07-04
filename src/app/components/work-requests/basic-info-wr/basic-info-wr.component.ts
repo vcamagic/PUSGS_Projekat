@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IncidentsService } from 'src/app/services/incidents.service';
 import { WorkRequestsService } from 'src/app/services/work-requests.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class BasicInfoWrComponent implements OnInit {
     type: new FormControl(''),
     status: new FormControl('Draft'),
     incident: new FormControl(''),
+    
     street: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
@@ -44,7 +46,7 @@ export class BasicInfoWrComponent implements OnInit {
   onSave() {
     
     this._workService.emitChange(this.toNavbar);
-    this.router.navigate(['/work-requests/new/history']);
+    this.router.navigate(['/workrequests/new/history']);
   }
 
 }
