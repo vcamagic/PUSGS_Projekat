@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Incident } from '../entities/incident/incident';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -20,6 +20,7 @@ export class IncidentsService {
   readonly incidentsUrl = 'https://localhost:44396/api/Incidents';
    getAllIncidents(): Observable<Incident[]>{
     return this.http.get<Incident[]>(this.incidentsUrl);
+    this.http.get(this.incidentsUrl)
   }
 
 }

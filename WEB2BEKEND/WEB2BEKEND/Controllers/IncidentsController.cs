@@ -22,7 +22,7 @@ namespace WEB2BEKEND.Controllers
       _context = context;
     }
 
-    [HttpGet]
+    [HttpGet,Authorize]
     public async Task<ActionResult<IEnumerable<Incident>>> GetIncidents()
     {
       return await _context.Incidents.ToListAsync();

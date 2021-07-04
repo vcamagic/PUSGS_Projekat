@@ -9,8 +9,9 @@ export class User {
     dateOfBirth:string = "";
     activeStatus: string = "";
     imageData: string = "";
+    type: string = "";
 
-    constructor(username:string,email:string,password:string,userType:string, nameAndLastname:string,address: string,dateOfBirth: string,activeStatus: string,imageData: string){
+    constructor(username:string,email:string,password:string,userType:string, nameAndLastname:string,address: string,dateOfBirth: string,activeStatus: string,imageData: string,type:string){
         this.username = username;
         this.email=email;
         this.password=password;
@@ -20,6 +21,7 @@ export class User {
         this.dateOfBirth = dateOfBirth;
         this.activeStatus = activeStatus;
         this.imageData = imageData;
+        this.type = type;
     }
 }
 export class RegisteredUser
@@ -35,6 +37,6 @@ export class RegisteredUser
         Picture!:any;
         activeStatus!: string;
 
-       
-    
+
+
 }

@@ -7,13 +7,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { User ,RegisteredUser} from '../entities/user/user';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   invalidLogin : boolean = true;
-  constructor(private http : HttpClient,public router: Router) {
+  constructor(private http : HttpClient,public router: Router,private jwtHelper: JwtHelperService) {
 
   }
 
@@ -70,6 +71,16 @@ export class UserService {
     );
 
     return;
+  }
+
+  isUserAuthenticated(): boolean{
+    const token = localStorage.getItem("jwt");
+    if(token && !this.jwtHelper.isTokenExpired(token)){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 }

@@ -100,12 +100,17 @@ namespace WEB2BEKEND.Controllers
       {
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
         var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name,user.Username),
+            new Claim(ClaimTypes.Role, user.Type)
+        };
 
         var tokenOptions = new JwtSecurityToken(
-              issuer: "https://localhost:44396",
-              audience: "https://localhost:4200",
-              claims: new List<Claim>(),
-              expires: DateTime.Now.AddMinutes(5),
+              issuer: "https://localhost:5000",
+              audience: "https://localhost:5000",
+              claims: claims,
+              expires: DateTime.Now.AddMinutes(60),
               signingCredentials: signingCredentials
           ) ;
 

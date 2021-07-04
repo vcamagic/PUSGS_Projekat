@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {}
+    "C:\\Users\\Vlada\\Desktop\\dasdasdsa\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {
+    "C:\\Users\\Vlada\\Desktop\\dasdasdsa\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+        "projectUniqueName": "C:\\Users\\Vlada\\Desktop\\dasdasdsa\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
         "projectName": "WEB2BEKEND",
-        "projectPath": "C:\\Users\\pc\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
+        "projectPath": "C:\\Users\\Vlada\\Desktop\\dasdasdsa\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+        "packagesPath": "C:\\Users\\Vlada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlada\\Desktop\\dasdasdsa\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vlada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\v2.9\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

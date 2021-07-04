@@ -33,7 +33,10 @@ export class IncidentsComponent implements OnInit{
 
   getIncidents() {
     this.incidentsService.getAllIncidents()
-      .subscribe(incidents => this.incidents = incidents);
+      .subscribe(response => {this.incidents = response;
+      },err =>{
+          console.log(err);
+      });
   }
 
   all(){
