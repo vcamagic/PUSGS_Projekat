@@ -2,20 +2,26 @@ import { Call } from "../call/call";
 import {} from "../element/element"
 
 export class Workplan {
-    id : string;
-    startDate : string;
-    phoneNo : string;
-    address : string;
-    status : string;
+    type?: string;
+    workplan?:string;
+    incident?: string;
+    street?: string;
+    startDate?: string;
+    endDate?: string;
+    status?: string;
 
 
+    createdByUser?: string;
+    crew?:  string;
+    purpouse?: string;
+    notes?:string;
 
-    constructor(id : string, startDate: string,phoneNo : string,address:string, status: string){
-        this.id=id;
-        this.startDate = startDate;
-        this.phoneNo = phoneNo;
-        this.address = address
-        this.status = status;
+    phoneNum?: string;
+    company?:string;
+    dateCreated?:string;
 
-    }
 }
+
+
+
+    
