@@ -65,6 +65,13 @@ import { EquipmentWrComponent } from './components/work-requests/equipment-wr/eq
 import { HistoryWrComponent } from './components/work-requests/history-wr/history-wr.component';
 import { MultimediaWrComponent } from './components/work-requests/multimedia-wr/multimedia-wr.component';
 import { NewRequestComponent } from './components/work-requests/new-request/new-request.component';
+import { SafetydocumentComponent } from './components/safetydocument/safetydocument.component';
+import { BasicInfoSdComponent } from './components/safetydocument/basic-info-sd/basic-info-sd.component';
+import { HistorySdComponent } from './components/safetydocument/history-sd/history-sd.component';
+import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/checklist-sd.component';
+import { NewSdComponent } from './components/safetydocument/new-sd/new-sd.component';
+import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd/multimedia-sd.component';
+import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/equipment-sd.component';
 
 
 export function tokenGetter(){
@@ -101,6 +108,13 @@ export function tokenGetter(){
     HistoryWrComponent,
     MultimediaWrComponent,
     NewRequestComponent,
+    SafetydocumentComponent,
+    BasicInfoSdComponent,
+    HistorySdComponent,
+    ChecklistSdComponent,
+    NewSdComponent,
+    MultimediaSdComponent,
+    EquipmentSdComponent,
   ],
   imports: [
     BrowserModule,

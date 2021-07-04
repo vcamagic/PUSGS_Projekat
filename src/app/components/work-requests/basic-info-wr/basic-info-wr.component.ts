@@ -14,7 +14,7 @@ export class BasicInfoWrComponent implements OnInit {
   basicInfoForm = new FormGroup({
     type: new FormControl(''),
     status: new FormControl('Draft'),
-    incident: new FormControl(''),
+    workplan: new FormControl(''),
     
     street: new FormControl(''),
     startDate: new FormControl(''),

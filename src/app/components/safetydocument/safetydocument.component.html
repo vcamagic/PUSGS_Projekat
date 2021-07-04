@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col">
+            <h4 id="heding" class="">SAFETY DOCUMENT</h4>
+            <button class="btn btn-class" routerLink="/safetydocuments/new">New&nbsp;<i class="fa fa-plus"></i></button>
+            <span class="allmine">
+                <button style="width: 10%;" class="btn btn-class">All</button>
+                <button  style="width: 10%;" class="btn btn-class">Mine</button>
+            </span>
+            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+            <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
+                <thead>
+                <tr>
+                     
+                    
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[2]" >Type.&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentssTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[3]">Status&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[4]" >Crew&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[5]" >End date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[1]">Details&nbsp;<i class="fa fa-sort"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr mdbTableCol *ngFor="let safetydocument of safetyDocuments | slice: (page - 1) * 5 : page * 5 ">
+
+                      <td >{{safetydocument.type}}</td>
+                      <td >{{safetydocument.status}}</td>
+                      <td>{{safetydocument.crew}}</td>
+                      <td >{{safetydocument.endDate}}</td>
+                      <td >{{safetydocument.details}}</td>
+                      
+                  </tr>
+                  </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+        </div>
+
+        </div>
+    </div>
+
