@@ -12,7 +12,7 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class HistoryWrComponent implements OnInit {
 
-  
+  public allElements : HistoryState[] = [];
   historyStates: HistoryState[] = [];
   public page = 10;
   public pageSize = 3;
@@ -24,14 +24,29 @@ export class HistoryWrComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-      
+    
     
   }
 
   
   getAll() {
-    this.documentService.getHistory()
-      .subscribe(workRequests => this.historyStates = workRequests);
-  }
+    this.documentService.loadHistory()
+    .subscribe((data: string | any[]) => {
+        for(let i=0; i<data.length; i++)
+        {
+       
+            this.allElements.push(data[i]);
+          
+       
+          
+          
+        }
+      }
+      );
+     
+    }
+
+
+
 
 }

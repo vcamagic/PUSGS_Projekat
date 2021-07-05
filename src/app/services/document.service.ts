@@ -22,9 +22,16 @@ export class DocumentService {
   saveSwitchingPlan(switchingPlan: SwitchingPlan) {
     return this.http.post<SwitchingPlan>("https://localhost:44396/api/Document/SaveSwitchingPlan", switchingPlan);
   }
+
+  loadHistory(): Observable<IHistory[]>{
+    return this.http.get<IHistory[]>("https://localhost:44396/api/Document"); 
+  }
+
+  
+
   getHistory() : Observable<HistoryState[]> {
 
-    return this.http.get<HistoryState[]>("https://localhost:44396/api/Document/GetHistory");
+    return this.http.get<HistoryState[]>("https://localhost:44396/api/Document");
   }
   getSwitchingPlans(): Observable<SwitchingPlan[]>{
     return this.http.get<SwitchingPlan[]>("https://localhost:44396/api/Document/GetSwitchingPlans"); 
@@ -49,6 +56,8 @@ export class DocumentService {
     
   }
 
+
+  
   executeInstruction(id:number){
     console.log("Id: " + id)
     return this.http.put("https://localhost:44396/api/Document/ExecuteInstruction", id)
@@ -91,4 +100,13 @@ export class DocumentService {
     )
   }
 
+}
+
+
+export interface IHistory {
+  Id: string;
+  DocumentId: string;
+  DateChange: string;
+  ChangeBy: string;
+  NewStatus: string;
 }

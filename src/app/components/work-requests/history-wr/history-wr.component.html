@@ -1,32 +1,26 @@
-<table  id="historyState"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
-    <thead>
-    <tr>
-         
-        
-        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[2]" >Id&nbsp;<i class="fa fa-sort"></i></th>
-        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[3]">Date&nbsp;<i class="fa fa-sort"></i></th>
-        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[4]" >Changed by&nbsp;<i class="fa fa-sort"></i></th>
-        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[5]" >Status&nbsp;<i class="fa fa-sort"></i></th>
-       
-    </tr>
-    </thead>
-    <tbody>
-      <tr mdbTableCol *ngFor="let historyState of historyStates | slice: (page - 1) * 7 : page * 7 " width="100%">
-
-          <td >{{historyState.id}}</td>
-          <td >{{historyState.dateChange}}</td>
-          <td>{{historyState.changeBy}}</td>
-          <td >{{historyState.newStatus}}</td>
+<div class="container">
+  <p>HISTORY:</p>
+  <table class="table table-blue">
+    <thead class="thead-blue">
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Status</th>
+          <th scope="col">Changed by</th>
           
-        </tr>
-      </tbody>
-    <tfoot>
+          <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of allElements ">
+      <td>{{element.id}}</td>
+      <td>{{element.newStatus}}</td>
+      <td>{{element.changeBy}}</td>
+            
+  
+    </tr>
+  </tbody>
+  </table>
 
-    </tfoot>
-</table>
-    
+  
 
-
-    
-
-
+</div>

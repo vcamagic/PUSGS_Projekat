@@ -19,30 +19,13 @@ namespace WEB2BEKEND.Controllers
     {
       _context = context;
     }
-    [HttpGet]
-    [Route("GetHistory")]
-    
+    [HttpGet] 
     public async Task<ActionResult<IEnumerable<HistoryModel>>> GetHistory()
     {
       return await _context.History.ToListAsync();
 
     }
-    [HttpGet]
-    [Route("GetHistoryState")]
-    public async Task<ActionResult<IEnumerable<HistoryModel>>> GetHistoryState(string id)
-    {
-      List<HistoryModel> ins = new List<HistoryModel>();
-
-      foreach (HistoryModel i in _context.History)
-      {
-        if (i.DocumentId == id)
-        {
-          ins.Add(i);
-        }
-      }
-
-      return ins;
-    }
+  
 
     [HttpPost]
     [Route("SaveHistoryState")]
