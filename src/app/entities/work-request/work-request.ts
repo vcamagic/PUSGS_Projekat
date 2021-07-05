@@ -1,23 +1,23 @@
 export class WorkRequest {
     //basic
-    type?: string;
-    status?:string;
-    incident?: string;
-    street?: string;
-    startDate?: string;
-    endDate?: string;
-    createdByUser?: string;
-    purpose?:  string;
-    phoneNum?: string;
-    company?: string;
-    details?: string;
-    notes?: string;
-    dateCreated?:string;
+   public type?: string;
+   public status?:string;
+   public  incident?: string;
+   public  street?: string;
+   public startDate?: string;
+   public  endDate?: string;
+   public createdByUser?: string;
+   public purpose?:  string;
+   public phoneNum?: string;
+   public company?: string;
+   public details?: string;
+   public notes?: string;
+   public dateCreated?:string;
     //History
-    history?: string;
-    state?:string;
+    public history?: string;
+    public   state?:string;
     //Multimedia
-    file?:string;
+    public file?:string;
     //Equipment
-    equipment?: string;
+    public equipment?: string;
 }

@@ -13,8 +13,8 @@ import { Element } from 'src/app/entities/element/element';
 
   export class EquipmentWrComponent implements OnInit {
 
-    public component = "devices";
-    public toNavbar = ["", this.component];
+    //public component = "devices";
+    //public toNavbar = ["", this.component];
   
     public allElements : Element[] = [];
     public usedElements : Element[] = [];
@@ -34,7 +34,7 @@ import { Element } from 'src/app/entities/element/element';
       .subscribe((data: string | any[]) => {
           for(let i=0; i<data.length; i++)
           {
-            if(data[i].inSafetyDocument === false)
+          if(data[i].inSafetyDocument === false)
             {
               this.allElements.push(data[i]);
             } else {
@@ -55,8 +55,8 @@ import { Element } from 'src/app/entities/element/element';
       
       //prebaci na sledeca polja
   
-      this._sharedService.emitChange(this.toNavbar);
-      this.router.navigate(['/work-requests']);
+      //this._sharedService.emitChange(this.toNavbar);
+      this.router.navigate(['/workrequests']);
     }
   
     onSelect(elementId : string) {
