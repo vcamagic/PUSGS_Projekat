@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <app-basic-information [hidden]="pressedButton != 'BasicInfo'"></app-basic-information>
+            <app-basic-information [incID]="incNum" [hidden]="pressedButton != 'BasicInfo'"></app-basic-information>
             <app-devices [hidden]="pressedButton != 'Devices'" ></app-devices>
             <app-resolution [hidden]="pressedButton != 'Resolution' "></app-resolution>
             <app-calls [hidden]="pressedButton != 'Calls' "></app-calls>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Incident } from 'src/app/entities/incident/incident';
+import { IncidentsService } from 'src/app/services/incidents.service';
 
 @Component({
   selector: 'app-new-incident',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewIncidentComponent implements OnInit {
 
+  incNum : number = 0;
   pressedButton: string;
 
-  constructor() { 
+  constructor(private incidentsService: IncidentsService) {
     this.pressedButton ='BasicInfo';
   }
 
@@ -36,10 +39,15 @@ export class NewIncidentComponent implements OnInit {
       else if( pressedButton == "Equipment"){
         this.pressedButton = "Equipment";
       }
-      
+
   }
 
   ngOnInit(): void {
+    this.incidentsService.getAllIncidents()
+    .subscribe(response => {this.incNum = response.length;
+    },err =>{
+        console.log(err);
+    });
   }
 
 }

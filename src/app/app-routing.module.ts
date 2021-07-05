@@ -22,6 +22,7 @@ import { HistorySdComponent } from './components/safetydocument/history-sd/histo
 import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/equipment-sd.component';
 import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd/multimedia-sd.component';
 import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/checklist-sd.component';
+import { DevicesComponent } from './components/incidents/devices/devices.component';
 const routes: Routes = [
   {
     path:"",
@@ -96,11 +97,11 @@ const routes: Routes = [
     path:"workrequests",
     component: WorkRequestsComponent,
   },
-  {      
+  {
     path: 'workrequests/new',
         component: NewRequestComponent,
   },
-       
+
   {
     path:'workrequests/new/basic-info',
     component: BasicInfoWrComponent
@@ -117,9 +118,12 @@ const routes: Routes = [
     path:'workrequests/new/equipment',
     component:EquipmentWrComponent
   },
+  {
+    path: 'devices',
+    component: DevicesComponent
+  }
 
-     
-     
+
 
 ]
 

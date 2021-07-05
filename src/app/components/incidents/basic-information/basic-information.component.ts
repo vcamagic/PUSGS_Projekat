@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Incident } from 'src/app/entities/incident/incident';
 
 @Component({
   selector: 'app-basic-information',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInformationComponent implements OnInit {
 
+  @Input() incID : number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  save(form: NgForm){
+
   }
 
 }

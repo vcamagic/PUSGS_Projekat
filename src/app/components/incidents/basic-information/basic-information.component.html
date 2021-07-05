@@ -1,56 +1,56 @@
 <div class="container-fluid">
-    <form>
+    <form #basicInfoForm="ngForm" (ngSubmit)="save(basicInfoForm)">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID</label>
-                    <input type="text" readonly style="border:none" class="form-control" id="incidentID" placeholder="ID">
+                    <input type="text" ngModel name="incidentID" readonly style="border:none" class="form-control" id="incidentID" value="{{incID + 1}}">
                 </div>
                 <div class="form-group">
                     <label>Type</label>
-                    <select class="form-control" id="indcidentType">
+                    <select ngModel class="form-control" name="indcidentType" id="indcidentType">
                       <option value="planned">Planned</option>
                       <option value="unplanned">Unplanned</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Priority</label>
-                    <input type="text" readonly style="border:none" id="indcidentPriority" class="form-control" placeholder="Priority">
+                    <input type="text" ngModel name="indcidentPriority"  readonly style="border:none" id="indcidentPriority" class="form-control" placeholder="Priority">
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" id="incidentConfirmed"> Confirmed
+                      <input type="checkbox" ngModel name="incidentConfirmed" id="incidentConfirmed"> Confirmed
                     </label>
                   </div>
                   <div class="form-group">
                     <label>Status</label>
-                    <input type="text"   id="incidentStatus" class="form-control" placeholder="Status">
+                    <input type="text" ngModel name="incidentStatus"  id="incidentStatus" class="form-control" placeholder="Status">
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" id="incidentDescription" placeholder="Add Description"></textarea>
+                    <textarea class="form-control" ngModel  name="incidentDescription" id="incidentDescription" placeholder="Add Description"></textarea>
                   </div>
                 <div class="form-group">
                     <label>ETA</label>
-                        <input class="form-control"  id="incidentETA" type="datetime-local"  id="eta">
+                        <input class="form-control" ngModel  name="incidentETA" id="incidentETA" type="datetime-local"  id="eta">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ATA</label>
-                        <input class="form-control"  id="incidentATA" type="datetime-local"  id="eta">
+                        <input class="form-control" ngModel name="incidentATA"  id="incidentATA" type="datetime-local"  id="eta">
                 </div>
                 <div class="form-group">
                     <label>Affected Customers</label>
-                    <input type="text" readonly style="border:none" class="form-control" id="incidentAC" placeholder="Number">
+                    <input type="text" readonly ngModel name="incidentAC" style="border:none" class="form-control" id="incidentAC" placeholder="Number">
                 </div>
                 <div class="form-group">
                     <label>Incident Time</label>
-                        <input class="form-control" type="datetime-local" id="incidentTime" id="eta">
+                        <input class="form-control" ngModel type="datetime-local" name="incidentTime"  id="incidentTime" id="eta">
                 </div>
                 <div class="form-group">
                     <label>ETR</label>
-                        <input class="form-control" type="datetime-local" id="incidentETR"  id="eta">
+                        <input class="form-control" ngModel type="datetime-local" id="incidentETR"  name="incidentETR">
                 </div>
                 <div class="form-group">
                     <label>Number Of Calls</label>
