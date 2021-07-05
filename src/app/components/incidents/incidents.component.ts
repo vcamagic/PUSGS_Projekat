@@ -20,7 +20,7 @@ export class IncidentsComponent implements OnInit{
   page = 1;
   pageSize = 4;
   collectionSize = 0;
-  headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedCustomers', 'callsNum', 'voltage'];
+  headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedConsumers', 'callsNum', 'voltage'];
 
   constructor(public incidentsService: IncidentsService) {
 
