@@ -10,8 +10,8 @@ using WEB2BEKEND.Data;
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    [Migration("20210703234642_ignore-changes")]
-    partial class ignorechanges
+    [Migration("20210705130317_elemn")]
+    partial class elemn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,9 @@ namespace WEB2BEKEND.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("InSafetyDocument")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -271,6 +274,9 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Username");
 
                     b.ToTable("Users");
@@ -278,7 +284,7 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.WorkRequest", b =>
                 {
-                    b.Property<string>("WrId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
@@ -332,7 +338,7 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WrId");
+                    b.HasKey("Id");
 
                     b.ToTable("WorkRequests");
                 });

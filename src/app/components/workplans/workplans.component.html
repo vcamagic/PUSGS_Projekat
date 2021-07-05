@@ -11,20 +11,20 @@
             <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
-                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[2]" >Phone No.&nbsp;<i class="fa fa-sort"></i></th>
+                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[0]">Start date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[1]">Phone number&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[2]" >Type&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[3]" >End date&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
                 </thead>
              <tbody>
                 <tr mdbTableCol *ngFor="let workplan of workplans | slice: (page - 1) * 5 : page * 5 ">
-                    <td >{{workplan.id}}</td>
                     <td >{{workplan.startDate}}</td>
-                    <td >{{workplan.phoneNo}}</td>
+                    <td >{{workplan.phoneNum}}</td>
+                    <td >{{workplan.type}}</td>
                     <td>{{workplan.status}}</td>
-                    <td >{{workplan.address}}</td>
+                    <td >{{workplan.endDate}}</td>
 
                 </tr>
                 </tbody>

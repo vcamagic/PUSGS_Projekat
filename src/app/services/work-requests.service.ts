@@ -42,6 +42,12 @@ export class WorkRequestsService {
   emitChange(change: any) {
       this.emitChangeSource.next(change);
 
-       
-}
+    }
+    saveWorkRequest(wr : WorkRequest)      
+    {
+      this.http.post("https://localhost:44396/api/WorkRequests/AddWorkRequest", wr/*, httpOptions*/)
+      .subscribe(
+        data => console.log('oops', data)
+      );
+    }
 }

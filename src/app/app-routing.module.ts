@@ -15,6 +15,13 @@ import {BasicInfoWrComponent } from './components/work-requests/basic-info-wr/ba
 import {MultimediaWrComponent } from './components/work-requests/multimedia-wr/multimedia-wr.component';
 import { HistoryWrComponent } from './components/work-requests/history-wr/history-wr.component';
 import {EquipmentWrComponent} from './components/work-requests/equipment-wr/equipment-wr.component';
+import { SafetydocumentComponent } from './components/safetydocument/safetydocument.component';
+import { NewSdComponent } from './components/safetydocument/new-sd/new-sd.component';
+import { BasicInfoSdComponent } from './components/safetydocument/basic-info-sd/basic-info-sd.component';
+import { HistorySdComponent } from './components/safetydocument/history-sd/history-sd.component';
+import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/equipment-sd.component';
+import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd/multimedia-sd.component';
+import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/checklist-sd.component';
 const routes: Routes = [
   {
     path:"",
@@ -55,6 +62,35 @@ const routes: Routes = [
   {
     path:"verify",
     component: VerificationUserComponent
+  },
+
+  {
+    path:"safetydocuments",
+    component: SafetydocumentComponent,
+  },
+  {
+    path:"safetydocuments/new",
+    component: NewSdComponent,
+  },
+  {
+    path:"safetydocuments/new/basic-info",
+    component: BasicInfoSdComponent,
+  },
+  {
+    path:"safetydocuments/new/history",
+    component: HistorySdComponent,
+  },
+  {
+    path:"safetydocuments/new/equipment",
+    component: EquipmentSdComponent,
+  },
+  {
+    path:"safetydocuments/new/multimedia",
+    component: MultimediaSdComponent,
+  },
+  {
+    path:"safetydocuments/new/checklist",
+    component: ChecklistSdComponent,
   },
   {
     path:"workrequests",

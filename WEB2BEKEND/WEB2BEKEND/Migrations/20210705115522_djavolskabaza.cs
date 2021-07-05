@@ -2,7 +2,7 @@
 
 namespace WEB2BEKEND.Migrations
 {
-    public partial class workreq4 : Migration
+    public partial class djavolskabaza : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

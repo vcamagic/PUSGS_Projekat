@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IncidentsService } from 'src/app/services/incidents.service';
+import { WorkRequest } from 'src/app/entities/work-request/work-request';
+
 import { WorkRequestsService } from 'src/app/services/work-requests.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { WorkRequestsService } from 'src/app/services/work-requests.service';
   styleUrls: ['./basic-info-wr.component.css']
 })
 export class BasicInfoWrComponent implements OnInit {
-
+  workRequest! : WorkRequest;
   basicInfoForm = new FormGroup({
     type: new FormControl(''),
     status: new FormControl('Draft'),
@@ -31,8 +32,7 @@ export class BasicInfoWrComponent implements OnInit {
   });
   public currentDate : any;
   public userCreated = "";
-  public component = "basic-info";
-  public toNavbar = [this.basicInfoForm, this.component];
+  
  
 
   constructor(private router: Router, private _workService: WorkRequestsService) { }
@@ -44,8 +44,9 @@ export class BasicInfoWrComponent implements OnInit {
 
   }
   onSave() {
-    
-    this._workService.emitChange(this.toNavbar);
+    this.workRequest = this.basicInfoForm.value;
+    //this._workService.emitChange(this.toNavbar);
+    this._workService.saveWorkRequest(this.workRequest)
     this.router.navigate(['/workrequests/new/history']);
   }
 

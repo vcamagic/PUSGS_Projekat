@@ -18,7 +18,7 @@ export class ElementsService {
 
 
   loadElements(): Observable<IElement[]>{
-    return this.http.get<IElement[]>("https://localhost:44369/api/Elements"); 
+    return this.http.get<IElement[]>("https://localhost:44396/api/Elements"); 
   }
   loadUsedElements(allElementsInput : IElement[]): IElement[]{
   
@@ -43,7 +43,7 @@ export class ElementsService {
     
     let params = new HttpParams();
     params = params.append("id", id);
-    this.http.put("https://localhost:44369/api/Elements/ChangeElement", null, {params: params})
+    this.http.put("https://localhost:44396/api/Elements/ChangeElement", null, {params: params})
     .subscribe(
       data => usedElements.push(data as Element)
     );
@@ -55,7 +55,7 @@ export class ElementsService {
     console.log("Pomjerammm u sve");
     let params = new HttpParams();
     params = params.append("id", id);
-    this.http.put("https://localhost:44369/api/Elements/RemoveElement", null, {params: params})
+    this.http.put("https://localhost:44396/api/Elements/RemoveElement", null, {params: params})
     .subscribe(
       data => allElements.push(data as Element)
     );
@@ -63,7 +63,7 @@ export class ElementsService {
   }
   
   saveElement(element: Element) {
-    return this.http.post<Element>("https://localhost:44369/api/Elements/SaveElement", element); //httpoptions .pipe catch error..
+    return this.http.post<Element>("https://localhost:44396/api/Elements/SaveElement", element); //httpoptions .pipe catch error..
   }
 
 
@@ -76,7 +76,7 @@ export interface IElement {
     address: string;
     coordinateX: string;
     coordinateY: string;
-    //inSafetyDocument: boolean;
+    inSafetyDocument: boolean;
 
 }
 

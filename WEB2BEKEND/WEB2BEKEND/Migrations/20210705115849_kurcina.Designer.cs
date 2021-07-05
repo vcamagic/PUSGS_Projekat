@@ -10,8 +10,8 @@ using WEB2BEKEND.Data;
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    [Migration("20210703231823_workreq2")]
-    partial class workreq2
+    [Migration("20210705115849_kurcina")]
+    partial class kurcina
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -269,6 +269,9 @@ namespace WEB2BEKEND.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Picture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Username");
