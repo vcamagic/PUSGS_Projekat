@@ -4,19 +4,22 @@ export class User {
     email: string = "";
     password: string= "";
     userType: string = "";
-    nameAndLastname = ""
+    name: string = "";
+    lastname: string = "";
     address: string = "";
     dateOfBirth:string = "";
     activeStatus: string = "";
     imageData: string = "";
     type: string = "";
+    teamName: string = "";
 
-    constructor(username:string,email:string,password:string,userType:string, nameAndLastname:string,address: string,dateOfBirth: string,activeStatus: string,imageData: string,type:string){
+    constructor(username:string,email:string,password:string,userType:string, name:string,lastname:string,address: string,dateOfBirth: string,activeStatus: string,imageData: string,type:string){
         this.username = username;
         this.email=email;
         this.password=password;
         this.userType=userType;
-        this.nameAndLastname = nameAndLastname;
+        this.name = name;
+        this.lastname = lastname;
         this.address=address;
         this.dateOfBirth = dateOfBirth;
         this.activeStatus = activeStatus;
