@@ -1,1 +1,32 @@
-<p>history-wr works!</p>
+<table  id="historyState"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
+    <thead>
+    <tr>
+         
+        
+        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[2]" >Id&nbsp;<i class="fa fa-sort"></i></th>
+        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[3]">Date&nbsp;<i class="fa fa-sort"></i></th>
+        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[4]" >Changed by&nbsp;<i class="fa fa-sort"></i></th>
+        <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="historyStates" [sortBy]="displayedColumns[5]" >Status&nbsp;<i class="fa fa-sort"></i></th>
+       
+    </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let historyState of historyStates | slice: (page - 1) * 7 : page * 7 " width="100%">
+
+          <td >{{historyState.id}}</td>
+          <td >{{historyState.dateChange}}</td>
+          <td>{{historyState.changeBy}}</td>
+          <td >{{historyState.newStatus}}</td>
+          
+        </tr>
+      </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+    
+
+
+    
+
+

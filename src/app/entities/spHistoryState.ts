@@ -1,6 +1,6 @@
 export class HistoryState {
-    id!: number;
-    documentId: number;
+    id!: string;
+    documentId: string;
     changeBy: string;
     dateChange!: string;
     newStatus: string
@@ -8,12 +8,12 @@ export class HistoryState {
 
     constructor( 
     changeBy: string,
-    documentId: number,
+    Id: string,
     newStatus: string
         )       
     {
         this.changeBy = changeBy;
-        this.documentId = documentId;
+        this.documentId = Id;
         this.newStatus = newStatus;
         
     }
