@@ -104,7 +104,7 @@ namespace WEB2BEKEND.Controllers
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name,u.Email),
-            new Claim(ClaimTypes.Role, u.InputState)
+            new Claim(ClaimTypes.Role, u.UserType)
         };
 
         var tokenOptions = new JwtSecurityToken(
