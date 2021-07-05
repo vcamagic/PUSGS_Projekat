@@ -29,7 +29,7 @@ namespace WEB2BEKEND.Models
 
     public string ActiveStatus { get; set; }
 
-    public string UserType { get; set; }
+    public string Type { get; set; }
 
 
 

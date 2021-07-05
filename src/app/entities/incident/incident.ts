@@ -16,7 +16,7 @@ export class Incident {
     etr: string = '';
     callsNum: number= 0;
     voltage: number = 0;
-    affectedConsumers : number = 0;
+    affectedCustomers : number = 0;
     scheduleTime : string = '';
     creator : string = '';
     elements? : Element[];
@@ -38,7 +38,7 @@ export class Incident {
         this.eta = eta;
         this.ata = ata;
         this.etr = etr;
-        this.affectedConsumers = affectedCustomers;
+        this.affectedCustomers = affectedCustomers;
         this.callsNum = callsNum;
         this.voltage = voltage;
     }

@@ -98,13 +98,12 @@ namespace WEB2BEKEND.Controllers
       
       if(_context.Users.Any(x => x.Email == user.Email && x.Password == user.Password))
       {
-        User u = _context.Users.SingleOrDefault(x => x.Email == user.Email);
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
         var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name,u.Email),
-            new Claim(ClaimTypes.Role, u.UserType)
+            new Claim(ClaimTypes.Name,user.Username),
+            new Claim(ClaimTypes.Role, user.Type)
         };
 
         var tokenOptions = new JwtSecurityToken(
