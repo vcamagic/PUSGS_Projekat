@@ -28,13 +28,13 @@ namespace WEB2BEKEND.Controllers
     }
     [HttpPost]
     [Route("AddWorkRequest")]
-    public async Task<ActionResult<WorkRequest>> AddSafetyDocument(WorkRequest wr)
+    public async Task<ActionResult<WorkRequest>> AddWorkRequest(WorkRequest wr)
     {
 
 
       WorkRequest workRequest = new WorkRequest()
       {
-        WrId = Guid.NewGuid().ToString(),
+        Id = Guid.NewGuid().ToString(),
         Type = wr.Type,
         Status = wr.Status,
         Incident = wr.Incident,
@@ -63,7 +63,7 @@ namespace WEB2BEKEND.Controllers
 
       await _context.SaveChangesAsync();
 
-      
+
 
       return CreatedAtAction("GetWorkRequests", workRequest);
 

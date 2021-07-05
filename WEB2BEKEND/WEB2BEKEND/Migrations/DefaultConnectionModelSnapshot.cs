@@ -279,7 +279,7 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.WorkRequest", b =>
                 {
-                    b.Property<string>("WrId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
@@ -333,7 +333,7 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WrId");
+                    b.HasKey("Id");
 
                     b.ToTable("WorkRequests");
                 });

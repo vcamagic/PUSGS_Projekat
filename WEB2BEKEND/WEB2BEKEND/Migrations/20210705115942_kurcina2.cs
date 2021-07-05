@@ -2,7 +2,7 @@
 
 namespace WEB2BEKEND.Migrations
 {
-    public partial class workreq : Migration
+    public partial class kurcina2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -9,10 +9,8 @@ namespace WEB2BEKEND.Models
 {
   public class WorkRequest
   {
-    
-    //public string Id { get; set; }
-    [Key]
-    public string WrId { get; set; }
+    [Key] 
+    public string Id { get; set; }
     public string Type { get;set; }
     public string Status { get; set; }
     public string Incident { get; set; }

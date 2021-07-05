@@ -10,8 +10,8 @@ using WEB2BEKEND.Data;
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    [Migration("20210704194357_vodjino")]
-    partial class vodjino
+    [Migration("20210705115942_kurcina2")]
+    partial class kurcina2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -281,7 +281,7 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.WorkRequest", b =>
                 {
-                    b.Property<string>("WrId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
@@ -335,7 +335,7 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WrId");
+                    b.HasKey("Id");
 
                     b.ToTable("WorkRequests");
                 });
