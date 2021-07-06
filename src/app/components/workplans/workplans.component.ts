@@ -20,28 +20,33 @@ export class WorkplanComponent implements OnInit{
   page = 1;
   pageSize = 4;
   collectionSize = 0;
-  headElements = ['id', 'startDate', 'phoneNo', 'address', 'status'];
+  headElements = ['startDate', 'phoneNum', 'type', 'status', 'endDate'];
 
-  constructor(public workplansService: WorkplansService) {
+  
+  constructor(public workplansservice: WorkplansService,private router: Router) {
 
-  }
-
+  } 
   ngOnInit(): void {
-    this.getWorkplans();
+
+    this.getAll();
   }
 
-
-  getWorkplans() {
-    this.workplansService.getAllWorkplans()
+  getAll() {
+    this.workplansservice.getAllWorkPlans()
       .subscribe(workplans => this.workplans = workplans);
   }
 
   all(){
     console.log(this.workplans);
   }
-
-  onSort(){
-    // resetting other headers
-
+  approve(IdWr:string)
+  {
+    this.workplansservice.Approve(IdWr);
+    this.router.navigate(['/workplans/newworkplan']);
+  }
+  cancel(IdWr:string)
+  {
+    this.workplansservice.Cancel(IdWr);
+    this.router.navigate(['/workplans/newworkplan']);
   }
 }

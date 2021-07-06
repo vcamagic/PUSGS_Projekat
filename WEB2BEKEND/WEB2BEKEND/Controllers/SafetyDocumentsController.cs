@@ -12,29 +12,20 @@ namespace WEB2BEKEND.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class DocumentController : ControllerBase
+  public class SafetyDocumentsController : ControllerBase
   {
     private readonly DefaultConnection _context;
-    public DocumentController(DefaultConnection context)
+
+    public SafetyDocumentsController(DefaultConnection context)
     {
       _context = context;
     }
-    [HttpGet] 
-    public async Task<ActionResult<IEnumerable<HistoryModel>>> GetHistory()
-    {
-      return await _context.History.ToListAsync();
-
-    }
-
     [HttpGet]
-    [Route("GetHistoryWP")]
-    public async Task<ActionResult<IEnumerable<HistoryModelWP>>> GetHistoryWP()
+    public async Task<ActionResult<IEnumerable<SafetyDocument>>> GetSafetyDocuments()
     {
-      return await _context.HistoryWP.ToListAsync();
+      return await _context.SafetyDocuments.ToListAsync();
 
     }
-
-
-
   }
 }
+  
