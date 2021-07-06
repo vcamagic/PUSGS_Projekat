@@ -25,5 +25,11 @@ namespace WEB2BEKEND.Data
         public DbSet<Call> Calls { get; set; }
     public DbSet<HistoryModel> History { get; set; }
 
+    public DbSet<HistoryModelWP> HistoryWP { get; set; }
+
+    public DbSet<SafetyDocument> SafetyDocuments { get; set; }
+
+    public DbSet<WorkPlan> WorkPlans { get; set; }
+
   }
 }

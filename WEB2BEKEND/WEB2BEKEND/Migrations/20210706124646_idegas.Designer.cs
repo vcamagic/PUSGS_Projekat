@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB2BEKEND.Data;
 
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    partial class DefaultConnectionModelSnapshot : ModelSnapshot
+    [Migration("20210706124646_idegas")]
+    partial class idegas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,28 +104,6 @@ namespace WEB2BEKEND.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("History");
-                });
-
-            modelBuilder.Entity("WEB2BEKEND.Models.HistoryModelWP", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ChangeBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateChange")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DocumentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NewStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HistoryWP");
                 });
 
             modelBuilder.Entity("WEB2BEKEND.Models.Incident", b =>
@@ -282,46 +262,6 @@ namespace WEB2BEKEND.Migrations
                     b.HasIndex("IncidentId");
 
                     b.ToTable("Multimedia");
-                });
-
-            modelBuilder.Entity("WEB2BEKEND.Models.SafetyDocument", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Crew")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateTimeCreate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Details")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNum")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkPlanssz")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("createdByUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("endDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SafetyDocuments");
                 });
 
             modelBuilder.Entity("WEB2BEKEND.Models.User", b =>

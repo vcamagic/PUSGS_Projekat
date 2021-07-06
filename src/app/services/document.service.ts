@@ -27,6 +27,14 @@ export class DocumentService {
     return this.http.get<IHistory[]>("https://localhost:44396/api/Document"); 
   }
 
+  loadHistoryWP(): Observable<IHistory[]>{
+    return this.http.get<IHistory[]>("https://localhost:44396/api/Document/GetHistoryWP"); 
+  }
+
+  getHistoryWP() : Observable<HistoryState[]> {
+
+    return this.http.get<HistoryState[]>("https://localhost:44396/api/Document/GetHistoryWP");
+  }
   
 
   getHistory() : Observable<HistoryState[]> {
