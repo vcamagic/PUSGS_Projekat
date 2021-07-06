@@ -1,45 +1,55 @@
 import { Call } from "../call/call";
 import {} from "../element/element"
+import { Multimedia } from "../multimedia";
+import { Resolution } from "../resolution";
 
 export class Incident {
-    id : string;
-    startDate : string;
-    phoneNo : string;
-    address : string;
-    status : string;
-    type : string = '';
-    priority: string = '';
-    confirmed : boolean = false;
-    eta: string = '';
-    ata: string = '';
-    timeOfIncident: string = '';
-    etr: string = '';
-    callsNum: number= 0;
-    voltage: number = 0;
-    affectedCustomers : number = 0;
-    scheduleTime : string = '';
-    creator : string = '';
-    elements? : Element[];
-    calls : Call[]= [];
-    resolution : any[] =[];
-    multimedia : any[] = [];
-    crew : any[] = [];
+  id : number = 0;
+  type: string = '';
+  priority: number = 0;
+  address : string = '';
+  confirmed : boolean = false;
+  status: string = 'Drafted';
+  eta: string = '';
+  ata: string = '';
+  timeOfIncident: string ='';
+  etr: string = '';
+  calls: number = 0;
+  voltage : number = 0;
+  affectedConsumers :number = 0;
+  sheduledTime : string = '';
+  creator? : string = '';
+  elements : Element[] = [];
+  call : Call[] = [];
+  resolutions : Resolution[] = [];
+  multimedia : Multimedia[] = [];
+  //crew : any = [];
+  //version : number = 0;
 
 
-    constructor(id : string, startDate: string,phoneNo : string,address:string, status: string, type: string, priority: string, confirmed: boolean, eta: string, ata: string, etr:string, affectedCustomers:number, callsNum:number, voltage:number){
-        this.id=id;
-        this.startDate = startDate;
-        this.phoneNo = phoneNo;
-        this.address = address
-        this.status = status;
-        this.type = type;
-        this.priority = priority;
-        this.confirmed = confirmed;
-        this.eta = eta;
-        this.ata = ata;
-        this.etr = etr;
-        this.affectedCustomers = affectedCustomers;
-        this.callsNum = callsNum;
-        this.voltage = voltage;
+  constructor(type: string,priority: number,address : string,confirmed : boolean,
+    status: string,
+    eta: string,
+    ata: string,
+    timeOfIncident: string,
+    etr: string,
+    calls: number,
+    voltage : number,
+    affectedConsumers :number,
+    sheduledTime : string ){
+      this.type = type;
+      this.priority =priority;
+      this.address =address;
+      this.confirmed = confirmed;
+      this.status = status;
+      this.eta = eta;
+      this.ata = ata;
+      this.timeOfIncident = timeOfIncident;
+      this.etr = etr;
+      this.calls = calls;
+      this.voltage =  voltage;
+      this.affectedConsumers =  affectedConsumers;
+      this.sheduledTime =  sheduledTime;
     }
+
 }

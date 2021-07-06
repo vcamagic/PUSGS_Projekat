@@ -13,7 +13,6 @@
                 <tr>
                      <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[2]" >Phone No.&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[5]" >Type&nbsp;<i class="fa fa-sort"></i></th>
@@ -28,10 +27,9 @@
                 </tr>
                 </thead>
              <tbody>
-                <tr mdbTableCol *ngFor="let incident of incidents | slice: (page - 1) * 5 : page * 5 ">
+                <tr mdbTableCol *ngFor="let incident of incidents | slice: (page - 1) * pageSize : page * pageSize ">
                     <td >{{incident.id}}</td>
-                    <td >{{incident.startDate}}</td>
-                    <td >{{incident.phoneNo}}</td>
+                    <td >{{incident.timeOfIncident}}</td>
                     <td>{{incident.status}}</td>
                     <td >{{incident.address}}</td>
                     <td>{{incident.type}}</td>
@@ -40,13 +38,17 @@
                     <td>{{incident.eta}}</td>
                     <td >{{incident.ata}}</td>
                     <td>{{incident.etr}}</td>
-                    <td >{{incident.affectedCustomers}}</td>
-                    <td >{{incident.callsNum}}</td>
+                    <td >{{incident.affectedConsumers}}</td>
+                    <td >{{incident.calls}}</td>
                     <td >{{incident.voltage}}</td>
                 </tr>
                 </tbody>
                 <tfoot>
-
+                  <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="incidents.length"
+                  ></ngb-pagination>
                 </tfoot>
             </table>
 

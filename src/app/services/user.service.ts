@@ -14,6 +14,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class UserService {
   invalidLogin : boolean = true;
+  logedInUser : string = "";
   constructor(private http : HttpClient,public router: Router,private jwtHelper: JwtHelperService) {
 
   }
@@ -36,6 +37,8 @@ export class UserService {
       const token = (<any>res).token;
       localStorage.setItem("jwt",token);
       this.invalidLogin = false;
+      this.logedInUser= credentials.email;
+      console.log(this.logedInUser);
       this.router.navigate(["/incidents"])
     },
     err => {

@@ -1,46 +1,80 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-class">Add&nbsp;<i class="fa fa-plus"></i></button>
-            <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-md-12">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Coordinates</th>
-                        <th scope="col">Address</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1551312</th>
-                        <td>FFS_8912112</td>
-                        <td>Breaker</td>
-                        <td>40°44'30.22"N40°44'30.22"E</td>
-                        <td>Janka Cmelika 29b</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">121313234</th>
-                        <td>BRR_8912112</td>
-                        <td>Connector</td>
-                        <td>42°41'28.22"N42°41'28.22"E</td>
-                        <td>Ive Andrica 88</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">093891712</th>
-                        <td>RRR_8912112</td>
-                        <td>Breaker</td>
-                        <td>39°33'21.12"N39°33'21.12"E</td>
-                        <td>AV 12</td>
-                    </tr>
-                    </tbody>
-            </table>
-        </div>
-    </div>
+  <div class="row">
+      <div class="col-md-12">
+          <button class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
+          <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button>
+      </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-md-12">
+          <table id="devicesTable" class="table table-hover"  mdbTableScroll [scrollX]='true' >
+              <thead>
+                  <tr>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[0]">Id</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[1]">Type</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[2]">Name</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[3]">Address</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[4]">X</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[5]">Y</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr mdbTableCol *ngFor="let elem of IncEles | slice: (page - 1) * pageSize : page * pageSize ">
+                      <td >{{elem.id}}</td>
+                      <td >{{elem.type}}</td>
+                      <td>{{elem.name}}</td>
+                      <td >{{elem.address}}</td>
+                      <td >{{elem.coordinateX}}</td>
+                      <td >{{elem.coordinateY}}</td>
+                  </tr>
+                  </tbody>
+          </table>
+      </div>
+  </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Select Elements</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form #form = "ngForm">
+          <div class="form-group">
+              <div  class="scrollable">
+                  <table class="table text-center table-striped table-light">
+                  <thead>
+                      <tr>
+                          <th>Id</th>
+                          <th>Type</th>
+                          <th>Name</th>
+                          <th><Address></Address></th>
+                          <th>&nbsp;</th>
+                      </tr>
+                  </thead>
+                  <tr *ngFor="let element of elementsService.list">
+                      <td>{{element.id}}</td>
+                      <td>{{element.type}}</td>
+                      <td>{{element.name}}</td>
+                      <td>{{element.address}}</td>
+                      <td *ngIf="incidentService.incident.elements.length===0">
+                      <button class="btn btn-danger btn-sm" style="background-color:#d9534f;" (click)="onChange(element)">ADD</button>
+                      </td>
+                      <td *ngIf="incidentService.incident.elements.length !== 0">
+                          <button *ngIf="!find(element)" class="btn btn-danger btn-sm" style="background-color:#d9534f;" (click)="onChange(element)">ADD</button>
+                          <i *ngIf="find(element)" class="fa fa-check fa-lg"></i>
+                      </td>
+                  </tr>
+                  </table>
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger btn-lg" (click)="add()">Close</button>
+  </div>
+  </ng-template>
+
+

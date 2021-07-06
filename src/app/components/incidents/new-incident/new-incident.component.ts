@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Call } from 'src/app/entities/call/call';
 import { Incident } from 'src/app/entities/incident/incident';
 import { IncidentsService } from 'src/app/services/incidents.service';
 
@@ -11,6 +12,8 @@ export class NewIncidentComponent implements OnInit {
 
   incNum : number = 0;
   pressedButton: string;
+  callModel : Call[] = [];
+
 
   constructor(private incidentsService: IncidentsService) {
     this.pressedButton ='BasicInfo';

@@ -17,17 +17,21 @@ export class IncidentsComponent implements OnInit{
 
 
   incidents : Incident[] = [];
-  page = 1;
-  pageSize = 4;
-  collectionSize = 0;
+  page = 10;
+  pageSize = 3;
+
   headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedCustomers', 'callsNum', 'voltage'];
 
-  constructor(public incidentsService: IncidentsService) {
+  constructor(public incidentsService: IncidentsService,private cdref: ChangeDetectorRef) {
 
   }
 
   ngOnInit(): void {
     this.getIncidents();
+  }
+
+  ngAfterContentChecked(){
+      this.cdref.detectChanges();
   }
 
 
