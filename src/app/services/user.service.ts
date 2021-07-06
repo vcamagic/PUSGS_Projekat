@@ -19,11 +19,17 @@ export class UserService {
   }
 
   readonly usersUrl = 'https://localhost:44396/api/Users';
-
+  
   getAllUsers(): Observable<User[]>  {
     return this.http.get<User[]>(this.usersUrl);
   }
+  getAllRegisteredUsers(): Observable<RegisteredUser[]>  {
+    return this.http.get<RegisteredUser[]>(this.usersUrl);
+  }
 
+  loadUsers(): Observable<IUser[]>{
+    return this.http.get<IUser[]>("https://localhost:44396/api/Users")
+  }
   login(form : NgForm){
     const credentials = {
       'email' : form.value.email,
@@ -50,9 +56,6 @@ export class UserService {
     this.router.navigate(["/login"]);
   }
 
-  getAllRegisteredUsers(): Observable<RegisteredUser[]>  {
-    return this.http.get<RegisteredUser[]>(this.usersUrl);
-  }
   activateUser(username:string) {
     const params = new HttpParams().append('username',username);
 
@@ -83,4 +86,17 @@ export class UserService {
     }
   }
 
+}
+export interface IUser{
+    username : string;
+    firstName : string;
+    lastName: string;
+    email : string;
+    password : string;
+    birthDate : string;
+    address : string;
+    inputState:any;
+    picture:any;
+    activeStatus: string;
+    type: string;
 }
