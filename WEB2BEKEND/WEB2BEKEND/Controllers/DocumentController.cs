@@ -27,38 +27,6 @@ namespace WEB2BEKEND.Controllers
     }
   
 
-    [HttpPost]
-    [Route("SaveHistoryState")]
-    public async Task<ActionResult<HistoryModel>> SaveHistoryState(HistoryModel hisState)
-    {
-      HistoryModel ins = new HistoryModel
-      {
-        DocumentId = hisState.DocumentId,
-        ChangeBy = hisState.ChangeBy,
-        DateChange = DateTime.Now.ToString(),
-        NewStatus = hisState.NewStatus
-      };
-
-
-      WorkRequest doc = new WorkRequest();
-      foreach (WorkRequest swp in _context.WorkRequests)
-      {
-        if (swp.Id == hisState.DocumentId)
-        {
-          doc = swp;
-          doc.Status = hisState.NewStatus;
-          break;
-        }
-      }
-
-
-      _context.History.Add(ins);
-
-
-      await _context.SaveChangesAsync();
-
-      return CreatedAtAction("SaveHistoryState", ins);
-
-    }
+    
   }
 }

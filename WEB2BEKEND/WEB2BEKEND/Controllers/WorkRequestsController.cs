@@ -35,7 +35,7 @@ namespace WEB2BEKEND.Controllers
         foreach(WorkRequest wr in _context.WorkRequests.ToList())
         {
 
-        if (wr.PhoneNum == phoneNum)
+      if (wr.PhoneNum == phoneNum)
           {
 
           worker = wr;
@@ -53,7 +53,7 @@ namespace WEB2BEKEND.Controllers
           hm.Id = worker.Id;
           hm.ChangeBy = worker.CreatedByUser;
           hm.DateChange = DateTime.Now.ToString();
-
+          hm.NewStatus = worker.Status;
           _context.History.Add(hm);
           await _context.SaveChangesAsync();
         }
@@ -85,9 +85,11 @@ namespace WEB2BEKEND.Controllers
           HistoryModel hm = new HistoryModel();
           hm.Id = worker.Id;
           hm.ChangeBy = worker.CreatedByUser;
-          hm.Id = DateTime.Now.ToString();
-
+          hm.DateChange = DateTime.Now.ToString();
+          hm.NewStatus = worker.Status;
           _context.History.Add(hm);
+
+         
           await _context.SaveChangesAsync();
         }
 

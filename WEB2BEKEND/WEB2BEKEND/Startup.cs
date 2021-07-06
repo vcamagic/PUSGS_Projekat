@@ -93,12 +93,12 @@ namespace WEB2BEKEND
       app.UseHttpsRedirection();
       app.UseDefaultFiles();
       app.UseCors("CORS");
-     /* app.UseStaticFiles();
-      app.UseStaticFiles(new StaticFileOptions()
-      {
-        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
-        RequestPath = new PathString("/Images")
-      });*/
+       app.UseStaticFiles();
+       app.UseStaticFiles(new StaticFileOptions()
+       {
+         FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+         RequestPath = new PathString("/Resources")
+       });
       app.UseRouting();
 
       app.UseAuthentication();
