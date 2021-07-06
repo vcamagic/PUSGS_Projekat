@@ -1,1 +1,26 @@
-<p>history-wr works!</p>
+<div class="container">
+  <p>HISTORY:</p>
+  <table class="table table-blue">
+    <thead class="thead-blue">
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Status</th>
+          <th scope="col">Changed by</th>
+          
+          <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of allElements ">
+      <td>{{element.id}}</td>
+      <td>{{element.newStatus}}</td>
+      <td>{{element.changeBy}}</td>
+            
+  
+    </tr>
+  </tbody>
+  </table>
+
+  
+
+</div>

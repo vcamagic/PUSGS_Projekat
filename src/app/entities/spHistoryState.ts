@@ -1,20 +1,20 @@
 export class HistoryState {
-    id!: number;
-    documentId: number;
+    id: string;
+    documentId: string;
     changeBy: string;
-    dateChange!: string;
+    dateChange: string;
     newStatus: string
 
 
-    constructor( 
-    changeBy: string,
-    documentId: number,
-    newStatus: string
-        )       
-    {
-        this.changeBy = changeBy;
+    constructor(   id : string, documentId : string, changeBy : string, dateChange : string, newStatus : string){
+        this.id = id;
         this.documentId = documentId;
+        this.changeBy = changeBy;
+        this.dateChange = dateChange;
         this.newStatus = newStatus;
-        
+
     }
+
+
+
 }

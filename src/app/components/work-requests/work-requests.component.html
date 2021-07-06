@@ -1,64 +1,3 @@
- <!-- <div class="container">
-    <div class="table--modifiers">
-      <button class="table--modifiers__btn">
-        <mat-icon  id="icon-absolute" class="icon" (click)="openDialog()">New </mat-icon> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      </button>
-      
-     
-    
-    </div>
-    
-    
-    
-    <div class="mat-elevation-z8 data-table">
-      <table mat-table class="full-width-table" matSort aria-label="Elements">
-        
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-          <td mat-cell *matCellDef="let row">{{row.id}}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-          <td mat-cell *matCellDef="let row">{{row.name}}</td>
-        </ng-container>
-    
-         <ng-container matColumnDef="startdate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
-          <td mat-cell *matCellDef="let row">{{row.startdate}}</td>
-        </ng-container>
-    
-         
-         <ng-container matColumnDef="phonenumber">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone No.</th>
-          <td mat-cell *matCellDef="let row">{{row.phonenumber}}</td>
-        </ng-container>
-    
-         
-         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-          <td mat-cell *matCellDef="let row">{{row.status}}</td>
-        </ng-container>
-    
-         
-         <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Adress</th>
-          <td mat-cell *matCellDef="let row">{{row.address}}</td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    
-      <mat-paginator #paginator
-          [length]="dataSource?.data?.length"
-          [pageIndex]="0"
-          [pageSize]="10"
-          [pageSizeOptions]="[5, 10, 20]">
-      </mat-paginator>
-    </div>
-    </div>
-  -->
 
     <div class="container-fluid">
       <div class="row content">
@@ -83,15 +22,16 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr mdbTableCol *ngFor="let workrequest of workRequests | slice: (page - 1) * 5 : page * 5 ">
+                    <tr mdbTableCol *ngFor="let workrequest of workRequests | slice: (page - 1) * 7 : page * 7 " width="100%">
 
                         <td >{{workrequest.startDate}}</td>
                         <td >{{workrequest.phoneNum}}</td>
                         <td>{{workrequest.status}}</td>
                         <td >{{workrequest.street}}</td>
                         <td >{{workrequest.endDate}}</td>
-                        
-                    </tr>
+                        <button class="btn btn2-class"  (click)="approve(workrequest.phoneNum!)">Approve&nbsp;<i class="fa fa-plus"></i></button>
+                        <button class="btn btn2-class"  (click)="cancel(workrequest.phoneNum!)">Cancel&nbsp;<i class="fa fa-plus"></i></button>
+                      </tr>
                     </tbody>
                   <tfoot>
   

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,73 @@ namespace WEB2BEKEND.Controllers
     {
       return await _context.WorkRequests.ToListAsync();
 
+    }
+    [HttpPut]
+    [Route("Approve")]
+    public async Task<ActionResult<WorkRequest>> Approve(string phoneNum)
+    {
+      WorkRequest worker = new WorkRequest();
+        foreach(WorkRequest wr in _context.WorkRequests.ToList())
+        {
+
+        if (wr.PhoneNum == phoneNum)
+          {
+
+          worker = wr;
+
+          _context.WorkRequests.Remove(wr);
+          await _context.SaveChangesAsync();
+
+          worker.Status = "Approve";
+
+          _context.WorkRequests.Add(worker);
+
+          await _context.SaveChangesAsync();
+
+          HistoryModel hm = new HistoryModel();
+          hm.Id = worker.Id;
+          hm.ChangeBy = worker.CreatedByUser;
+          hm.DateChange = DateTime.Now.ToString();
+
+          _context.History.Add(hm);
+          await _context.SaveChangesAsync();
+        }
+            
+        }
+      return CreatedAtAction("Approve", worker);
+    }
+    [HttpPut]
+    [Route("Cancel")]
+    public async Task<ActionResult<WorkRequest>> Cancel(string phoneNum)
+    {
+      WorkRequest worker = new WorkRequest();
+      foreach (WorkRequest wr in _context.WorkRequests.ToList())
+      {
+
+        if (wr.PhoneNum == phoneNum)
+        {
+
+          worker = wr;
+
+          _context.WorkRequests.Remove(wr);
+          await _context.SaveChangesAsync();
+
+          worker.Status = "Cancel";
+
+          _context.WorkRequests.Add(worker);
+          await _context.SaveChangesAsync();
+
+          HistoryModel hm = new HistoryModel();
+          hm.Id = worker.Id;
+          hm.ChangeBy = worker.CreatedByUser;
+          hm.Id = DateTime.Now.ToString();
+
+          _context.History.Add(hm);
+          await _context.SaveChangesAsync();
+        }
+
+      }
+      return CreatedAtAction("Cancel", worker);
     }
     [HttpPost]
     [Route("AddWorkRequest")]

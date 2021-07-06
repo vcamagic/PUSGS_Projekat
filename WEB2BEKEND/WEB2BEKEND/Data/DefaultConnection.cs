@@ -23,6 +23,7 @@ namespace WEB2BEKEND.Data
         public DbSet<Element> Elements { get; set; }
         public DbSet<WorkRequest> WorkRequests { get; set; }
         public DbSet<Call> Calls { get; set; }
+    public DbSet<HistoryModel> History { get; set; }
 
-    }
+  }
 }

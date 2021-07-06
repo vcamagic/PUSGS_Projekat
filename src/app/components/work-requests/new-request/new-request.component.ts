@@ -20,7 +20,7 @@ export class NewRequestComponent implements OnInit {
       if(pressedButton == "BasicInfo"){
         this.pressedButton = "BasicInfo";
       }
-      else if( pressedButton == "History"){
+      else if(pressedButton == "History"){
         this.pressedButton = "History";
       }
       else if( pressedButton == "Equipment"){
