@@ -157,5 +157,46 @@ namespace WEB2BEKEND.Controllers
         return StatusCode(500, $"Internal server error: {ex}");
       }
     }
+    [HttpPut]
+    [Route("Verification")]
+    public async Task<ActionResult<User>> Verification(string username)
+    {
+      User u1 = new User();
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          u1 = user;
+          break;
+
+        }
+      }
+      u1.ActiveStatus = "Accepted";
+      await _context.SaveChangesAsync();
+      //sendEmail(u1.Email, "Accepted");
+      return CreatedAtAction("GetUsers", u1);
+
+    }
+    [HttpPut]
+    [Route("Declineverification")]
+    public async Task<ActionResult<User>> Declineverification(string username)
+    {
+      User u1 = new User();
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          u1 = user;
+          break;
+
+        }
+      }
+      u1.ActiveStatus = "Refused";
+      await _context.SaveChangesAsync();
+      //sendEmail(u1.Email, "Refused");
+      return CreatedAtAction("GetUsers", u1);
+
+    }
+
   }
 }
