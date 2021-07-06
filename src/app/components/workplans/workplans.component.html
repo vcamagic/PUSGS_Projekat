@@ -25,7 +25,8 @@
                     <td >{{workplan.type}}</td>
                     <td>{{workplan.status}}</td>
                     <td >{{workplan.endDate}}</td>
-
+                    <button class="btn btn2-class"  (click)="approve(workplan.phoneNum!)">Approve&nbsp;<i class="fa fa-plus"></i></button>
+                    <button class="btn btn2-class"  (click)="cancel(workplan.phoneNum!)">Cancel&nbsp;<i class="fa fa-plus"></i></button>
                 </tr>
                 </tbody>
                 <tfoot>

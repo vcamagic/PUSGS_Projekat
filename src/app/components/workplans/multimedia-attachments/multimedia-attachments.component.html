@@ -1,1 +1,35 @@
-<p>multimedia-attachments works!</p>
+
+    <mat-card class="form-container">
+        <div>
+          <mat-card-title class="title">Multimedia for work requests</mat-card-title>
+        </div>
+      
+         
+            <div class="choose" >
+                <input type="file" #file (change)="uploadFile(file.files)" name="image" class="form-control" accept="image/*">
+            </div>
+      
+          <div class="picture">
+            <div class="col align-self-end">
+              <img  width="300" height="400" [src]="imagePath(image)">
+              <div class="col-md-12">
+                <span class="upload" *ngIf="progress > 0">
+                  {{progress}}%
+                </span>
+                <span class="upload" *ngIf="message">
+                  {{message}}
+                </span>
+              </div>
+            </div>
+          </div>
+          
+      
+        
+        <div class="buttonC">
+            <button (click)="back()" class="btn btn-primary button">Back</button>
+            <button (click)="save()" style="margin-left: 2%;" class="btn btn-primary button">Next</button>
+        </div>
+    
+      
+      
+    

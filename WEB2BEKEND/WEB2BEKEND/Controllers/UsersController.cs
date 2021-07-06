@@ -7,7 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,5 +126,78 @@ namespace WEB2BEKEND.Controllers
       
       return Unauthorized();
     }
+
+    [HttpPost, DisableRequestSizeLimit]
+    [Route("Upload")]
+    public IActionResult Upload()
+    {
+      try
+      {
+        var file = Request.Form.Files[0];
+        var folderName = Path.Combine("Resources", "Images");
+        var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+        if (file.Length > 0)
+        {
+          var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+          var fullPath = Path.Combine(pathToSave, fileName);
+
+          var dbPath = Path.Combine(folderName, fileName);
+          using (var stream = new FileStream(fullPath, FileMode.Create))
+          {
+            file.CopyTo(stream);
+          }
+          return Ok(new { dbPath });
+        }
+        else
+        {
+          return BadRequest();
+        }
+      }
+      catch (Exception ex)
+      {
+        return StatusCode(500, $"Internal server error: {ex}");
+      }
+    }
+    [HttpPut]
+    [Route("Verification")]
+    public async Task<ActionResult<User>> Verification(string username)
+    {
+      User u1 = new User();
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          u1 = user;
+          break;
+
+        }
+      }
+      u1.ActiveStatus = "Accepted";
+      await _context.SaveChangesAsync();
+      //sendEmail(u1.Email, "Accepted");
+      return CreatedAtAction("GetUsers", u1);
+
+    }
+    [HttpPut]
+    [Route("Declineverification")]
+    public async Task<ActionResult<User>> Declineverification(string username)
+    {
+      User u1 = new User();
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          u1 = user;
+          break;
+
+        }
+      }
+      u1.ActiveStatus = "Refused";
+      await _context.SaveChangesAsync();
+      //sendEmail(u1.Email, "Refused");
+      return CreatedAtAction("GetUsers", u1);
+
+    }
+
   }
 }

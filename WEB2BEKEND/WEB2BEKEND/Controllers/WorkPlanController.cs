@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WEB2BEKEND.Data;
+using WEB2BEKEND.Models;
 
 namespace WEB2BEKEND.Controllers
 {
@@ -11,5 +14,129 @@ namespace WEB2BEKEND.Controllers
   [ApiController]
   public class WorkPlanController : ControllerBase
   {
+    private readonly DefaultConnection _context;
+
+    public WorkPlanController(DefaultConnection context)
+    {
+      _context = context;
+    }
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<WorkPlan>>> GetWorkPlans()
+    {
+      return await _context.WorkPlans.ToListAsync();
+
+    }
+
+    [HttpPut]
+    [Route("Approve")]
+    public async Task<ActionResult<WorkPlan>> Approve(string phoneNum)
+    {
+      WorkPlan worker = new WorkPlan();
+      foreach (WorkPlan wr in _context.WorkPlans.ToList())
+      {
+
+        if (wr.PhoneNum == phoneNum)
+        {
+
+          worker = wr;
+
+          _context.WorkPlans.Remove(wr);
+          await _context.SaveChangesAsync();
+
+          worker.Status = "Approve";
+
+          _context.WorkPlans.Add(worker);
+
+          await _context.SaveChangesAsync();
+
+          HistoryModelWP hm = new HistoryModelWP();
+          hm.Id = worker.Id;
+          hm.ChangeBy = worker.createdByUser;
+          hm.DateChange = DateTime.Now.ToString();
+          hm.NewStatus = worker.Status;
+          _context.HistoryWP.Add(hm);
+          await _context.SaveChangesAsync();
+        }
+
+      }
+      return CreatedAtAction("Approve", worker);
+    }
+    [HttpPut]
+    [Route("Cancel")]
+    public async Task<ActionResult<WorkPlan>> Cancel(string phoneNum)
+    {
+      WorkPlan worker = new WorkPlan();
+      foreach (WorkPlan wr in _context.WorkPlans.ToList())
+      {
+
+        if (wr.PhoneNum == phoneNum)
+        {
+
+          worker = wr;
+
+          _context.WorkPlans.Remove(wr);
+          await _context.SaveChangesAsync();
+
+          worker.Status = "Cancel";
+
+          _context.WorkPlans.Add(worker);
+          await _context.SaveChangesAsync();
+
+          HistoryModelWP hm = new HistoryModelWP();
+          hm.Id = worker.Id;
+          hm.ChangeBy = worker.createdByUser;
+          hm.DateChange = DateTime.Now.ToString();
+          hm.NewStatus = worker.Status;
+          _context.HistoryWP.Add(hm);
+
+
+          await _context.SaveChangesAsync();
+        }
+
+      }
+      return CreatedAtAction("Cancel", worker);
+    }
+
+
+    [HttpPost]
+    [Route("AddWorkPlan")]
+    public async Task<ActionResult<WorkPlan>> AddWorkPlan(WorkPlan wr)
+    {
+
+
+      WorkPlan workplan = new WorkPlan()
+      {
+        Id = Guid.NewGuid().ToString(),
+        Type = wr.Type,
+        WorkPlanss = wr.WorkPlanss,
+        Incident = wr.Incident,
+        Street = wr.Street, //ne pise u spec sta je
+        StartDate = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"),
+        EndDate = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"),
+        Status = wr.Status,
+        createdByUser = wr.createdByUser,
+        Crew = wr.Crew,
+        Purpouse = wr.Purpouse,
+        Notes = wr.Notes,
+        PhoneNum = wr.PhoneNum,
+        Company = wr.Company,
+        DateCreated = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt")
+
+
+      };
+
+
+
+
+      _context.WorkPlans.Add(workplan);
+
+      await _context.SaveChangesAsync();
+
+
+
+      return CreatedAtAction("GetWorkPlans", workplan);
+
+    }
   }
 }
+

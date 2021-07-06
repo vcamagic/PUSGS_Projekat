@@ -61,8 +61,6 @@ export class WorkRequestsService {
      
       const params = new HttpParams().append('phoneNum',phoneNum);
 
-      
-    
       this.http.put("https://localhost:44396/api/WorkRequests/Approve", null,{params: params}
       )
       .subscribe(
@@ -70,10 +68,11 @@ export class WorkRequestsService {
       );
      
     }
+
     Cancel(phoneNum : string)
     {
       const params = new HttpParams().append('phoneNum',phoneNum);
-      this.http.post("https://localhost:44396/api/WorkRequests/Cancel", null,{params: params})
+      this.http.put("https://localhost:44396/api/WorkRequests/Cancel", null,{params: params})
       .subscribe(
         data => console.log('oops', data)
       );

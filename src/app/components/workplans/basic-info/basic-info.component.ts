@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Workplan } from 'src/app/entities/workplan/workplan';
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { WorkRequestsService } from 'src/app/services/work-requests.service';
 import { WorkplansService } from 'src/app/services/workplans.service';
@@ -12,7 +13,7 @@ import { WorkplansService } from 'src/app/services/workplans.service';
   styleUrls: ['./basic-info.component.css']
 })
 export class BasicInfoComponent implements OnInit {
-
+  workPlans! : Workplan;
   basicInfoForm = new FormGroup({
     type: new FormControl(''),
     status: new FormControl('Draft'),
@@ -50,7 +51,9 @@ export class BasicInfoComponent implements OnInit {
   }
   onSave() {
     
-    this._workService.emitChange(this.toNavbar);
-    this.router.navigate(['/workrequests/new/history']);
+    this.workPlans = this.basicInfoForm.value;
+    //this._workService.emitChange(this.toNavbar);
+    this._workService.saveWorkPlan(this.workPlans)
+    this.router.navigate(['/workplans/newworkplan']);
   }
 }

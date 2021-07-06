@@ -72,7 +72,7 @@ import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/c
 import { NewSdComponent } from './components/safetydocument/new-sd/new-sd.component';
 import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd/multimedia-sd.component';
 import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/equipment-sd.component';
-
+import { TableFilterPipe } from './components/pipes/table-filter.pipe';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -115,6 +115,7 @@ export function tokenGetter(){
     NewSdComponent,
     MultimediaSdComponent,
     EquipmentSdComponent,
+    TableFilterPipe
   ],
   imports: [
     BrowserModule,

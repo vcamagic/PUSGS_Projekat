@@ -1,0 +1,32 @@
+.form-container{
+    height: 70%;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 5% 20% 20% 20% 20% 10%;
+    grid-template-columns: 50% 50%;
+}
+
+.buttonC{
+    display: flex;
+    justify-content: flex-start;
+    height: fit-content;
+    margin-left: 2%;
+    grid-column-start: 0;
+    grid-column-end: 0;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    margin: 10%;
+}
+
+.mat-form-field{
+    margin: 1%;
+}
+
+.choose{
+    grid-column-start: 0;
+    grid-column-end: 0;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    width: 50%;
+    margin: 10%;
+}
