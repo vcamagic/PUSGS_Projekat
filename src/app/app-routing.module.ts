@@ -23,6 +23,7 @@ import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/e
 import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd/multimedia-sd.component';
 import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/checklist-sd.component';
 import { DevicesComponent } from './components/incidents/devices/devices.component';
+import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   {
     path:"",
@@ -65,6 +66,11 @@ const routes: Routes = [
     component: VerificationUserComponent
   },
 
+
+  {
+    path:"profile",
+    component: ProfileComponent
+  },
   {
     path:"safetydocuments",
     component: SafetydocumentComponent,

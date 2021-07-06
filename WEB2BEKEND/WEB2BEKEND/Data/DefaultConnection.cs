@@ -31,5 +31,7 @@ namespace WEB2BEKEND.Data
 
     public DbSet<WorkPlan> WorkPlans { get; set; }
 
+    public DbSet<UserRequest> UserRequests { get; set; }
+
   }
 }

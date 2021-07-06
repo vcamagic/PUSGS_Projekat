@@ -31,7 +31,7 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link" href="#contact">Profile</a></li>
+                <li><a class="nav-link" routerLink="profile" href="#contact">Profile</a></li>
                 <li *ngIf="!userService.invalidLogin"><a  class="nav-link" (click)="logout()">LogOut</a></li>
               </ul>
         </div>

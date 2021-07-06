@@ -36,6 +36,90 @@ namespace WEB2BEKEND.Controllers
 
       }
 
+
+    [HttpGet("username")]
+    [Route("CurrentUser")]
+    public async Task<ActionResult<IEnumerable<User>>> GetCurrentUser(string username)
+    {
+
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          return Ok(user);
+        }
+      }
+
+      return BadRequest("Wrong username");
+    }
+
+    [HttpPut]
+    [Route("ChangeProfile")]
+    public async Task<ActionResult<User>> ChangeProfile([FromBody] User userF)
+    {
+      if (ModelState.IsValid)
+      {
+        string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+
+        User u1 = new User();
+        foreach (User user in _context.Users)
+        {
+          if (user.Username == username)
+          {
+            u1 = user;
+            break;
+
+          }
+        }
+
+        
+
+        
+          u1.Username = userF.Username;
+          u1.FirstName = userF.FirstName;
+          u1.LastName = userF.LastName;
+          u1.Email = userF.Email;
+          u1.Address = userF.Address;
+          if (userF.Picture != null)
+          {
+            u1.Picture = userF.Picture;
+          }
+
+          await _context.SaveChangesAsync();
+          //return CreatedAtAction("ChangeProfile", u1);
+
+        //u1.Username = userF.Username;
+        //u1.FirstName = userF.FirstName;
+        //u1.LastName = userF.LastName;
+        //u1.Email = userF.Email;
+        //u1.Address = userF.Address;
+        UserRequest newRequest = new UserRequest
+          {
+            Username = userF.Username,
+            FirstName = userF.FirstName,
+            LastName = userF.LastName,
+            Email = userF.Email,
+            Address = userF.Address,
+            BirthDate = userF.BirthDate,
+           
+
+
+          };
+
+          _context.UserRequests.Add(newRequest);
+
+          await _context.SaveChangesAsync();
+          return CreatedAtAction("ChangeProfile", u1);
+        
+      }
+      else
+      {
+        return BadRequest();
+      }
+
+    }
+
     [HttpPost]
     [Route("Register")]
     public async Task<ActionResult<User>> Register([FromBody] User userForm)

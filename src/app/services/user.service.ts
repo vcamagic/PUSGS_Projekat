@@ -5,9 +5,15 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpClient,HttpParams } from '@angular/common/http';
+import { HttpClient,HttpParams,HttpHeaders } from '@angular/common/http';
 import { User ,RegisteredUser} from '../entities/user/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  params: new HttpParams()
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +29,23 @@ export class UserService {
   
   getAllUsers(): Observable<User[]>  {
     return this.http.get<User[]>(this.usersUrl);
+  }
+
+  getCurrentUser(): Observable<any> {
+    const param = new HttpParams().append('username', localStorage.getItem("username")!);
+    httpOptions.params = param;
+    return this.http.get("https://localhost:44396/api/Users/CurrentUser", httpOptions);
+  }
+
+  changeProfile(user:User){
+    console.log(JSON.stringify(user));
+    this.http.put<User>("https://localhost:44396/api/Users/ChangeProfile", JSON.stringify(user), {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })})
+    .subscribe(
+      error=>console.log("oops", error)
+    );
   }
   getAllRegisteredUsers(): Observable<RegisteredUser[]>  {
     return this.http.get<RegisteredUser[]>(this.usersUrl);
