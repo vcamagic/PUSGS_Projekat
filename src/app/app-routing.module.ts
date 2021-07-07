@@ -25,6 +25,7 @@ import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/c
 import { DevicesComponent } from './components/incidents/devices/devices.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CrewComponent } from './components/crew/crew.component';
+import {MapComponent} from './components/map/map.component';
 const routes: Routes = [
   {
     path:"",
@@ -132,8 +133,11 @@ const routes: Routes = [
   {
     path: 'crew',
     component: CrewComponent
+  },
+  {
+    path: 'map',
+    component: MapComponent
   }
-
 
 ]
 

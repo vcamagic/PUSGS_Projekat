@@ -76,6 +76,7 @@ import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/e
 import { TableFilterPipe } from './components/pipes/table-filter.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import {CrewComponent} from './components/crew/crew.component';
+import { MapComponent } from './components/map/map.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -120,7 +121,8 @@ export function tokenGetter(){
     EquipmentSdComponent,
     TableFilterPipe,
     ProfileComponent,
-    CrewComponent
+    CrewComponent,
+    MapComponent
    
   ],
   imports: [
