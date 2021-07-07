@@ -20,7 +20,7 @@ const httpOptions = {
 })
 export class UserService {
   invalidLogin : boolean = true;
-  currentUser : User = new User("","","","","","","","","","","",);
+  currentUser : User = new User("","","","","","","","","","",);
   constructor(private http : HttpClient,public router: Router,private jwtHelper: JwtHelperService) {
 
   }
@@ -76,7 +76,7 @@ export class UserService {
       this.invalidLogin = false;
       this.http.get(`${this.usersUrl}/${credentials.email}`).subscribe(res=>{
         this.currentUser=res as User;
-        console.log(this.currentUser.email);
+        console.log(this.currentUser.email + "kdoaskd");
       })
       this.router.navigate(["/incidents"])
     },
