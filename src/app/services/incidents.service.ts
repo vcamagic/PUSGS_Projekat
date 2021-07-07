@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import {Element} from '../entities/element/element'
 import { Resolution } from '../entities/resolution';
 import { Call } from '../entities/call/call';
+import { Crew } from '../entities/crew';
 
 
 
@@ -49,6 +50,10 @@ export class IncidentsService {
 
   putCallInIncident(call: Call){
     return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Calls`,call);
+  }
+
+  putCrewInIncident(crew: Crew){
+    return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Crew`,crew);
   }
 
 

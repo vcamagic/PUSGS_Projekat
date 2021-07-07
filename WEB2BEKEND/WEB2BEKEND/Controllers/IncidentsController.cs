@@ -103,5 +103,23 @@ namespace WEB2BEKEND.Controllers
 
     }
 
+    [HttpPost("{id}/Crew")]
+    public async Task<ActionResult<int>> PostCrewInIncident(int id, Crew crew)
+    {
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      Crew crewDb = await _context.CrewRequests.FindAsync(crew.Name);
+      incident.Crew = crewDb;
+      await _context.SaveChangesAsync();
+      return NoContent();
+
+    }
+
+
+
   }
 }

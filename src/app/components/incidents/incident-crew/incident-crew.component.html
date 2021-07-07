@@ -1,3 +1,39 @@
-<p>
-  incident-crew works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+         <!-- <button class="btn btn-class" (click)="open(content)">New&nbsp;<i class="fa fa-plus"></i></button> -->
+        <!--  <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button> -->
+      </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-md-12">
+          <table id="callsTable" class="table table-hover"  maxWidth="500" mdbTableScroll [scrollX]='true' >
+              <thead>
+                  <tr>
+                      <th scope="col" aria-controls="callsTable" [mdbTableSort]="crews" [sortBy]="headElements[0]">Id</th>
+                      <th scope="col" aria-controls="callsTable" [mdbTableSort]="crews" [sortBy]="headElements[1]">Name</th>
+                      <th scope="col" aria-controls="callsTable" [mdbTableSort]="crews" [sortBy]="headElements[2]">Members</th>
+                      <th>&nbsp;</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr mdbTableCol *ngFor="let crew of crews | slice: (page - 1) * pageSize : page * pageSize ">
+                      <td >{{crew.id}}</td>
+                      <td >{{crew.name}}</td>
+                      <td>{{crew.crewMembers}}</td>
+                      <td *ngIf='showBtn'>
+                        <button class="btn btn-danger btn-sm" style="background-color: #1D69AB;" (click)="onChange(crew)">ADD</button>
+                      </td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                    <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="crews.length"
+                  ></ngb-pagination>
+                  </tfoot>
+          </table>
+      </div>
+  </div>
+</div>

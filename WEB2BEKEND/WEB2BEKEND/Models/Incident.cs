@@ -31,5 +31,8 @@ namespace WEB2BEKEND.Models
     public ICollection<IncidentCall> Call { get; set; }
     public ICollection<IncidentResolution> Resolutions { get; set; }
     public ICollection<Multimedia> Multimedia { get; set; }
+
+    public Crew Crew { get; set; }
+
   }
 }

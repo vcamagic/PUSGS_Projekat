@@ -3,6 +3,7 @@ import {} from "../element/element"
 import { Multimedia } from "../multimedia";
 import { Resolution } from "../resolution";
 import {Element} from "../element/element"
+import { Crew } from "../crew";
 
 export class Incident {
   id : number = 0;
@@ -24,7 +25,7 @@ export class Incident {
   call : Call[] = [];
   resolutions : Resolution[] = [];
   multimedia : Multimedia[] = [];
-  //crew : any = [];
+  crew? : Crew;
   //version : number = 0;
 
 
