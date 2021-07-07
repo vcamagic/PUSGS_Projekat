@@ -77,6 +77,7 @@ import { TableFilterPipe } from './components/pipes/table-filter.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import {CrewComponent} from './components/crew/crew.component';
 import { MapComponent } from './components/map/map.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -122,7 +123,8 @@ export function tokenGetter(){
     TableFilterPipe,
     ProfileComponent,
     CrewComponent,
-    MapComponent
+    MapComponent,
+    NotificationsComponent
    
   ],
   imports: [

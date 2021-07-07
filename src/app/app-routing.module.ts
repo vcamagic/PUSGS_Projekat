@@ -26,6 +26,7 @@ import { DevicesComponent } from './components/incidents/devices/devices.compone
 import { ProfileComponent } from './components/profile/profile.component';
 import { CrewComponent } from './components/crew/crew.component';
 import {MapComponent} from './components/map/map.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 const routes: Routes = [
   {
     path:"",
@@ -59,6 +60,13 @@ const routes: Routes = [
     path: "workplans",
     component: WorkplanComponent
   },
+
+
+  {
+    path: "notifications",
+    component: NotificationsComponent
+  },
+
   {
     path:"workplans/newworkplan",
     component: NewWorkplanComponent

@@ -1,0 +1,31 @@
+<div class="gridara">
+    <div class="not-options" ngDefaultControl [(ngModel)]="option">
+        <button (click)="btnClick('All')" class="button">All Notifications</button>
+        <button (click)="btnClick('Unread')" class="button">Unread Notifications</button>
+        <button (click)="btnClick('Error')" class="button">Errors</button>
+        <button (click)="btnClick('Info')" class="button">Info</button>
+        <button (click)="btnClick('Success')" class="button">Success</button>
+        <button (click)="btnClick('Warning')" class="button">Warnings</button>
+    
+    </div>
+    <div class="sve">
+    <div class="not-content">
+    <div *ngFor="let notification of showNotifications | slice: (page-1) * pageSize : page * pageSize" ngDefaultControl>
+        <div [ngStyle]="getBackgroundColor(notification.type)" [(ngModel)]="notification.id" (click)="finish(notification.id)" ngDefaultControl class  class="notification"><div class="text">{{notification.text}}</div> <div class="date">{{notification.timeStamp}}</div></div>
+    </div>
+    <div class="paginator">
+        <ngb-pagination 
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="notifications.length">
+        </ngb-pagination>
+      </div>
+        <div class="buttons">
+          <button (click)="markAllAsRead()"  class="notButton">Mark All As Read</button>
+          <button (click)="clearAll()"  class="notButton">Clear All</button>
+        
+      </div>
+    </div>
+    </div>
+    </div>
+    
