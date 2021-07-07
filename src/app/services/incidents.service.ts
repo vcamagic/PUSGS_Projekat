@@ -4,6 +4,7 @@ import { Incident } from '../entities/incident/incident';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {Element} from '../entities/element/element'
 
 
 
@@ -25,15 +26,19 @@ export class IncidentsService {
   }
 
   AddIncident(incident : Incident ) {
-
-    this.incident = incident;
     console.log(this.incident);
     return this.http.post(`${this.incidentsUrl}`+"/AddIncident",incident).subscribe(res =>{
+      this.incident = res as Incident;
+      console.log(this.incident);
       this.router.navigate(["/incidents/newincident"]);
     },
     err => {
       console.log(err);
     });
+  }
+
+  putElementInIncident(element: Element){
+    return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Devices`,element);
   }
 
 

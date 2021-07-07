@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB2BEKEND.Data;
 
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    partial class DefaultConnectionModelSnapshot : ModelSnapshot
+    [Migration("20210706223750_key")]
+    partial class key
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,12 +64,6 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CoordinateX")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoordinateY")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("InSafetyDocument")
                         .HasColumnType("bit");
 
@@ -75,6 +71,12 @@ namespace WEB2BEKEND.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("X")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Y")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -228,12 +230,6 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CoordinateX")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoordinateY")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("IncidentId")
                         .HasColumnType("int");
 
@@ -241,6 +237,12 @@ namespace WEB2BEKEND.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("X")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Y")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

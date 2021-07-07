@@ -52,6 +52,22 @@ namespace WEB2BEKEND.Controllers
 
       return CreatedAtAction("GetIncidents", new { id = incident.Id }, incident);
     }
+
+    [HttpPost("{id}/Devices")]
+    public async Task<IActionResult> PostElementInIncident(int id,IncidentElement element)
+    {
+      _context.Incidents.Include(item => item.Elements).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if(incident == null)
+      {
+        return NotFound();
+      }
+      element.Id = 0;
+      incident.Elements.Add(element);
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
    
   }
 }

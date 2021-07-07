@@ -2,6 +2,7 @@ import { Call } from "../call/call";
 import {} from "../element/element"
 import { Multimedia } from "../multimedia";
 import { Resolution } from "../resolution";
+import {Element} from "../element/element"
 
 export class Incident {
   id : number = 0;
