@@ -1,0 +1,84 @@
+<!-- Default form register -->
+<h1>User Profile</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-4">
+    <div class="row">
+    <div class="col-md-8">
+      
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Username</label>
+            <input type="text" name="username" class="form-control" id="inputAddress" placeholder="Maki paki" formControlName='username'>
+            <span *ngIf="usernameR" class="error">Username required</span>
+            <span *ngIf="usernameS" class="error">Username too short</span>
+            <span *ngIf="usernameL" class="error">Username too long</span>
+            <span *ngIf="usernameW" class="error">Contain Whitespace</span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4"> FirstName</label>
+            <input type="email" name="name" class="form-control" id="inputEmail4" placeholder="Mark Gasol" formControlName='firstName'>
+            <span *ngIf="fullnameR" class="error">FirstName required</span>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">LastName</label>
+            <input type="email" name="name" class="form-control" id="inputEmail4" placeholder="Mark Gasol" formControlName='lastName'>
+            <span *ngIf="fullnameR" class="error">LastName required</span>
+          </div>
+
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" name="email" class="form-control" id="inputEmail4" formControlName='email' placeholder="Email">
+            <span *ngIf="emailR" class="error">Email required</span>
+            <span *ngIf="emailV" class="error">Wrong email</span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Address</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName='address'>
+            <span *ngIf="addressR" class="error">Address required</span>
+          </div>
+        </div>
+        
+        <div class="form-row">
+        
+          <div class="form-group col-md-6">
+            <label for="inputState" rea>Role</label>
+            <select formControlName='inputState' id="inputState" class="form-control" aria-readonly="true">
+              <option *ngFor="let opt of selectOptions" [value]="opt" aria-readonly="true"> 
+                {{opt}}
+              </option>
+            </select>
+            <span *ngIf="userTypeR" class="error">UserType required</span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputImage" style="width: 100%;">Image</label>
+            <input type="file" #file (change)="uploadFile(file.files)" name="image" class="form-control" accept="image/*">
+          </div>
+          
+        </div>
+        <div class="form-row col-md-12">
+  
+          <div class="form-group col align-self-center">
+  
+            <button type="submit" class="btn btn-primary button">Save changes</button>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col align-self-end">
+        <img  width="300" height="400" [src]="imagePath(image)">
+        <div class="col-md-12">
+          <span class="upload" *ngIf="progress > 0">
+            {{progress}}%
+          </span>
+          <span class="upload" *ngIf="message">
+            {{message}}
+          </span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  </form>
+  <!-- Default form register -->

@@ -38,7 +38,7 @@ export class User {
     type!:string;
 
     constructor(username : string, firstName: string, lastName:string, 
-        email:string, password: string, birthDate:string, address:string, inputState:any,picture:any,activeStatus:string, type:string){
+        email:string, password: string, birthDate:string, address:string, inputState:any,picture:any,activeStatus:string){
 
         this.username = username;
         this.firstName = firstName;
@@ -48,9 +48,7 @@ export class User {
         this.birthDate = birthDate;
         this.address = address;
         this.inputState = inputState;
-        this.inputState = inputState;
         this.activeStatus = activeStatus;
-        this.type = type;
     }
 }
 

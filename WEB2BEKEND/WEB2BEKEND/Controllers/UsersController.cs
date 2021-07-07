@@ -49,6 +49,110 @@ namespace WEB2BEKEND.Controllers
       return u;
     }
 
+    [HttpGet]
+    [Route("TeamMembers")]
+    public ActionResult<IEnumerable<User>> GetTeamMembers()
+    {
+      List<User> memberUsers = new List<User>();
+      foreach (var item in _context.Users)
+      {
+        if ((item.InputState == "Team member" || item.InputState == "Teammember") && item.ActiveStatus == "Accepted")
+        {
+          memberUsers.Add(item);
+          Console.WriteLine(item.Username);
+        }
+      }
+      return memberUsers;
+    }
+
+    [HttpGet("username")]
+    [Route("CurrentUser")]
+    public async Task<ActionResult<IEnumerable<User>>> GetCurrentUser(string username)
+    {
+
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          return Ok(user);
+        }
+      }
+
+      return BadRequest("Wrong username");
+    }
+
+    [HttpPut]
+    [Route("ChangeProfile")]
+    public async Task<ActionResult<User>> ChangeProfile([FromBody] User userF)
+    {
+      if (ModelState.IsValid)
+      {
+        string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+
+        User u1 = new User();
+        foreach (User user in _context.Users)
+        {
+          if (user.Username == username)
+          {
+            u1 = user;
+            break;
+
+          }
+        }
+
+        if (u1.InputState == null)
+        {
+          u1.InputState = "Worker";
+        }
+
+        if (u1.InputState.Equals(userF.InputState))
+        {
+          u1.Username = userF.Username;
+          u1.FirstName = userF.FirstName;
+          u1.LastName = userF.LastName;
+          u1.Email = userF.Email;
+          u1.Address = userF.Address;
+          if (userF.Picture != null)
+          {
+            u1.Picture = userF.Picture;
+          }
+
+          await _context.SaveChangesAsync();
+          return CreatedAtAction("ChangeProfile", u1);
+        }
+        else
+        {
+          u1.Username = userF.Username;
+          u1.FirstName = userF.FirstName;
+          u1.LastName = userF.LastName;
+          u1.Email = userF.Email;
+          u1.Address = userF.Address;
+          UserRequest newRequest = new UserRequest
+          {
+            Username = userF.Username,
+            FirstName = userF.FirstName,
+            LastName = userF.LastName,
+            Email = userF.Email,
+            Address = userF.Address,
+            BirthDate = userF.BirthDate,
+            InputState = userF.InputState,
+          };
+
+          _context.UserRequests.Add(newRequest);
+
+          await _context.SaveChangesAsync();
+          return CreatedAtAction("ChangeProfile", u1);
+        }
+      }
+      else
+      {
+        return BadRequest();
+      }
+
+    }
+
+
     [HttpPost]
     [Route("Register")]
     public async Task<ActionResult<User>> Register([FromBody] User userForm)
@@ -109,8 +213,8 @@ namespace WEB2BEKEND.Controllers
       {
         return BadRequest("Invalid client request.");
       }
-      
-      
+
+
       if(_context.Users.Any(x => x.Email == user.Email && x.Password == user.Password))
       {
         User u = _context.Users.SingleOrDefault(x => x.Email == user.Email);
@@ -132,11 +236,22 @@ namespace WEB2BEKEND.Controllers
 
         var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-        return Ok(new { Token = tokenString});
+        CurrentUser loggedInUser = new CurrentUser
+        {
+          Token = tokenString,
+          Username = u.Username,
+          FirstName = u.FirstName,
+          LastName = u.LastName,
+          Type = u.InputState
+
+        };
+
+
+        return Ok(loggedInUser);
 
       }
 
-      
+
       return Unauthorized();
     }
 
