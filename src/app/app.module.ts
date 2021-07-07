@@ -13,7 +13,7 @@ import { DevicesComponent } from './components/incidents/devices/devices.compone
 import { ResolutionComponent } from './components/incidents/resolution/resolution.component';
 import { CallsComponent } from './components/incidents/calls/calls.component';
 
-//import { CrewComponent } from './components/incidents/crew/crew.component';
+import { IncidentCrewComponent } from '../app/components/incidents/incident-crew/incident-crew.component';
 import { MultimediaComponent } from './components/incidents/multimedia/multimedia.component';
 import{IncidentComponent} from './components/incidents/incident/incident.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -92,7 +92,7 @@ export function tokenGetter(){
     NewIncidentComponent,
     ResolutionComponent,
     CallsComponent,
-   // CrewComponent,
+    IncidentCrewComponent,
     DevicesComponent,
     BasicInformationComponent,
     MultimediaComponent,
@@ -125,7 +125,7 @@ export function tokenGetter(){
     CrewComponent,
     MapComponent,
     NotificationsComponent
-   
+
   ],
   imports: [
     BrowserModule,
