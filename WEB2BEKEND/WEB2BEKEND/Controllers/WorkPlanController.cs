@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WEB2BEKEND.Data;
 using WEB2BEKEND.Models;
@@ -125,7 +126,18 @@ namespace WEB2BEKEND.Controllers
 
       };
 
+      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      Notification notification = new Notification()
+      {
+        Type = "Success",
+        Text = "Work plan created",
+        Status = "Unread",
+        TimeStamp = DateTime.Now.ToString(),
+        User = _context.Users.FirstOrDefault(u => u.Username == username),
+        Visible = true
+      };
 
+      _context.Notifications.Add(notification);
 
 
       _context.WorkPlans.Add(workplan);

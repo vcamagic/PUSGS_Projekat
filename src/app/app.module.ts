@@ -78,6 +78,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {CrewComponent} from './components/crew/crew.component';
 import { MapComponent } from './components/map/map.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ConsumersComponent } from './components/consumers/consumers/consumers.component';
+import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
+import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -124,7 +127,10 @@ export function tokenGetter(){
     ProfileComponent,
     CrewComponent,
     MapComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ConsumersComponent,
+    ModifyConsumerComponent,
+    NewConsumerComponent,
 
   ],
   imports: [

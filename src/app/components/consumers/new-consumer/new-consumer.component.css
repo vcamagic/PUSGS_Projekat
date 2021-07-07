@@ -1,0 +1,22 @@
+.form-container{
+    height: 70%;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 5% 20% 20% 20% 20% 10%;
+    margin: 5%;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+}
+
+.mat-form-field{
+    margin: 1%;
+    width: 25%;
+}
+
+.mat-hint{
+    color: red;
+}

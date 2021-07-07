@@ -36,5 +36,9 @@ namespace WEB2BEKEND.Data
 
     public DbSet<Notification> Notifications { get; set; }
 
+    public DbSet<Consumer> Consumers { get; set; }
+
+    public DbSet<Street> Streets { get; set; }
+
   }
 }

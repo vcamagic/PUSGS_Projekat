@@ -1,0 +1,72 @@
+<ng-container [formGroup]="consumerForm">
+    <mat-card class="form-container">
+    <div>
+      <mat-card-title class="title"></mat-card-title>
+    </div>
+    <div>
+  
+      <!-- Type -->
+      <mat-form-field>
+        <label>Select type</label>
+        <mat-select placeholder="" formControlName="type">
+            
+            <mat-option value="Resident">Resident</mat-option>
+            <mat-option value="Commercial">Commercial</mat-option>
+        </mat-select>
+        <mat-hint *ngIf="typeR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Type -->
+  
+      <!-- Work Request -->
+    
+      <mat-form-field>
+          <label>NAME</label>
+     
+        <input matInput placeholder=""   formControlName="name" />
+        <mat-hint *ngIf="nameR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Work Request -->
+
+    <div>
+      <!-- Status -->
+      <mat-form-field>
+        <label>SURNAME</label>
+      
+        <input matInput placeholder=""  formControlName="surname"/>
+        <mat-hint *ngIf="surnameR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Status -->
+    </div>
+      <!-- Incident -->
+      <mat-form-field>
+        <label>STREET</label>
+        <input matInput placeholder="" formControlName="street" />
+        <mat-hint *ngIf="streetR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Incident -->
+  
+    
+      <!-- Street -->
+      <mat-form-field>
+        <label>CITY</label>
+        <input matInput placeholder="" formControlName="city" />
+        <mat-hint *ngIf="cityR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Street -->
+
+      <!-- Street -->
+      <mat-form-field>
+        <label>PHONE</label>
+        <input matInput placeholder="" formControlName="phone" />
+        <mat-hint *ngIf="phoneR">Required</mat-hint>
+      </mat-form-field>
+      <!-- /Street -->
+  
+  
+    </div>
+    <div class="button">
+        <button (click)="save()" class="btn btn-primary button">Create</button>
+    </div>
+    </mat-card>
+  </ng-container>
+  

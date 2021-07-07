@@ -27,6 +27,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CrewComponent } from './components/crew/crew.component';
 import {MapComponent} from './components/map/map.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ConsumersComponent } from './components/consumers/consumers/consumers.component';
+import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
+import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 const routes: Routes = [
   {
     path:"",
@@ -70,6 +73,19 @@ const routes: Routes = [
   {
     path:"workplans/newworkplan",
     component: NewWorkplanComponent
+  },
+  {
+    path: 'consumers',
+        component: ConsumersComponent,
+  },
+  {
+    path: 'consumers/newConsumer',
+        component: NewConsumerComponent,
+  },
+ 
+  {
+    path: 'consumers/modifyConsumer',
+        component: ModifyConsumerComponent,
   },
   {
     path:"verify",

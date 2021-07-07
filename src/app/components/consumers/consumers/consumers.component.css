@@ -1,0 +1,13 @@
+.table{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    margin: 5%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
