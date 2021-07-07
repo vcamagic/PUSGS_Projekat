@@ -70,6 +70,10 @@ export class UserService {
     this.http.post(this.usersUrl + "/login",credentials).subscribe(res =>{
       const token = (<any>res).token;
       localStorage.setItem("jwt",token);
+      const username = (<any>res).username;
+      localStorage.setItem("username", username);
+      const type = (<any>res).type;
+      localStorage.setItem("type", type);
       this.invalidLogin = false;
       this.logedInUser= credentials.email;
       console.log(this.logedInUser);
@@ -78,12 +82,15 @@ export class UserService {
     err => {
       console.log(err);
       this.invalidLogin = true;
+      
     });
   }
 
   logout(){
     localStorage.removeItem("jwt");
     this.invalidLogin = true;
+    localStorage.removeItem("username");
+    localStorage.removeItem("type");
     this.router.navigate(["/login"]);
   }
 

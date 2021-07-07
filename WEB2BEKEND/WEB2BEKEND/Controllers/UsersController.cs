@@ -88,9 +88,13 @@ namespace WEB2BEKEND.Controllers
           }
         }
 
-        
+        if (u1.InputState == null)
+        {
+          u1.InputState = "Worker";
+        }
 
-        
+        if (u1.InputState.Equals(userF.InputState))
+        {
           u1.Username = userF.Username;
           u1.FirstName = userF.FirstName;
           u1.LastName = userF.LastName;
@@ -102,14 +106,16 @@ namespace WEB2BEKEND.Controllers
           }
 
           await _context.SaveChangesAsync();
-          //return CreatedAtAction("ChangeProfile", u1);
-
-        //u1.Username = userF.Username;
-        //u1.FirstName = userF.FirstName;
-        //u1.LastName = userF.LastName;
-        //u1.Email = userF.Email;
-        //u1.Address = userF.Address;
-        UserRequest newRequest = new UserRequest
+          return CreatedAtAction("ChangeProfile", u1);
+        }
+        else
+        {
+          u1.Username = userF.Username;
+          u1.FirstName = userF.FirstName;
+          u1.LastName = userF.LastName;
+          u1.Email = userF.Email;
+          u1.Address = userF.Address;
+          UserRequest newRequest = new UserRequest
           {
             Username = userF.Username,
             FirstName = userF.FirstName,
@@ -117,16 +123,14 @@ namespace WEB2BEKEND.Controllers
             Email = userF.Email,
             Address = userF.Address,
             BirthDate = userF.BirthDate,
-           
-
-
+            InputState = userF.InputState,
           };
 
           _context.UserRequests.Add(newRequest);
 
           await _context.SaveChangesAsync();
           return CreatedAtAction("ChangeProfile", u1);
-        
+        }
       }
       else
       {
@@ -134,6 +138,7 @@ namespace WEB2BEKEND.Controllers
       }
 
     }
+
 
     [HttpPost]
     [Route("Register")]
@@ -218,7 +223,18 @@ namespace WEB2BEKEND.Controllers
 
         var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-        return Ok(new { Token = tokenString});
+        CurrentUser loggedInUser = new CurrentUser
+        {
+          Token = tokenString,
+          Username = u.Username,
+          FirstName = u.FirstName,
+          LastName = u.LastName,
+          Type = u.InputState
+
+        };
+
+
+        return Ok(loggedInUser);
 
       }
 

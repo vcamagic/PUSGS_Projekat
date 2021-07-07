@@ -19,6 +19,6 @@ namespace WEB2BEKEND.Models
     public string ImageData { get; set; }
 
     public string Email { get; set; }
-    public string Type { get; set; }
+    public string InputState { get; set; }
   }
 }
