@@ -27,6 +27,8 @@ export class UserService {
 
   readonly usersUrl = 'https://localhost:44396/api/Users';
   
+
+
   getAllUsers(): Observable<User[]>  {
     return this.http.get<User[]>(this.usersUrl);
   }
@@ -53,6 +55,9 @@ export class UserService {
 
   loadUsers(): Observable<IUser[]>{
     return this.http.get<IUser[]>("https://localhost:44396/api/Users")
+  }
+  getTeamMembers(): Observable<IUser[]>{
+    return this.http.get<IUser[]>("https://localhost:44396/api/Users/TeamMembers")
   }
   login(form : NgForm){
     const credentials = {

@@ -24,6 +24,7 @@ import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd
 import { ChecklistSdComponent } from './components/safetydocument/checklist-sd/checklist-sd.component';
 import { DevicesComponent } from './components/incidents/devices/devices.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CrewComponent } from './components/crew/crew.component';
 const routes: Routes = [
   {
     path:"",
@@ -127,8 +128,11 @@ const routes: Routes = [
   {
     path: 'devices',
     component: DevicesComponent
+  },
+  {
+    path: 'crew',
+    component: CrewComponent
   }
-
 
 
 ]

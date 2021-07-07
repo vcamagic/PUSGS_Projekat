@@ -12,7 +12,8 @@ import { BasicInformationComponent } from './components/incidents/basic-informat
 import { DevicesComponent } from './components/incidents/devices/devices.component';
 import { ResolutionComponent } from './components/incidents/resolution/resolution.component';
 import { CallsComponent } from './components/incidents/calls/calls.component';
-import { CrewComponent } from './components/incidents/crew/crew.component';
+
+//import { CrewComponent } from './components/incidents/crew/crew.component';
 import { MultimediaComponent } from './components/incidents/multimedia/multimedia.component';
 import{IncidentComponent} from './components/incidents/incident/incident.component';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -74,6 +75,7 @@ import { MultimediaSdComponent } from './components/safetydocument/multimedia-sd
 import { EquipmentSdComponent } from './components/safetydocument/equipment-sd/equipment-sd.component';
 import { TableFilterPipe } from './components/pipes/table-filter.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
+import {CrewComponent} from './components/crew/crew.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -88,7 +90,7 @@ export function tokenGetter(){
     NewIncidentComponent,
     ResolutionComponent,
     CallsComponent,
-    CrewComponent,
+   // CrewComponent,
     DevicesComponent,
     BasicInformationComponent,
     MultimediaComponent,
@@ -117,7 +119,9 @@ export function tokenGetter(){
     MultimediaSdComponent,
     EquipmentSdComponent,
     TableFilterPipe,
-    ProfileComponent
+    ProfileComponent,
+    CrewComponent
+   
   ],
   imports: [
     BrowserModule,

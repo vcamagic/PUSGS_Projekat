@@ -36,6 +36,21 @@ namespace WEB2BEKEND.Controllers
 
       }
 
+    [HttpGet]
+    [Route("TeamMembers")]
+    public ActionResult<IEnumerable<User>> GetTeamMembers()
+    {
+      List<User> memberUsers = new List<User>();
+      foreach (var item in _context.Users)
+      {
+        if ((item.InputState == "Team member" || item.InputState == "Teammember") && item.ActiveStatus == "Accepted")
+        {
+          memberUsers.Add(item);
+          Console.WriteLine(item.Username);
+        }
+      }
+      return memberUsers;
+    }
 
     [HttpGet("username")]
     [Route("CurrentUser")]
