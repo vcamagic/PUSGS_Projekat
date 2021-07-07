@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {Element} from '../entities/element/element'
+import { Resolution } from '../entities/resolution';
+import { Call } from '../entities/call/call';
 
 
 
@@ -39,6 +41,14 @@ export class IncidentsService {
 
   putElementInIncident(element: Element){
     return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Devices`,element);
+  }
+
+  putResolutionInIncident(resolution: Resolution){
+    return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Resolutions`,resolution);
+  }
+
+  putCallInIncident(call: Call){
+    return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Calls`,call);
   }
 
 

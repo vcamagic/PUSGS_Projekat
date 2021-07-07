@@ -68,6 +68,40 @@ namespace WEB2BEKEND.Controllers
       await _context.SaveChangesAsync();
       return NoContent();
     }
-   
+
+    [HttpPost("{id}/Resolutions")]
+    public async Task<ActionResult<int>> PostResolutionInIncident (int id,IncidentResolution resolution)
+    {
+      _context.Incidents.Include(item => item.Resolutions).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      resolution.Id = 0;
+      incident.Resolutions.Add(resolution);
+      await _context.SaveChangesAsync();
+      return resolution.Id;
+
+    }
+
+    [HttpPost("{id}/Calls")]
+    public async Task<ActionResult<int>> PostCallInIncident(int id, IncidentCall call)
+    {
+      _context.Incidents.Include(item => item.Call).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      call.Id = 0;
+      incident.Call.Add(call);
+      await _context.SaveChangesAsync();
+      return NoContent();
+
+    }
+
   }
 }

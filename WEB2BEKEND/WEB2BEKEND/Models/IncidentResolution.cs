@@ -10,7 +10,14 @@ namespace WEB2BEKEND.Models
   public class IncidentResolution
   {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+
+    public string Cause { get; set; }
+
+    public string SubCause { get; set; }
+
+    public string Construction { get; set; }
+
+    public string Material { get; set; }
   }
 }

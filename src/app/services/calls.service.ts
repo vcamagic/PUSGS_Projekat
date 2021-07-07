@@ -12,19 +12,23 @@ export class CallsService {
 
   incidentList : Call[] = [];
   constructor(private http: HttpClient,private router: Router) {
-
-
+    this.getAllCalls();
   }
 
   readonly callsUrl = 'https://localhost:44396/api/Calls';
 
-  getAllIncidents(): Observable<Call[]>{
-    return this.http.get<Call[]>(this.callsUrl);
+  getAllCalls(){
+     this.http.get<Call[]>(this.callsUrl).subscribe(res=>{
+       this.incidentList = res as Call[];
+       console.log(this.incidentList);
+     },err=>{
+       console.log(err);
+     });
   }
 
   postData(call: Call){
     this.http.post(this.callsUrl + "/AddCall",call).subscribe(res =>{
-      this.router.navigate(["/login"]);
+      //this.router.navigate(["/login"]);
     },
     err => {
       console.log(err);

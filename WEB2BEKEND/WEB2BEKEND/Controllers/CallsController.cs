@@ -25,6 +25,7 @@ namespace WEB2BEKEND.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Call>>> GetCalls()
     {
+      int num = _context.Calls.Count();
       return await _context.Calls.ToListAsync();
     }
 

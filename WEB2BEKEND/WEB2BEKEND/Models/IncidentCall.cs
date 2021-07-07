@@ -10,7 +10,6 @@ namespace WEB2BEKEND.Models
   public class IncidentCall
   {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public string Reason { get; set; }

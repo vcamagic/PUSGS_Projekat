@@ -8,11 +8,13 @@ export class Call {
     address? : string;
     priority?: number;
 
-    constructor( reason : string,  hazard : string, comment :string ,address : string){
+    constructor( reason : string,  hazard : string, comment :string ,name:string,lastname:string,address:string){
 
         this.reason = reason;
         this.hazard = hazard;
         this.comment = comment;
-        this.address = address;
+        this.name=name;
+        this.lastName=lastname;
+        this.address=address;
     }
 }

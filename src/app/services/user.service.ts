@@ -14,13 +14,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class UserService {
   invalidLogin : boolean = true;
-  logedInUser : string = "";
+  currentUser : User = new User("","","","","","","","","","","",);
   constructor(private http : HttpClient,public router: Router,private jwtHelper: JwtHelperService) {
 
   }
 
   readonly usersUrl = 'https://localhost:44396/api/Users';
-  
+
   getAllUsers(): Observable<User[]>  {
     return this.http.get<User[]>(this.usersUrl);
   }
@@ -37,14 +37,15 @@ export class UserService {
       'password': form.value.password
     };
 
-
     console.log(credentials);
     this.http.post(this.usersUrl + "/login",credentials).subscribe(res =>{
       const token = (<any>res).token;
       localStorage.setItem("jwt",token);
       this.invalidLogin = false;
-      this.logedInUser= credentials.email;
-      console.log(this.logedInUser);
+      this.http.get(`${this.usersUrl}/${credentials.email}`).subscribe(res=>{
+        this.currentUser=res as User;
+        console.log(this.currentUser.email);
+      })
       this.router.navigate(["/incidents"])
     },
     err => {

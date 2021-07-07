@@ -1,59 +1,86 @@
-
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <label>Cause</label>
-                </div>
-                <div class="col-md-6">
-                    <select>
-                        <option value="weather">Weather</option>
-                        <option value="humanFactor">Human Factor</option>
-                        <option value="failure">Failure</option>
-                      </select>
-                </div>
-            </div>
-            <div class="row  mt-3">
-                <div class="col-md-6">
-                    <label>Subcause</label>
-                </div>
-                <div class="col-md-6">
-                    <select>
-                        <option value="lightning">Lightning</option>
-                        <option value="wind">Wind</option>
-                        <option value="rain">Rain</option>
-                      </select>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <label>Construction type</label>
-                </div>
-                <div class="col-md-6">
-                    <select>
-                        <option value="underground">Underground</option>
-                        <option value="ground">Ground</option>
-                        <option value="none">None</option>
-                      </select>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <label>Material</label>
-                </div>
-                <div class="col-md-6">
-                    <select>
-                        <option value="metal">Metal</option>
-                        <option value="plastic">Plastic</option>
-                        <option value="copper">Copper</option>
-                      </select>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-
-        </div>
-    </div>
+  <div class="row">
+      <div class="col-md-12">
+          <button class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
+      </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-md-12">
+          <table id="resolutionsTable" class="table table-hover" maxWidth="500" mdbTableScroll [scrollX]='true' >
+              <thead>
+                  <tr>
+                      <th scope="col" aria-controls="resolutionsTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[0]">Id</th>
+                      <th scope="col" aria-controls="resolutionsTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[1]">Cause</th>
+                      <th scope="col" aria-controls="resolutionsTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[2]">Subcause</th>
+                      <th scope="col" aria-controls="resolutionsTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[3]">Construction</th>
+                      <th scope="col" aria-controls="resolutionsTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[4]">Material</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr mdbTableCol *ngFor="let res of incidentService.incident.resolutions | slice: (page - 1) * pageSize : page * pageSize ">
+                      <td >{{res.id}}</td>
+                      <td >{{res.cause}}</td>
+                      <td>{{res.subCause}}</td>
+                      <td >{{res.construction}}</td>
+                      <td >{{res.material}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="incidentService.incident.resolutions.length"
+                  ></ngb-pagination>
+                  </tfoot>
+          </table>
+      </div>
+  </div>
 </div>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Resolution</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="resForm">
+          <div class="form-group">
+                <label>Cause</label>
+                <select  required class="form-control" name="el"  formControlName="cause" id="el">
+                  <option value="Weather">Weather</option>
+                  <option value="HumanFactor">Human Factor</option>
+                  <option value="Failure">Failure</option>
+                </select>
+          </div>
+          <div class="form-group">
+            <label>Subcause</label>
+            <select  required class="form-control" name="el"  formControlName="subcause" id="subcause">
+              <option value="Thunder">Thunder</option>
+              <option value="Wind">Wind</option>
+              <option value="Snow">Snow</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Construction</label>
+            <select  required class="form-control" name="el"  formControlName="construction" id="construction">
+              <option value="Underground">Underground</option>
+              <option value="Overground">Overground</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Material</label>
+            <select  required class="form-control" name="el"  formControlName="material" id="material">
+              <option value="Plastic">Plastic</option>
+              <option value="Metal">Metal</option>
+            </select>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button"  class="btn btn-danger btn-lg" (click)="add()">Add</button>
+  </div>
+  </ng-template>

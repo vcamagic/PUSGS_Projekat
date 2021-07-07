@@ -36,6 +36,19 @@ namespace WEB2BEKEND.Controllers
 
       }
 
+    [HttpGet("{email}")]
+    public async Task<ActionResult<User>> GetIncidents(string email)
+    {
+      User u = await  _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+
+      if (u == null)
+      {
+        return NotFound();
+      }
+
+      return u;
+    }
+
     [HttpPost]
     [Route("Register")]
     public async Task<ActionResult<User>> Register([FromBody] User userForm)

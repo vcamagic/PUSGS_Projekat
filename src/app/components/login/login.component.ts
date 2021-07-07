@@ -17,7 +17,7 @@ import { Call } from 'src/app/entities/call/call';
 export class LoginComponent implements OnInit {
   num : number = 1;
   userList : User[] = [];
-  call : Call = new Call("","","","");
+  call : Call = new Call("","","","","","");
   loginForm? : FormGroup;
 
   reportForm : FormGroup;
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
   }
 
   report(){
-    this.call = new Call(this.reportForm.controls["reason"].value,this.reportForm.controls["hazard"].value,this.reportForm.controls["comment"].value,this.reportForm.controls["address"].value)
+    this.call = new Call(this.reportForm.controls["reason"].value,this.reportForm.controls["hazard"].value,this.reportForm.controls["comment"].value,"","",this.reportForm.controls["address"].value);
     this.callservice.postData(this.call);
   }
 }
