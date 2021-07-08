@@ -30,6 +30,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ConsumersComponent } from './components/consumers/consumers/consumers.component';
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
+import { SettingsComponent } from './components/settings/settings.component';
 const routes: Routes = [
   {
     path:"",
@@ -61,31 +62,38 @@ const routes: Routes = [
   },
   {
     path: "workplans",
-    component: WorkplanComponent
+    component: WorkplanComponent,
+    canActivate: [AuthGuard]
   },
 
 
   {
     path: "notifications",
-    component: NotificationsComponent
+    component: NotificationsComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path:"workplans/newworkplan",
-    component: NewWorkplanComponent
+    component: NewWorkplanComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'consumers',
         component: ConsumersComponent,
+        canActivate: [AuthGuard]
   },
   {
     path: 'consumers/newConsumer',
         component: NewConsumerComponent,
+
+        canActivate: [AuthGuard]
   },
  
   {
     path: 'consumers/modifyConsumer',
         component: ModifyConsumerComponent,
+        canActivate: [AuthGuard]
   },
   {
     path:"verify",
@@ -95,7 +103,8 @@ const routes: Routes = [
 
   {
     path:"profile",
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments",
@@ -108,6 +117,12 @@ const routes: Routes = [
   {
     path:"safetydocuments/new/basic-info",
     component: BasicInfoSdComponent,
+  },
+  {
+    path:"settings",
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path:"safetydocuments/new/history",

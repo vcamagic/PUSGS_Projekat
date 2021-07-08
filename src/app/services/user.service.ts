@@ -39,6 +39,18 @@ export class UserService {
     return this.http.get("https://localhost:44396/api/Users/CurrentUser", httpOptions);
   }
 
+  changeUserPassword(credentials:any){
+    const params = new HttpParams().append('password', credentials.password);
+    console.log("kod metode" + credentials);
+    this.http.put("https://localhost:44396/api/Users/ChangePassword", credentials, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })})
+      .subscribe(
+        error => console.log('oops', error)
+      );
+  }
+
   changeProfile(user:User){
     console.log(JSON.stringify(user));
     this.http.put<User>("https://localhost:44396/api/Users/ChangeProfile", JSON.stringify(user), {

@@ -1,0 +1,19 @@
+<div class="settings">
+    <p class="title">Change password</p>
+    <div class="form">
+    <form #passwordForm="ngForm" (ngSubmit)="changePassword(passwordForm)">
+        <div>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" ngModel class="form-control" placeholder="New Password" required>
+            <div *ngIf="minimumCharacters" class="alert alert-danger">Minimum 5 characters!</div>
+            <div *ngIf="invalidPassword" class="alert alert-danger">Invalid password!</div>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Change password</button>
+    
+        </div>
+    </form>
+    </div>
+    </div>
+
+
+    

@@ -286,6 +286,45 @@ namespace WEB2BEKEND.Controllers
         return StatusCode(500, $"Internal server error: {ex}");
       }
     }
+
+
+    [HttpPut]
+    [Route("ChangePassword")]
+    public async Task<ActionResult<User>> ChangePassword([FromBody] Login passwordForm)
+    {
+      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+      User u1 = new User();
+      foreach (User user in _context.Users)
+      {
+        if (user.Username == username)
+        {
+          u1 = user;
+          break;
+
+        }
+      }
+      u1.Password = passwordForm.Password;
+
+      //string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+      Notification notification = new Notification()
+      {
+        Type = "Success",
+        Text = "Password changed",
+        Status = "Unread",
+        TimeStamp = DateTime.Now.ToString(),
+        User = _context.Users.FirstOrDefault(u => u.Username == username),
+        Visible = true
+      };
+
+      _context.Notifications.Add(notification);
+
+      await _context.SaveChangesAsync();
+      return CreatedAtAction("ChangePassword", u1);
+
+    }
+
     [HttpPut]
     [Route("Verification")]
     public async Task<ActionResult<User>> Verification(string username)

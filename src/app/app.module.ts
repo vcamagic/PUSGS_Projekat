@@ -81,6 +81,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ConsumersComponent } from './components/consumers/consumers/consumers.component';
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -131,6 +132,7 @@ export function tokenGetter(){
     ConsumersComponent,
     ModifyConsumerComponent,
     NewConsumerComponent,
+    SettingsComponent,
 
   ],
   imports: [
