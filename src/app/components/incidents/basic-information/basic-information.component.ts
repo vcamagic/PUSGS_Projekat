@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output , EventEmitter} from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Incident } from 'src/app/entities/incident/incident';
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { UserService } from 'src/app/services/user.service';
@@ -18,7 +18,7 @@ export class BasicInformationComponent implements OnInit {
 
   constructor(public service: IncidentsService,private userService: UserService) {
     this.incidentForm = new FormGroup({
-      "type" : new FormControl(),
+      "type" : new FormControl("",[Validators.required]),
       "priority" : new FormControl(),
       "address" : new FormControl(),
       "status" : new FormControl(),

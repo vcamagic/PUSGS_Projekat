@@ -84,6 +84,7 @@ import { NewConsumerComponent } from './components/consumers/new-consumer/new-co
 import { SettingsComponent } from './components/settings/settings.component';
 import { NgxDropzoneModule } from 'ngx-dropzone'
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { DevicesAllComponent } from './components/devices-all/devices-all.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -136,7 +137,7 @@ export function tokenGetter(){
     NewConsumerComponent,
     SettingsComponent,
     AdminSettingsComponent,
-
+    DevicesAllComponent
   ],
   imports: [
     BrowserModule,
