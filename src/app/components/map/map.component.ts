@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Crew } from 'src/app/entities/crew';
 import { CrewService } from 'src/app/services/crew.service';
+import {MapService} from 'src/app/services/map.service';
+import {Map} from 'src/app/entities/map';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -17,6 +20,7 @@ export class MapComponent implements OnInit {
   private map: any;
   private centroid: L.LatLngExpression = [45.267136, 19.833549];
   public allCrews: Crew[] = [];
+  public allMaps : Map[] = [];
 
  
   private initMap(): void{
@@ -56,11 +60,11 @@ export class MapComponent implements OnInit {
       
     });
 
-    L.marker([ 45.23542467770837, 19.810201331843633], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc1, Priority: 2");
+   /* L.marker([ 45.23542467770837, 19.810201331843633], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc1, Priority: 2");
     L.marker([45.28247091404771, 19.876006701124208], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc2, Priority: 5");
     L.marker([45.28031633188242, 19.782101876509856], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc3, Priority: 1");
     L.marker([45.25330530572664, 19.760462938660375], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc4, Priority: 2");
-    L.marker([ 45.302719979032716, 19.82293006113152], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc5, Priority: 3");
+    L.marker([ 45.302719979032716, 19.82293006113152], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc5, Priority: 3");*/
 
 
     //nakon klika na mapu kordinate se smestaju u ove dve promenjice
@@ -79,8 +83,11 @@ export class MapComponent implements OnInit {
   }
 
 
-  constructor(private crewService: CrewService) {
+  constructor(private crewService: CrewService,private mapService: MapService) {
     this.map = "";
+    this.mapService.loadMapModels().subscribe(data => this.allMaps = data);
+   
+    console.log("BROJ" + this.allMaps.length);
    }
 
   ngOnInit() {

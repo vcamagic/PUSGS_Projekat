@@ -35,6 +35,7 @@ namespace WEB2BEKEND.Controllers
     {
       var inc = await _context.Incidents.FindAsync(id);
 
+      
       if (inc == null)
       {
         return NotFound();

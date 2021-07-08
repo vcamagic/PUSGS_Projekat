@@ -28,6 +28,7 @@ namespace WEB2BEKEND.Models
     public string Address { get; set; }
 
     public ICollection<IncidentElement> Elements { get; set; }
+    
     public ICollection<IncidentCall> Call { get; set; }
     public ICollection<IncidentResolution> Resolutions { get; set; }
     public ICollection<Multimedia> Multimedia { get; set; }
