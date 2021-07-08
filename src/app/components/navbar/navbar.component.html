@@ -52,7 +52,11 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="nav-link" routerLink="profile" href="#contact">Profile</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="settings">Settings</a>
+                    <a *ngIf="!admin" class="nav-link" routerLink="settings">Settings</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a *ngIf="admin" class="nav-link" routerLink="ADMsettings">SettingsA</a>
                 </li>
                 <li *ngIf="!userService.invalidLogin"><a  class="nav-link" (click)="logout()">LogOut</a></li>
               </ul>

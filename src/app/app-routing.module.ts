@@ -31,6 +31,10 @@ import { ConsumersComponent } from './components/consumers/consumers/consumers.c
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
+import { Component } from '@angular/core';
+import { Type } from '@angular/core';
+import { ViewGuard } from './guardsA/view.guard';
 const routes: Routes = [
   {
     path:"",
@@ -88,6 +92,18 @@ const routes: Routes = [
         component: NewConsumerComponent,
 
         canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'settings', // child route path
+    component: getSettingsComponent(), 
+    canActivate: [AuthGuard],// child route component that the router renders
+  },
+
+  {
+    path: 'ADMsettings', // child route path
+    component: getSettingsComponent(), 
+    canActivate: [AuthGuard],// child route component that the router renders
   },
  
   {
@@ -185,3 +201,16 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+export function getSettingsComponent(): Type<Component> {
+
+  if(ViewGuard.prototype.canActivate()){
+
+    return <Type<Component>>AdminSettingsComponent;
+
+  }else{
+
+    return <Type<Component>>SettingsComponent;
+
+  }
+}

@@ -1,0 +1,49 @@
+<div class="settings">
+  <div class="password-change">
+  <p class="title">Change password</p>
+  <div class="form">
+  <form #passwordForm="ngForm" (ngSubmit)="changePassword(passwordForm)">
+      <div>
+          <label for="password" class="sr-only">Password</label>
+          <input type="password" id="password" name="password" ngModel class="form-control" placeholder="New Password" required>
+          <div *ngIf="minimumCharacters" class="alert alert-danger">Minimum 5 characters!</div>
+          <div *ngIf="invalidPassword" class="alert alert-danger">Invalid password!</div>
+          <br/>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Change password</button>
+  
+      </div>
+  </form>
+  </div>
+</div>
+
+
+</div>
+<div class="streets">
+  <p class="title">Street priority</p>
+  <form [formGroup]="streetForm" (ngSubmit)="onSubmit()">
+
+      <label for="street-name">Select street: </label>
+      <select formControlName='streetName' id="inputState" class="form-control">
+          <option *ngFor="let opt of streets" [value]="opt.name">
+            {{opt.name}}
+          </option>
+        </select>
+    
+      <label for="last-name">Priority: </label>
+      <select formControlName='streetPriority' id="inputState" class="form-control">
+          <option *ngFor="let opt of priorities" [value]="opt">
+            {{opt}}
+          </option>
+        </select>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save changes</button>
+    
+    </form>
+
+</div>
+
+
+
+
+
+
+
