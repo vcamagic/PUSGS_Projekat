@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WEB2BEKEND.Data;
 using WEB2BEKEND.Models;
@@ -35,6 +36,22 @@ namespace WEB2BEKEND.Controllers
 
       var element1 = _context.Elements.FirstOrDefault(n => n.Id == id);
 
+      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      Notification notification = new Notification()
+      {
+        Type = "Warning",
+        Text = "Element modified!",
+        Status = "Unread",
+        TimeStamp = DateTime.Now.ToString(),
+        User = _context.Users.FirstOrDefault(u => u.Username == username),
+        Visible = true
+      };
+
+      _context.Notifications.Add(notification);
+
+      await _context.SaveChangesAsync();
+
+
       element1.InSafetyDocument = true;
 
       await _context.SaveChangesAsync();
@@ -52,7 +69,20 @@ namespace WEB2BEKEND.Controllers
 
       element1.InSafetyDocument = false;
 
+      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      Notification notification = new Notification()
+      {
+        Type = "Warning",
+        Text = "Element removed!",
+        Status = "Unread",
+        TimeStamp = DateTime.Now.ToString(),
+        User = _context.Users.FirstOrDefault(u => u.Username == username),
+        Visible = true
+      };
 
+      _context.Notifications.Add(notification);
+
+      await _context.SaveChangesAsync();
 
       await _context.SaveChangesAsync();
 

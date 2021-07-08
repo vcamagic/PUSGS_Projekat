@@ -57,6 +57,19 @@ namespace WEB2BEKEND.Controllers
           hm.NewStatus = worker.Status;
           _context.HistoryWP.Add(hm);
           await _context.SaveChangesAsync();
+
+
+          string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+          Notification notification = new Notification()
+          {
+            Type = "Info",
+            Text = "Work plan approved!",
+            Status = "Unread",
+            TimeStamp = DateTime.Now.ToString(),
+            User = _context.Users.FirstOrDefault(u => u.Username == username),
+            Visible = true
+          };
+
         }
 
       }
@@ -92,6 +105,18 @@ namespace WEB2BEKEND.Controllers
 
 
           await _context.SaveChangesAsync();
+
+
+          string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+          Notification notification = new Notification()
+          {
+            Type = "Info",
+            Text = "Work plan approved!",
+            Status = "Unread",
+            TimeStamp = DateTime.Now.ToString(),
+            User = _context.Users.FirstOrDefault(u => u.Username == username),
+            Visible = true
+          };
         }
 
       }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WEB2BEKEND.Data;
 using WEB2BEKEND.Models;
+using System.Security.Claims;
 
 namespace WEB2BEKEND.Controllers
 {
@@ -56,6 +57,18 @@ namespace WEB2BEKEND.Controllers
           hm.NewStatus = worker.Status;
           _context.History.Add(hm);
           await _context.SaveChangesAsync();
+
+          string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+          Notification notification = new Notification()
+          {
+            Type = "Info",
+            Text = "Work Request approved!",
+            Status = "Unread",
+            TimeStamp = DateTime.Now.ToString(),
+            User = _context.Users.FirstOrDefault(u => u.Username == username),
+            Visible = true
+          };
+
         }
             
         }
@@ -89,7 +102,22 @@ namespace WEB2BEKEND.Controllers
           hm.NewStatus = worker.Status;
           _context.History.Add(hm);
 
-         
+          string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+          Notification notification = new Notification()
+          {
+            Type = "Info",
+            Text = "Work Request cancel!",
+            Status = "Unread",
+            TimeStamp = DateTime.Now.ToString(),
+            User = _context.Users.FirstOrDefault(u => u.Username == username),
+            Visible = true
+          };
+
+          _context.Notifications.Add(notification);
+
+          await _context.SaveChangesAsync();
+
+
           await _context.SaveChangesAsync();
         }
 
@@ -125,6 +153,21 @@ namespace WEB2BEKEND.Controllers
 
 
       };
+
+      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      Notification notification = new Notification()
+      {
+        Type = "Success",
+        Text = "Work Request added!",
+        Status = "Unread",
+        TimeStamp = DateTime.Now.ToString(),
+        User = _context.Users.FirstOrDefault(u => u.Username == username),
+        Visible = true
+      };
+
+      _context.Notifications.Add(notification);
+
+      await _context.SaveChangesAsync();
 
 
 
