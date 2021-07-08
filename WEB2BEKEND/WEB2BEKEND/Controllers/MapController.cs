@@ -21,36 +21,29 @@ namespace WEB2BEKEND.Controllers
       _context = context;
     }
 
+    /*[HttpGet]
+    public async Task<ActionResult<IEnumerable<MapModel>>> GetMap()
+    {
+      return await _context.Maps.ToListAsync();
+
+    }*/
+
     [HttpGet]
     [Route("GetMap")]
     public ActionResult<IEnumerable<MapModel>> GetMap()
     {
-      MapModel mapModel = new MapModel();
-
-      List<MapModel> maps = new List<MapModel>();
-       foreach(Incident inc in _context.Incidents.ToList())
-       {
-        mapModel.Id = Guid.NewGuid().ToString();
-        mapModel.IncidentId = inc.Id;
-
-        foreach (Crew c in _context.CrewRequests.ToList())
-        {
-          mapModel.CrewName = c.Name;
-        }
-
-        foreach (Element e in _context.Elements.ToList())
-        {
-          if(e.Id == inc.Id)
-          {
-            mapModel.X = e.CoordinateX;
-            mapModel.Y = e.CoordinateY;
-            _context.Maps.Add(mapModel);
-            maps.Add(mapModel);
-          }
-        }
+      List<MapModel> temp = new List<MapModel>();
+      List<MapModel> temp2 = new List<MapModel>();
+      MapModel mm = new MapModel();
+      foreach (var item in _context.Maps)
+      {
+          
+          
+          temp.Add(item);
         
-       }
-      return maps;
+      }
+      var bar = temp.GroupBy(x => x.X).Select(x => x.First()).ToList();
+      return bar;
     }
   }
 }

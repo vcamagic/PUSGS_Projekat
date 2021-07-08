@@ -24,6 +24,7 @@ export class CrewComponent implements OnInit {
     this.userService.getTeamMembers().subscribe(data => this.memberCrewUsers = data);
     console.log(this.memberCrewUsers.length);
     this.crewService.loadlCrew().subscribe(data => this.allCrews = data);
+    console.log("broj crewa- " + this.allCrews.length);
    }
 
   ngOnInit() {

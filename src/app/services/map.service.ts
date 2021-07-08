@@ -16,9 +16,15 @@ export class MapService {
 
 constructor(private http : HttpClient,public router: Router) { }
 
+/*readonly workRequestUrl = 'https://localhost:44396/api/Map';
+getAllMaps(): Observable<Map[]>{
+ 
+  return this.http.get<Map[]>(this.workRequestUrl);
+}*/
 
-loadMapModels(): Observable<Map[]>{
-  return this.http.get<Map[]>("https://localhost:44396/api/Map/GetMap")
+loadMap(): Observable<Map[]>{
+  
+  return this.http.get<Map[]>("https://localhost:44396/api/Map/GetMap");
 }
 
 
