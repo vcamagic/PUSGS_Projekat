@@ -23,9 +23,13 @@ namespace WEB2BEKEND.Controllers
       _context = context;
     }
 
-    [HttpGet,Authorize(Roles ="Admin, Worker, Team member")]
+    [HttpGet/*,Authorize(Roles ="Admin, Worker, Team member")*/]
     public async Task<ActionResult<IEnumerable<Incident>>> GetIncidents()
     {
+      _context.Incidents.Include(item => item.Elements).ToList();
+      _context.Incidents.Include(item => item.Crew).ToList();
+      _context.Incidents.Include(item => item.Call).ToList();
+      _context.Incidents.Include(item => item.Resolutions).ToList();
       return await _context.Incidents.ToListAsync();
 
     }
