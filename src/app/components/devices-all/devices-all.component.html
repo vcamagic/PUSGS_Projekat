@@ -18,16 +18,16 @@
               <table id="devicesTable" class="table table-hover" maxWidth="500" mdbTableScroll [scrollX]='true' >
                   <thead>
                       <tr>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[0]">Id</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[1]">Type</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[2]">Name</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[3]">Address</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[4]">X</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[5]">Y</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[0]">Id</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[1]">Type</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[2]">Name</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[3]">Address</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[4]">X</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[5]">Y</th>
                       </tr>
                       </thead>
                       <tbody>
-                        <tr mdbTableCol *ngFor="let elem of incidentService.incident.elements | slice: (page - 1) * pageSize : page * pageSize ">
+                        <tr mdbTableCol *ngFor="let elem of IncEles | slice: (page - 1) * pageSize : page * pageSize ">
                           <td >{{elem.id}}</td>
                           <td >{{elem.type}}</td>
                           <td>{{elem.name}}</td>
@@ -40,7 +40,7 @@
                         <ngb-pagination
                         [(page)]="page"
                         [pageSize] = "pageSize"
-                        [collectionSize]="incidentService.incident.elements.length"
+                        [collectionSize]="IncEles.length"
                       ></ngb-pagination>
                       </tfoot>
               </table>
