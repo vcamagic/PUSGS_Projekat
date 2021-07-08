@@ -8,6 +8,7 @@ import {Element} from '../entities/element/element'
 import { Resolution } from '../entities/resolution';
 import { Call } from '../entities/call/call';
 import { Crew } from '../entities/crew';
+import { MultimediaIncident } from '../entities/multimedia-incident';
 
 
 
@@ -54,6 +55,10 @@ export class IncidentsService {
 
   putCrewInIncident(crew: Crew){
     return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Crew`,crew);
+  }
+
+  putMultimediaInIncident(multimedia: MultimediaIncident){
+    return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Multimedia`,multimedia)
   }
 
 

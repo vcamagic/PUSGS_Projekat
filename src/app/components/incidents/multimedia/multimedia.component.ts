@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Multimedia } from 'src/app/entities/multimedia';
+import { MultimediaIncident } from 'src/app/entities/multimedia-incident';
+import { IncidentsService } from 'src/app/services/incidents.service';
+
 
 @Component({
   selector: 'app-multimedia',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MultimediaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public incidentService: IncidentsService) { }
 
   ngOnInit(): void {
+  }
+
+  files: File[] = [];
+
+  onSelect(event : any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  upload(){
+      for(var item of this.files){
+        var reader = new FileReader();
+        reader.readAsDataURL(item);
+        reader.onload = (event : any)=>{
+          let url = event.target.result;
+          let multimedia = new MultimediaIncident();
+          multimedia.url = url;
+          const formData = new FormData();
+          formData.append('file',item,item.name);
+          this.incidentService.putMultimediaInIncident(multimedia).subscribe(res=>{
+            multimedia = res as Multimedia;
+            this.incidentService.incident.multimedia.push(multimedia);
+          });
+        }
+      }
+      this.files.splice(0,this.files.length);
   }
 
 }

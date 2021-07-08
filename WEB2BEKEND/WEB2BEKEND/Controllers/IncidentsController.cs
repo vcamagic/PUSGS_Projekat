@@ -30,6 +30,7 @@ namespace WEB2BEKEND.Controllers
       _context.Incidents.Include(item => item.Crew).ToList();
       _context.Incidents.Include(item => item.Call).ToList();
       _context.Incidents.Include(item => item.Resolutions).ToList();
+      _context.Incidents.Include(item => item.Multimedia).ToList();
       return await _context.Incidents.ToListAsync();
 
     }
@@ -139,6 +140,23 @@ namespace WEB2BEKEND.Controllers
       await _context.SaveChangesAsync();
       return NoContent();
 
+    }
+
+    [HttpPost("{id}/Multimedia")]
+    public async Task<ActionResult<Multimedia>> PostMultimediaInIncident(int id,Multimedia multimedia)
+    {
+      _context.Incidents.Include(item => item.Multimedia).ToList();
+
+      var incident = await _context.Incidents.FindAsync(id);
+      if (incident == null)
+      {
+        return NotFound();
+      }
+
+      multimedia.Id = 0;
+      incident.Multimedia.Add(multimedia);
+      await _context.SaveChangesAsync();
+      return multimedia;
     }
 
 

@@ -82,6 +82,7 @@ import { ConsumersComponent } from './components/consumers/consumers/consumers.c
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { NgxDropzoneModule } from 'ngx-dropzone'
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -132,8 +133,7 @@ export function tokenGetter(){
     ConsumersComponent,
     ModifyConsumerComponent,
     NewConsumerComponent,
-    SettingsComponent,
-
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -147,6 +147,7 @@ export function tokenGetter(){
     HttpClientModule,
     NgbModule,
     NgMultiSelectDropDownModule,
+    NgxDropzoneModule,
     NgSelectModule,
     JwtModule.forRoot({
       config: {
@@ -175,6 +176,7 @@ export function tokenGetter(){
     MatSortModule,
     MatCheckboxModule,
     MatSlideToggleModule
+
   ],
   providers: [AuthGuard,
     DatePipe,
