@@ -90,7 +90,17 @@ export class UserService {
         this.currentUser=res as User;
         console.log(this.currentUser.email + "kdoaskd");
       })
-      this.router.navigate(["/incidents"])
+      
+      if(type == 'Admin')
+      
+      {
+        this.router.navigate(["/verify"])
+      }
+      else
+      {
+        this.router.navigate(["/incidents"])
+
+      }
     },
     err => {
       console.log(err);
@@ -136,8 +146,20 @@ export class UserService {
       return false;
     }
   }
-
+  isUserAdmin():boolean
+{
+  const type = localStorage.getItem("type");
+  if(type == "Admin")
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
+}
+
 export interface IUser{
     username : string;
     firstName : string;
