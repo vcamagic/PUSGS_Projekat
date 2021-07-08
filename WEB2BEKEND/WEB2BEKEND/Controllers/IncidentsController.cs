@@ -31,6 +31,7 @@ namespace WEB2BEKEND.Controllers
       _context.Incidents.Include(item => item.Call).ToList();
       _context.Incidents.Include(item => item.Resolutions).ToList();
       _context.Incidents.Include(item => item.Multimedia).ToList();
+      Mapa();
       return await _context.Incidents.ToListAsync();
 
     }
@@ -159,7 +160,35 @@ namespace WEB2BEKEND.Controllers
       return multimedia;
     }
 
+    public void Mapa()
+    {
+      List<MapModel> temp = new List<MapModel>();
+      List<MapModel> temp2 = new List<MapModel>();
 
+      MapModel mm = new MapModel();
+
+
+
+      foreach (var item in _context.Maps)
+      {
+        temp.Add(item);
+      }
+
+      foreach (var inc in _context.Incidents)
+      {
+        mm.CrewName = inc.Crew.Name;
+        mm.Id = Guid.NewGuid().ToString();
+        mm.IncidentId = inc.Id;
+        mm.X = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateX;
+        mm.Y = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateY;
+
+        if (mm.X.Length > 0 && mm.Y.Length > 0)
+        {
+          temp.Add(mm);
+          _context.Add(mm);
+        }
+      }
+    }
 
   }
 }

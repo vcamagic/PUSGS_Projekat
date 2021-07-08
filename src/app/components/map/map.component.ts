@@ -59,7 +59,7 @@ export class MapComponent implements OnInit {
         this.y = parseFloat(element.y);
         
         L.marker([ this.x, this.y], {icon:crew}).addTo(this.map).bindPopup("Name of crew: " + element.crewName + ", Id: " + element.id);
-        L.marker([ this.x + 0.1, this.y + 0.1], {icon:incident}).addTo(this.map).bindPopup("Incident id: " + element.incidentId ); 
+        L.marker([ this.x + 0.01, this.y + 0.01], {icon:incident}).addTo(this.map).bindPopup("Incident id: " + element.incidentId ); 
         });
    
         

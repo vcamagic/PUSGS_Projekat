@@ -82,7 +82,7 @@ import { ConsumersComponent } from './components/consumers/consumers/consumers.c
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { NgxDropzoneModule } from 'ngx-dropzone'
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 
 export function tokenGetter(){
@@ -150,7 +150,6 @@ export function tokenGetter(){
     HttpClientModule,
     NgbModule,
     NgMultiSelectDropDownModule,
-    NgxDropzoneModule,
     NgSelectModule,
     JwtModule.forRoot({
       config: {
@@ -178,7 +177,8 @@ export function tokenGetter(){
     MatDatepickerModule,
     MatSortModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgxDropzoneModule
 
   ],
   providers: [AuthGuard,

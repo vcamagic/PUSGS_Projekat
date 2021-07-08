@@ -34,16 +34,15 @@ namespace WEB2BEKEND.Controllers
     {
       List<MapModel> temp = new List<MapModel>();
       List<MapModel> temp2 = new List<MapModel>();
-      MapModel mm = new MapModel();
+
       foreach (var item in _context.Maps)
       {
-          
-          
-          temp.Add(item);
-        
+        temp.Add(item);
       }
-      var bar = temp.GroupBy(x => x.X).Select(x => x.First()).ToList();
-      return bar;
+
+      temp2 = temp.GroupBy(x => x.X).Select(x => x.First()).ToList();
+
+      return temp2;
     }
   }
 }
