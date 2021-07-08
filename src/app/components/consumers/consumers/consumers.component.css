@@ -11,3 +11,8 @@
     display: flex;
     justify-content: center;
 }
+
+.btn-primary button{
+    background-color: aquamarine;
+    size: 5cm;
+}
