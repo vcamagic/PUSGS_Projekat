@@ -82,6 +82,7 @@ import { ConsumersComponent } from './components/consumers/consumers/consumers.c
 import { ModifyConsumerComponent } from './components/consumers/modify-consumer/modify-consumer.component';
 import { NewConsumerComponent } from './components/consumers/new-consumer/new-consumer.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -133,6 +134,7 @@ export function tokenGetter(){
     ModifyConsumerComponent,
     NewConsumerComponent,
     SettingsComponent,
+    AdminSettingsComponent,
 
   ],
   imports: [

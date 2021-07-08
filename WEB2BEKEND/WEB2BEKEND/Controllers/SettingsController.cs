@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ namespace WEB2BEKEND.Controllers
 
     [HttpPut]
     [Route("ChangePriority")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Street>> ChangePriority(Street cp)
     {
       var street1 = new Street();
@@ -102,6 +104,7 @@ namespace WEB2BEKEND.Controllers
 
     [HttpPut]
     [Route("ResetSettings")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Street>> ResetSettings()
     {
       var street1 = new Street();
@@ -158,7 +161,7 @@ namespace WEB2BEKEND.Controllers
 
     [HttpPut]
     [Route("VisibleNotifications")]
-
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<string>> VisibleNotifications([FromBody] string[] str)
     {
 
