@@ -112,8 +112,10 @@ const routes: Routes = [
         canActivate: [AuthGuard]
   },
   {
+    
     path:"verify",
-    component: VerificationUserComponent
+    component: VerificationUserComponent,
+    canActivate: [ViewGuard]
   },
 
 

@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
     console.log(type);
 
       if(type === 'Admin'){
+        
         this.admin = true;
       }else{
       this.admin = false;
