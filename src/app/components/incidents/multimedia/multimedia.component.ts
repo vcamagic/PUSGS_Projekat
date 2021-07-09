@@ -1,4 +1,6 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Multimedia } from 'src/app/entities/multimedia';
 import { MultimediaIncident } from 'src/app/entities/multimedia-incident';
 import { IncidentsService } from 'src/app/services/incidents.service';
@@ -11,10 +13,11 @@ import { IncidentsService } from 'src/app/services/incidents.service';
 })
 export class MultimediaComponent implements OnInit {
 
-  constructor(public incidentService: IncidentsService) { }
+  constructor(public incidentService: IncidentsService,private router: Router) { }
 
   ngOnInit(): void {
   }
+  @Output() pressedButton = new  EventEmitter<string>();
 
   files: File[] = [];
 
@@ -45,6 +48,10 @@ export class MultimediaComponent implements OnInit {
         }
       }
       this.files.splice(0,this.files.length);
+  }
+
+  next(){
+    this.router.navigate(["incidents"]);
   }
 
 }

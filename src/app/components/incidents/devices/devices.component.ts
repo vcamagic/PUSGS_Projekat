@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ElementsService } from 'src/app/services/elements.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
@@ -18,6 +18,7 @@ export class DevicesComponent implements OnInit {
 
   page = 10;
   pageSize = 3;
+  @Output() pressedButton = new  EventEmitter<string>();
 
   ngOnInit(): void {
     this.getElements();
@@ -67,6 +68,10 @@ export class DevicesComponent implements OnInit {
     },err=>{
         console.log(err);
     })
+  }
+
+  next(){
+    this.pressedButton.emit('Resolution');
   }
 
 }

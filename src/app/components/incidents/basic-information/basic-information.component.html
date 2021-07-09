@@ -1,3 +1,4 @@
+<h4 class="text-center">Basic Information</h4>
 <div class="container-fluid">
     <form [formGroup]="incidentForm" (ngSubmit)="save()">
         <div class="row">
@@ -34,19 +35,19 @@
                 <div class="form-group">
                     <label>ETA</label>
                         <input class="form-control" name="eta"  type="date"  formControlName="eta"
-                        required  id="eta">
+                          id="eta">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ATA</label>
                         <input class="form-control" name="ata" type="date" formControlName="ata"
-                        required >
+                         >
                 </div>
                 <div class="form-group">
                     <label>Affected Customers</label>
                     <input name="affectedConsumers" class="form-control" type="number" readonly formControlName="affectedConsumers" id="affectedConsumers"
-                    required placeholder="Number" value=0>
+                     placeholder="Number" value=0>
                 </div>
                 <div class="form-group">
                     <label>Incident Time</label>
@@ -57,30 +58,30 @@
                     <label>ETR</label>
                         <input class="form-control" type="date"
                         name="etr" formControlName="etr" id="etr"
-                        required>
+                        >
                 </div>
                 <div class="form-group">
                     <label>Number Of Calls</label>
                     <input placeholder="Calls" type="number"
                     name="calls" readonly class="form-control" value=0 formControlName="calls" id="calls"
-                    required value="0">
+                     value="0">
                 </div>
                 <div class="form-group">
                     <label>Voltage</label>
                     <input  placeholder="Voltage..." type="number"
                     name="voltage" class="form-control" formControlName="voltage" id="voltage"
-                    required>
+                    >
                 </div>
                 <div class="form-group">
                     <label>Work Beginning</label>
                         <input class="form-control" type="date"
                         name="shedule" formControlName="sheduledTime" id="shedule"
-                        required>
+                        >
                 </div>
             </div>
         </div>
         <hr>
            <button  class="btn btn-class ml-auto" routerLink="/incidents">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
-            <button class="btn btn-class" type="submit">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <button class="btn btn-class" [disabled]="!incidentForm.valid" type="submit">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
     </form>
 </div>

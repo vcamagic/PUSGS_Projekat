@@ -74,6 +74,23 @@ namespace WEB2BEKEND.Controllers
       element.Id = 0;
       incident.Elements.Add(element);
       incident.Address = element.Address;
+      var street = await _context.Streets.FindAsync(incident.Address);
+      incident.Priority = street.cPriority;
+      incident.AffectedConsumers = 0;
+      List<User> u = _context.Users.ToList();
+      foreach(User user in u)
+      {
+        if (user.Address == incident.Address)
+          incident.AffectedConsumers++;
+      }
+
+      incident.Calls = 0;
+      List<Call> c = _context.Calls.ToList();
+      foreach (Call call in c)
+      {
+        if (call.Address == incident.Address)
+          incident.Calls++;
+      }
       await _context.SaveChangesAsync();
       return NoContent();
     }

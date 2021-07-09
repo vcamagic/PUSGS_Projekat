@@ -21,6 +21,7 @@ export class CallsComponent implements OnInit {
   headElements = ['id', 'reason', 'hazard', 'comment','address'];
   call : Call = new Call ("","","","","","");
   currentIncCalls : Call[] = [];
+  @Output() pressedButton = new  EventEmitter<string>();
 
   reportForm : FormGroup;
 
@@ -79,4 +80,7 @@ export class CallsComponent implements OnInit {
     });
   }
 
+  next(){
+    this.pressedButton.emit('Crew');
+  }
 }

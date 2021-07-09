@@ -15,21 +15,22 @@ export class BasicInformationComponent implements OnInit {
   isChecked= false;
   incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
   incidentForm : FormGroup;
+  @Output() pressedButton = new  EventEmitter<string>();
 
   constructor(public service: IncidentsService,private userService: UserService) {
     this.incidentForm = new FormGroup({
       "type" : new FormControl("",[Validators.required]),
-      "priority" : new FormControl(),
+      "priority" : new FormControl(""),
       "address" : new FormControl(),
-      "status" : new FormControl(),
-      "eta" : new FormControl(),
-      "ata" : new FormControl(),
-      "timeOfIncident" : new FormControl(),
-      "etr" : new FormControl(),
-      "calls" : new FormControl(),
-      "voltage" : new FormControl(),
-      "affectedConsumers" :  new FormControl(),
-      "sheduledTime" :  new FormControl()
+      "status" : new FormControl("",[Validators.required]),
+      "eta" : new FormControl("",[Validators.required]),
+      "ata" : new FormControl("",[Validators.required]),
+      "timeOfIncident" : new FormControl("",[Validators.required]),
+      "etr" : new FormControl("",[Validators.required]),
+      "calls" : new FormControl(""),
+      "voltage" : new FormControl("",[Validators.required]),
+      "affectedConsumers" :  new FormControl(""),
+      "sheduledTime" :  new FormControl("",[Validators.required])
     })
    }
 
@@ -43,6 +44,11 @@ export class BasicInformationComponent implements OnInit {
     0,this.incidentForm.controls["voltage"].value,0,this.incidentForm.controls["sheduledTime"].value);
     this.incident.creator = this.userService.currentUser.email;
     this.service.AddIncident(this.incident);
+    this.next();
+  }
+
+  next(){
+    this.pressedButton.emit('Devices');
   }
 
 }

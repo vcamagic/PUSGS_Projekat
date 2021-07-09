@@ -22,6 +22,7 @@ export class IncidentsComponent implements OnInit{
 
   headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedCustomers', 'callsNum', 'voltage'];
 
+
   constructor(public incidentsService: IncidentsService,private cdref: ChangeDetectorRef) {
 
   }

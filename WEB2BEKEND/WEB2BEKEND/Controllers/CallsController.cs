@@ -64,6 +64,8 @@ namespace WEB2BEKEND.Controllers
 
       await _context.SaveChangesAsync();
 
+      var street = await _context.Streets.FindAsync(call.Address);
+      call.Priority = street.cPriority;
       _context.Calls.Add(call);
       await _context.SaveChangesAsync();
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Crew } from 'src/app/entities/crew';
 import { CrewService } from 'src/app/services/crew.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
@@ -16,6 +16,7 @@ export class IncidentCrewComponent implements OnInit {
   pageSize = 3;
   headElements = ['id', 'name', 'crewMembers'];
   showBtn : boolean = true;
+  @Output() pressedButton = new  EventEmitter<string>();
 
   constructor(private crewService: CrewService,public incidentService: IncidentsService) { }
 
@@ -38,6 +39,10 @@ export class IncidentCrewComponent implements OnInit {
       console.log(err);
     });
 
+  }
+
+  next(){
+    this.pressedButton.emit('Multimedia');
   }
 
 }

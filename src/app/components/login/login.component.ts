@@ -8,6 +8,8 @@ import {CallsService} from 'src/app/services/calls.service';
 import { threadId } from 'node:worker_threads';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Call } from 'src/app/entities/call/call';
+import { SettingsService } from 'src/app/services/settings.service';
+import { Street } from 'src/app/entities/street';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +23,10 @@ export class LoginComponent implements OnInit {
   loginForm? : FormGroup;
 
   reportForm : FormGroup;
+  streets : Street[] = [];
+  address : string ="";
 
-
-
-  constructor(private router: Router,  private modalService: NgbModal,public userService : UserService,private callservice: CallsService) {
+  constructor(private router: Router,  private modalService: NgbModal,public userService : UserService,private callservice: CallsService,private settingsService: SettingsService) {
     /*this.loginForm = new FormGroup({
       'email': new FormControl("",Validators.email),
       'password': new FormControl("",[Validators.required,Validators.minLength(5)])
@@ -33,12 +35,13 @@ export class LoginComponent implements OnInit {
       'reason': new FormControl(),
       'comment': new FormControl(),
       'hazard': new FormControl(),
-      'address': new FormControl()
+      'address' : new FormControl()
     });
   }
 
   ngOnInit(): void {
     this.getUsers();
+    this.getStreets();
   }
 
 
@@ -72,5 +75,14 @@ export class LoginComponent implements OnInit {
   report(){
     this.call = new Call(this.reportForm.controls["reason"].value,this.reportForm.controls["hazard"].value,this.reportForm.controls["comment"].value,"","",this.reportForm.controls["address"].value);
     this.callservice.postData(this.call);
+    this.modalService.dismissAll('Cross click');
+  }
+
+  getStreets(){
+    this.settingsService.loadStreets().subscribe(res=>{
+        this.streets=res as Street[];
+    },err=>{
+      console.log();
+    })
   }
 }

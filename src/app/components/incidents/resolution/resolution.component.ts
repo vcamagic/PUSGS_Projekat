@@ -1,4 +1,4 @@
-import { Component, OnInit , ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit , ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Resolution } from 'src/app/entities/resolution';
@@ -15,7 +15,7 @@ export class ResolutionComponent implements OnInit {
   resolutin : Resolution = new Resolution("","","","");
   page = 10;
   pageSize = 3;
-
+  @Output() pressedButton = new  EventEmitter<string>();
   resForm : FormGroup;
 
   constructor(private modalService : NgbModal,public incidentService: IncidentsService,private cdref: ChangeDetectorRef) {
@@ -51,6 +51,10 @@ export class ResolutionComponent implements OnInit {
       })
 
       this.incidentService.incident.resolutions.push(this.resolutin);
+  }
+
+  next(){
+    this.pressedButton.emit('Calls');
   }
 
 }
