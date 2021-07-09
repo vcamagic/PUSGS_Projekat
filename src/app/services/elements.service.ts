@@ -12,11 +12,13 @@ import { Element } from 'src/app/entities/element/element';
 export class ElementsService {
 
   list : Element[]= []
+  formData : Element = new Element(0,"","","","","",false);
 
   constructor(private http: HttpClient) {
 
   }
 
+  readonly baseUrl = "https://localhost:44396/api/Elements";
 
   loadElements(): Observable<IElement[]>{
     return this.http.get<IElement[]>("https://localhost:44396/api/Elements");
@@ -65,6 +67,18 @@ export class ElementsService {
 
   saveElement(element: Element) {
     return this.http.post<Element>("https://localhost:44396/api/Elements/SaveElement", element); //httpoptions .pipe catch error..
+  }
+
+  postElement(){
+    return this.http.post<Element>("https://localhost:44396/api/Elements/PostElement", this.formData);
+  }
+
+  deleteElement(id : number){
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  putElement(){
+    return this.http.put(`${this.baseUrl}/${this.formData.id}`,this.formData);
   }
 
 

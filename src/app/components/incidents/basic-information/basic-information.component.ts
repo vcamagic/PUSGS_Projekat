@@ -29,7 +29,7 @@ export class BasicInformationComponent implements OnInit {
       "calls" : new FormControl(),
       "voltage" : new FormControl(),
       "affectedConsumers" :  new FormControl(),
-      "sheduledTime" :  new FormControl(),
+      "sheduledTime" :  new FormControl()
     })
    }
 
@@ -37,12 +37,11 @@ export class BasicInformationComponent implements OnInit {
   }
 
   save(){
-    this.incident = new Incident(this.incidentForm.controls["type"].value,this.incidentForm.controls["priority"].value,this.incidentForm.controls["address"].value,
+    this.incident = new Incident(this.incidentForm.controls["type"].value,0,"",
     this.isChecked,this.incidentForm.controls["status"].value,this.incidentForm.controls["eta"].value,
     this.incidentForm.controls["ata"].value,this.incidentForm.controls["timeOfIncident"].value,this.incidentForm.controls["etr"].value,
-    this.incidentForm.controls["calls"].value,this.incidentForm.controls["voltage"].value,this.incidentForm.controls["affectedConsumers"].value,this.incidentForm.controls["sheduledTime"].value);
+    0,this.incidentForm.controls["voltage"].value,0,this.incidentForm.controls["sheduledTime"].value);
     this.incident.creator = this.userService.currentUser.email;
-    console.log(this.incident);
     this.service.AddIncident(this.incident);
   }
 

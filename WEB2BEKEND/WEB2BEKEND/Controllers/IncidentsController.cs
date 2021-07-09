@@ -73,6 +73,7 @@ namespace WEB2BEKEND.Controllers
       }
       element.Id = 0;
       incident.Elements.Add(element);
+      incident.Address = element.Address;
       await _context.SaveChangesAsync();
       return NoContent();
     }
@@ -162,6 +163,7 @@ namespace WEB2BEKEND.Controllers
 
     public void Mapa()
     {
+      _context.Incidents.Include(item => item.Elements).ToList();
       List<MapModel> temp = new List<MapModel>();
       List<MapModel> temp2 = new List<MapModel>();
 
@@ -174,13 +176,13 @@ namespace WEB2BEKEND.Controllers
         temp.Add(item);
       }
 
-      foreach (var inc in _context.Incidents)
+      foreach (var inc in _context.Incidents.Include(x=>x.Elements))
       {
         mm.CrewName = inc.Crew.Name;
         mm.Id = Guid.NewGuid().ToString();
         mm.IncidentId = inc.Id;
-        mm.X = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateX;
-        mm.Y = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateY;
+        mm.X = inc.Elements.FirstOrDefault(x => x.Address == inc.Address).CoordinateX;
+        mm.Y = inc.Elements.FirstOrDefault(x => x.Address == inc.Address).CoordinateY;
 
         if (mm.X.Length > 0 && mm.Y.Length > 0)
         {

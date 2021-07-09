@@ -2,15 +2,21 @@
   <div class="row content">
     <div class="col">
       <div class="row">
-        <input placeholder="Id" class="form-control col-md-2" type="text">
-        <input placeholder="Type" type="text" class="form-control col-md-2">
-        <input  placeholder="Name" type="text" class="form-control col-md-2">
-        <input  placeholder="Address" type="text" class="form-control col-md-2">
-        <button  class="btn btn-class col-md-1">Search</button>
-        <button  class="btn btn-class col-md-1">Reload</button>
+        <input placeholder="Id" class="form-control col-md-2" #id="ngModel" name="id" [(ngModel)]="idSearch" type="text">
+        <select placeholder="Type" name="type" #type="ngModel" [(ngModel)]="typeSearch"  class="form-control col-md-2">
+          <option disabled selected value="" hidden>Type</option>
+          <option value="Switch">Switch</option>
+          <option value="Fuse">Fuse</option>
+          <option value="Transformer">Transformer</option>
+          <option value="Disconnector">Disconnector</option>
+        </select>
+        <input  placeholder="Name" name="name" #name="ngModel" [(ngModel)]="nameSearch" type="text" class="form-control col-md-2">
+        <input  placeholder="Address" name="address" #address="ngModel" [(ngModel)]="addressSearch" type="text" class="form-control col-md-2">
+        <button  class="btn btn-class col-md-1" (click)="search()"><i class="fa fa-search">&nbsp;Search</i></button>
+        <button  class="btn btn-class col-md-1" (click)="reset()"><i class="fa fa-circle-o-notch">&nbsp;Reload</i></button>
       </div>
       <div class="row">
-        <button class="btn btn-class col-md-1">New</button>
+        <button class="btn btn-class col-md-1" (click)="open1(content)"><i class="fa fa-plus">&nbsp; New</i></button>
       </div>
       <div class="row">
         <div class="row mt-2">
@@ -18,12 +24,13 @@
               <table id="devicesTable" class="table table-hover" maxWidth="1000" mdbTableScroll [scrollX]='true' >
                   <thead>
                       <tr>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[0]">Id</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[1]">Type</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[2]">Name</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[3]">Address</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[4]">X</th>
-                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[5]">Y</th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[1]">Type<i class="fa fa-sort"></i></th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[2]">Name<i class="fa fa-sort"></i></th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[3]">Address<i class="fa fa-sort"></i></th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[4]">X<i class="fa fa-sort"></i></th>
+                          <th scope="col" aria-controls="devicesTable" [mdbTableSort]="IncEles" [sortBy]="headElements[5]">Y<i class="fa fa-sort"></i></th>
+                          <th>&nbsp;</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -34,6 +41,10 @@
                           <td >{{elem.address}}</td>
                           <td >{{elem.coordinateX}}</td>
                           <td >{{elem.coordinateY}}</td>
+                          <td>
+                            <a style="width: 45%;" class="btn btn-danger" (click)=(delete(elem.id))><i class="fa fa-trash fa-lg"></i></a>&nbsp;
+                            <a style="width: 45%;" class="btn btn-danger" (click)=(open(content,elem))><i class="fa fa-edit fa-lg"></i></a>
+                          </td>
                       </tr>
                       </tbody>
                       <tfoot>
@@ -50,3 +61,42 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Element</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form = "ngForm">
+      <div class="form-group">
+        <label>TYPE</label>
+        <select required name="type" #type="ngModel" [(ngModel)]="elementsService.formData.type" class="form-control">
+          <option value="Switch">Switch</option>
+          <option value="Fuse">Fuse</option>
+          <option value="Transformer">Transformer</option>
+          <option value="Disconnector">Disconnector</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>ADDRESS</label>
+        <select required class="form-control" name="address" #address="ngModel" [(ngModel)]="elementsService.formData.address">
+          <option *ngFor="let item of  streets" [ngValue]="item.name">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>X</label>
+        <input required type="text" class="form-control" name="x" #x="ngModel" [(ngModel)]="elementsService.formData.coordinateX" placeholder="Coor X">
+      </div>
+      <div class="form-group">
+        <label>Y</label>
+        <input required type="text" class="form-control" name="Y" #x="ngModel" [(ngModel)]="elementsService.formData.coordinateY" placeholder="Coor Y">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="form.invalid" type="button" class="btn btn-danger btn-lg" (click)="save()">Save</button>
+  </div>
+</ng-template>
