@@ -47,7 +47,7 @@ export class BasicInfoWrComponent implements OnInit {
     this.workRequest = this.basicInfoForm.value;
     //this._workService.emitChange(this.toNavbar);
     this._workService.saveWorkRequest(this.workRequest)
-    this.router.navigate(['/workrequests/new']);
+    this.router.navigate(['/workrequests']);
   }
 
 }

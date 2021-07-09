@@ -18,7 +18,7 @@ export class IncidentsComponent implements OnInit{
 
   incidents : Incident[] = [];
   page = 10;
-  pageSize = 3;
+  pageSize = 2;
 
   headElements = ['id', 'startDate', 'phoneNo', 'address', 'status', 'type', 'priority', 'confirmed', 'eta', 'ata', 'etr', 'affectedCustomers', 'callsNum', 'voltage'];
 

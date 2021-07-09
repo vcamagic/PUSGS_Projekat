@@ -378,8 +378,8 @@ namespace WEB2BEKEND.Controllers
         MailMessage msgObj = new MailMessage();
         msgObj.To.Add(email);
         msgObj.From = new MailAddress("admirpusgs@gmail.com");
-        msgObj.Subject = "Account Verification";
-        msgObj.Body = "Your account has been " + msg.ToUpper();
+        msgObj.Subject = "Registration acceptance";
+        msgObj.Body = "Your request for registration  has been " + msg;
         client.Send(msgObj);
 
       }

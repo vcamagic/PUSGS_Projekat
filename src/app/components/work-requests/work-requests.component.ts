@@ -15,12 +15,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./work-requests.component.css']
 })
 export class WorkRequestsComponent implements OnInit {
-  page = 1;
-  pageSize = 4;
+  page = 10;
+  pageSize = 3;
+  username! : string;
   id!:string;
   collectionSize = 0;
   workRequests : WorkRequest[] = [];
-  displayedColumns = ['id', 'name','startdate','phonenumber','status','address'];
+  mineWorkRequests : WorkRequest[] = [];
+  displayedColumns = ['startDate', 'phoneNum','status','street','endDate','createdByUser'];
  
   
   constructor(public workRequestService: WorkRequestsService,private router: Router) {
@@ -48,5 +50,23 @@ export class WorkRequestsComponent implements OnInit {
   {
     this.workRequestService.Cancel(IdWr);
     this.router.navigate(['/workrequests/new']);
+  }
+  allWR()
+  {
+    this.getAll();
+  }
+  mineWR()
+  {
+    this.mineWorkRequests.length = 0;
+    this.username = localStorage.getItem('username')!;
+    this.workRequests.forEach(element=>{
+      if(element.createdByUser == this.username )
+      {
+        this.mineWorkRequests.push(element);
+      }
+    })
+    this.workRequests = this.mineWorkRequests;
+    
+    this.router.navigate(['/workrequests']);
   }
 }
