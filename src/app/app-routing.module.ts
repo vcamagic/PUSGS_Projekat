@@ -35,7 +35,7 @@ import { AdminSettingsComponent } from './components/admin-settings/admin-settin
 import { Component } from '@angular/core';
 import { Type } from '@angular/core';
 import { ViewGuard } from './guardsA/view.guard';
-
+import { DevicesAllComponent  } from './components/devices-all/devices-all.component';
 const routes: Routes = [
   {
     
@@ -203,6 +203,10 @@ const routes: Routes = [
   {
     path: 'map',
     component: MapComponent
+  },
+  {
+    path: 'devices-all',
+    component: DevicesAllComponent
   }
 
 ]
