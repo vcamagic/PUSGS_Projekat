@@ -35,12 +35,14 @@ import { AdminSettingsComponent } from './components/admin-settings/admin-settin
 import { Component } from '@angular/core';
 import { Type } from '@angular/core';
 import { ViewGuard } from './guardsA/view.guard';
-import { DevicesAllComponent } from './components/devices-all/devices-all.component';
+
 const routes: Routes = [
   {
+    
     path:"",
     redirectTo: "login",
     pathMatch: "full"
+    
   },
   {
     path : "login",
@@ -97,16 +99,16 @@ const routes: Routes = [
 
   {
     path: 'settings', // child route path
-    component: getSettingsComponent(),
+    component: getSettingsComponent(), 
     canActivate: [AuthGuard],// child route component that the router renders
   },
 
   {
     path: 'ADMsettings', // child route path
-    component: getSettingsComponent(),
+    component: getSettingsComponent(), 
     canActivate: [AuthGuard],// child route component that the router renders
   },
-
+ 
   {
     path: 'consumers/modifyConsumer',
         component: ModifyConsumerComponent,
@@ -162,27 +164,33 @@ const routes: Routes = [
   {
     path:"workrequests",
     component: WorkRequestsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'workrequests/new',
         component: NewRequestComponent,
+        canActivate: [AuthGuard]
   },
 
   {
     path:'workrequests/new/basic-info',
-    component: BasicInfoWrComponent
+    component: BasicInfoWrComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'workrequests/new/history',
-    component:HistoryWrComponent
+    component:HistoryWrComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'workrequests/new/multimedia',
-    component:MultimediaWrComponent
+    component:MultimediaWrComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'workrequests/new/equipment',
-    component:EquipmentWrComponent
+    component:EquipmentWrComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'devices',
@@ -195,12 +203,7 @@ const routes: Routes = [
   {
     path: 'map',
     component: MapComponent
-  },
-  {
-    path: 'devices-all',
-    component: DevicesAllComponent
   }
-
 
 ]
 

@@ -179,8 +179,8 @@ namespace WEB2BEKEND.Controllers
         mm.CrewName = inc.Crew.Name;
         mm.Id = Guid.NewGuid().ToString();
         mm.IncidentId = inc.Id;
-        mm.X = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateX;
-        mm.Y = inc.Elements.FirstOrDefault(x => x.Id == inc.Id).CoordinateY;
+        mm.X = inc.Elements.FirstOrDefault(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
+        mm.Y = inc.Elements.FirstOrDefault(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
 
         if (mm.X.Length > 0 && mm.Y.Length > 0)
         {
