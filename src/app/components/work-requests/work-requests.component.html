@@ -5,20 +5,21 @@
               <h4 id="heding" class="">WORKREQUESTS</h4>
               <button class="btn btn-class" routerLink="/workrequests/new">New&nbsp;<i class="fa fa-plus"></i></button>
               <span class="allmine">
-                  <button style="width: 10%;" class="btn btn-class">All</button>
-                  <button  style="width: 10%;" class="btn btn-class">Mine</button>
+                  <button style="width: 10%;" class="btn btn-class" (click)="allWR()">All</button>
+                  <button  style="width: 10%;" class="btn btn-class" (click)="mineWR()">Mine</button>
               </span>
-              <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+              
               <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                   <thead>
                   <tr>
                        
                       
-                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[2]" >Start date.&nbsp;<i class="fa fa-sort"></i></th>
-                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[3]">Phone number&nbsp;<i class="fa fa-sort"></i></th>
-                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[4]" >Status&nbsp;<i class="fa fa-sort"></i></th>
-                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[5]" >Address&nbsp;<i class="fa fa-sort"></i></th>
-                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[1]">End date&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[0]" >Start date.&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[1]">Phone number&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[2]" >Status&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[4]">End date&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[5]">Created by&nbsp;<i class="fa fa-sort"></i></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -29,12 +30,17 @@
                         <td>{{workrequest.status}}</td>
                         <td >{{workrequest.street}}</td>
                         <td >{{workrequest.endDate}}</td>
+                        <td >{{workrequest.createdByUser}}</td>
                         <button class="btn btn2-class"  (click)="approve(workrequest.phoneNum!)">Approve&nbsp;<i class="fa fa-plus"></i></button>
                         <button class="btn btn2-class"  (click)="cancel(workrequest.phoneNum!)">Cancel&nbsp;<i class="fa fa-plus"></i></button>
                       </tr>
                     </tbody>
                   <tfoot>
-  
+                    <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="workRequests.length"
+                  ></ngb-pagination>
                   </tfoot>
               </table>
   
@@ -42,4 +48,4 @@
   
           </div>
       </div>
-  
+    
