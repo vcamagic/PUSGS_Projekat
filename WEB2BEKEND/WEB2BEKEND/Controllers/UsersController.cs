@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -341,7 +343,7 @@ namespace WEB2BEKEND.Controllers
       }
       u1.ActiveStatus = "Accepted";
       await _context.SaveChangesAsync();
-      //sendEmail(u1.Email, "Accepted");
+      sendEmail(u1.Email, "Accepted");
       return CreatedAtAction("GetUsers", u1);
 
     }
@@ -361,10 +363,26 @@ namespace WEB2BEKEND.Controllers
       }
       u1.ActiveStatus = "Refused";
       await _context.SaveChangesAsync();
-      //sendEmail(u1.Email, "Refused");
+      sendEmail(u1.Email, "Refused");
       return CreatedAtAction("GetUsers", u1);
 
     }
+    private void sendEmail(string email, string msg)
+    {
+      using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+      {
+        client.EnableSsl = true;
+        client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        client.UseDefaultCredentials = false;
+        client.Credentials = new NetworkCredential("admirpusgs@gmail.com", "admirpusgs2021");
+        MailMessage msgObj = new MailMessage();
+        msgObj.To.Add(email);
+        msgObj.From = new MailAddress("admirpusgs@gmail.com");
+        msgObj.Subject = "Account Verification";
+        msgObj.Body = "Your account has been " + msg.ToUpper();
+        client.Send(msgObj);
 
+      }
+    }
   }
 }
