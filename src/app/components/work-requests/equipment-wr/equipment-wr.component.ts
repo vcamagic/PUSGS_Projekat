@@ -50,12 +50,8 @@ import { Element } from 'src/app/entities/element/element';
   
   
     onSave() {
-      //console.log(this.elementForm.value.elementName) 
-      //emituj vrijednost u roditeljsku komponentu(NAVBAR)
-      
-      //prebaci na sledeca polja
-  
-      //this._sharedService.emitChange(this.toNavbar);
+   
+        
       this.router.navigate(['/workrequests']);
     }
   

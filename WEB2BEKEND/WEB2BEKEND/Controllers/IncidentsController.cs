@@ -187,7 +187,8 @@ namespace WEB2BEKEND.Controllers
       MapModel mm = new MapModel();
 
 
-
+      int count = 0;
+      int count2 = 0;
       foreach (var item in _context.Maps)
       {
         temp.Add(item);
@@ -195,9 +196,15 @@ namespace WEB2BEKEND.Controllers
 
       foreach (var inc in _context.Incidents.Include(x=>x.Elements))
       {
-        mm.CrewName = inc.Crew.Name;
+        if(inc.Crew != null)
+        {
+            mm.CrewName = inc.Crew.Name;
+            count++;
+        }
+       
         mm.Id = Guid.NewGuid().ToString();
         mm.IncidentId = inc.Id;
+        count2++;
         foreach(IncidentElement incEl in inc.Elements.ToList())
         {
           if(incEl.Address == inc.Address)
@@ -206,6 +213,7 @@ namespace WEB2BEKEND.Controllers
             mm.Y = incEl.CoordinateY;
           }
         }
+        
        // mm.X = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
        // mm.Y = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
 
