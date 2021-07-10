@@ -3,13 +3,10 @@
         <div class="col">
             <h4 id="heding" class="">WORKPLANS</h4>
             <button class="btn btn-class" routerLink="/workplans/newworkplan">New&nbsp;<i class="fa fa-plus"></i></button>
-            <!--
             <span class="allmine">
-                <button style="width: 10%;" class="btn btn-class">All</button>
-                <button  style="width: 10%;" class="btn btn-class">Mine</button>
+                <button style="width: 10%;" class="btn btn-class" (click)="allWP()">All</button>
+                <button  style="width: 10%;" class="btn btn-class" (click)="mineWP()">Mine</button>
             </span>
-      
-            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>  -->
             <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>

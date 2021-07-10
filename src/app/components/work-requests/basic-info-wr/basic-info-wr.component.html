@@ -9,7 +9,9 @@
         <select name="types" id="types" class="form-control" formControlName="type">
             <option value="planiraniRad">Planned work</option>
             <option value="neplaniraniRad">Unplanned work</option>
-            
+           
+             
+        
           </select>
         </div >
         <div class="form-group">
@@ -20,16 +22,12 @@
         </div>
       <div class="form-group">
          
-              <label> Incident:  </label>
-              <input class="form-control" type="text" formControlName="incident">
+              <label> Incident:         </label>
+              <button class="btn btn-class" (click)="open(content)" >Choose&nbsp;<i class="fa fa-plus"></i></button>
          
       </div>
       
-        <div class="form-group">
-            <label>Street: 
-            </label>
-            <input class="form-control" type="text" formControlName="street">
-        </div>
+      
         <div class="form-group">
           <label>Start date: 
           </label>
@@ -84,4 +82,49 @@
     </div>
 
     </div>
+
 </form>
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Select incidents</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form #form = "ngForm">
+          <div class="form-group">
+              <div  class="scrollable">
+                  <table class="table text-center table-striped table-light">
+                  <thead>
+                      <tr>
+                          <th>Status</th>
+                          <th>Type</th>
+                          <th>Eta</th>
+                          <th>Address</th>
+                          <th>&nbsp;</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let element of allIncidents">
+                      <td>{{element.status}}</td>
+                      <td>{{element.type}}</td>
+                      <td>{{element.eta}}</td>
+                      <td>{{element.address}}</td>
+                      
+                      <button  style="background-color:white;" (click)="onChange(element)">ADD</button>
+                    
+                      
+                      
+                  </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+                  </table>
+              </div>
+          </div>
+      </form>
+  </div>
+ 
+  </ng-template>

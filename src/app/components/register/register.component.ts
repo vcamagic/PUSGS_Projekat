@@ -3,7 +3,8 @@ import { FormBuilder, Validators,FormControl, FormGroup,NgForm } from '@angular/
 import {RegistracijaModel} from 'src/app/models/registracijaModel';
 import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import {User} from 'src/app/entities/user/user'
+import {UserService} from 'src/app/services/user.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   message: any;
   imagePath!: {dbPath: ''};
   credentials : any;
-  
+  users : User[] = [];
 
 
   user : RegistracijaModel = {
@@ -37,12 +38,14 @@ export class RegisterComponent implements OnInit {
   
   };
 
+  
   registerForm = new FormGroup({
-    username : new FormControl('', Validators.required),
+  
+    username : new FormControl('', Validators.compose([Validators.required, Validators.minLength(3)])),
     firstname : new FormControl('', Validators.required),
     lastname : new FormControl('', Validators.required),
-    email : new FormControl('', Validators.required),
-    password : new FormControl('', Validators.required),
+    email : new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password : new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
     birthDate : new FormControl(),
     address : new FormControl(),
     inputState : new FormControl(),
@@ -59,7 +62,7 @@ export class RegisterComponent implements OnInit {
   });*/
 
   
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient,private userService: UserService) { }
  
   onFileChanged(event:any) {
     if (event.target.files && event.target.files[0]) {
@@ -83,7 +86,7 @@ export class RegisterComponent implements OnInit {
   }
   submit()
   {
-   
+    
     this.user = this.registerForm.value;
     this.user.Picture = this.picturehelp;
     console.log(this.user);
