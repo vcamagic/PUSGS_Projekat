@@ -7,32 +7,60 @@
                 <button style="width: 10%;" class="btn btn-class">All</button>
                 <button  style="width: 10%;" class="btn btn-class">Mine</button>
             </span>
-            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
-            <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
+            <select class="form-control" [(ngModel)]="searchStatus">
+              <option value="" disabled hidden selected>Status</option>
+              <option value="Drafted">Drafted</option>
+              <option value="Canceled">Canceled</option>
+              <option value="Executing">Executing</option>
+              <option value="Complited">Complited</option>
+            </select>
+            <select class="form-control" [(ngModel)]="searchType">
+              <option value="" disabled hidden selected>Type</option>
+              <option value="Planned">Planned</option>
+              <option value="Unplanned">Unplanned</option>
+            </select>
+            <button style="width: 10%;"  id="filter" (click)="search()" class="btn btn-class">Search&nbsp;<i class="fa fa-search"></i></button>
+            <button style="width: 10%;"  id="filter" (click)="reset()" class="btn btn-class">Reload&nbsp;<i class="fa fa-refresh"></i></button>
+            <table  id="safetyDocumentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
-                     
-                    
-                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[2]" >Type.&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="safetyDocumentssTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[3]">Status&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[4]" >Crew&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[5]" >End date&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[1]">Details&nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" class="sticky-col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[0]" >Id&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" class="sticky-col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[1]" >Type&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentssTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[2]">Switching Plan&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[3]" >Status&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[4]" >Created By&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[5]" >Crew&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[6]">Details&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[7]" >Notes&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[8]" >Phone&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="safetyDocumentsTable" [mdbTableSort]="safetyDocuments" [sortBy]="displayedColumns[9]" >Date&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
                 </thead>
                 <tbody>
                   <tr mdbTableCol *ngFor="let safetydocument of safetyDocuments | slice: (page - 1) * 5 : page * 5 ">
 
-                      <td >{{safetydocument.type}}</td>
+                      <td class="sticky-col">{{safetydocument.id}}</td>
+                      <td class="sticky-col">{{safetydocument.type}}</td>
+                      <td>{{safetydocument.switchingPlan}}</td>
                       <td >{{safetydocument.status}}</td>
+                      <td >{{safetydocument.creator}}</td>
                       <td>{{safetydocument.crew}}</td>
-                      <td >{{safetydocument.endDate}}</td>
-                      <td >{{safetydocument.details}}</td>
-                      
+                      <td>{{safetydocument.details}}</td>
+                      <td>{{safetydocument.notes}}</td>
+                      <td>{{safetydocument.phone}}</td>
+                      <td>{{safetydocument.date}}</td>
+                      <td>
+                        <a style="width: 45%;" class="btn btn-danger" (click)="delete(safetydocument)"><i class="fa fa-trash"></i></a>&nbsp;
+                        <a style="width: 45%;" class="btn btn-info" (click)="details(safetydocument)"><i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
+                      </td>
                   </tr>
                   </tbody>
                 <tfoot>
-
+                  <ngb-pagination
+                  [(page)]="page"
+                  [pageSize] = "pageSize"
+                  [collectionSize]="safetyDocuments.length"
+                ></ngb-pagination>
                 </tfoot>
             </table>
 

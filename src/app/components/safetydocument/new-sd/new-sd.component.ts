@@ -9,7 +9,7 @@ export class NewSdComponent implements OnInit {
 
   pressedButton: string;
 
-  constructor() { 
+  constructor() {
     this.pressedButton ='BasicInfo';
   }
     setButton(pressedButton:string){
@@ -33,8 +33,8 @@ export class NewSdComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
-  
+
 
 }

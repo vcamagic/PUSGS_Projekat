@@ -186,6 +186,32 @@ namespace WEB2BEKEND.Migrations
                     b.ToTable("HistoryWP");
                 });
 
+            modelBuilder.Entity("WEB2BEKEND.Models.HistorySafeDocs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SafetyDocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SafetyDocumentId");
+
+                    b.ToTable("HistorySafeDocs");
+                });
+
             modelBuilder.Entity("WEB2BEKEND.Models.Incident", b =>
                 {
                     b.Property<int>("Id")
@@ -305,12 +331,17 @@ namespace WEB2BEKEND.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SafetyDocumentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IncidentId");
+
+                    b.HasIndex("SafetyDocumentId");
 
                     b.ToTable("IncidentElement");
                 });
@@ -376,12 +407,17 @@ namespace WEB2BEKEND.Migrations
                     b.Property<int?>("IncidentId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SafetyDocumentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IncidentId");
+
+                    b.HasIndex("SafetyDocumentId");
 
                     b.ToTable("Multimedia");
                 });
@@ -423,37 +459,51 @@ namespace WEB2BEKEND.Migrations
 
             modelBuilder.Entity("WEB2BEKEND.Models.SafetyDocument", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Crew")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DateTimeCreate")
+                    b.Property<string>("Date")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Details")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("GroundingRemoved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNum")
+                    b.Property<bool>("OperationsComplited")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ReadyForService")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SwitchingPlan")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("TagsRemoved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkPlanssz")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("createdByUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("endDate")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -666,6 +716,13 @@ namespace WEB2BEKEND.Migrations
                     b.ToTable("WorkRequests");
                 });
 
+            modelBuilder.Entity("WEB2BEKEND.Models.HistorySafeDocs", b =>
+                {
+                    b.HasOne("WEB2BEKEND.Models.SafetyDocument", null)
+                        .WithMany("History")
+                        .HasForeignKey("SafetyDocumentId");
+                });
+
             modelBuilder.Entity("WEB2BEKEND.Models.Incident", b =>
                 {
                     b.HasOne("WEB2BEKEND.Models.Crew", "Crew")
@@ -685,6 +742,10 @@ namespace WEB2BEKEND.Migrations
                     b.HasOne("WEB2BEKEND.Models.Incident", null)
                         .WithMany("Elements")
                         .HasForeignKey("IncidentId");
+
+                    b.HasOne("WEB2BEKEND.Models.SafetyDocument", null)
+                        .WithMany("Elements")
+                        .HasForeignKey("SafetyDocumentId");
                 });
 
             modelBuilder.Entity("WEB2BEKEND.Models.IncidentResolution", b =>
@@ -699,6 +760,10 @@ namespace WEB2BEKEND.Migrations
                     b.HasOne("WEB2BEKEND.Models.Incident", null)
                         .WithMany("Multimedia")
                         .HasForeignKey("IncidentId");
+
+                    b.HasOne("WEB2BEKEND.Models.SafetyDocument", null)
+                        .WithMany("Multimedia")
+                        .HasForeignKey("SafetyDocumentId");
                 });
 
             modelBuilder.Entity("WEB2BEKEND.Models.Notification", b =>

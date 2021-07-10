@@ -217,7 +217,7 @@ namespace WEB2BEKEND.Controllers
       }
 
 
-      if(_context.Users.Any(x => x.Email == user.Email && x.Password == user.Password))
+      if(_context.Users.Any(x => x.Email == user.Email && x.Password == user.Password && x.ActiveStatus=="Accepted"))
       {
         User u = _context.Users.SingleOrDefault(x => x.Email == user.Email);
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));

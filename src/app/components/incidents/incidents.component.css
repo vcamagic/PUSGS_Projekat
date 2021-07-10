@@ -42,3 +42,10 @@
 th:hover{
     cursor: pointer;
 }
+
+.sticky-co{
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+

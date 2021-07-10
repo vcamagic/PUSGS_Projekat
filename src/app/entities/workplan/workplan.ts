@@ -2,6 +2,8 @@ import { Call } from "../call/call";
 import {} from "../element/element"
 
 export class Workplan {
+
+    id? : string;
     type?: string;
     workplan?:string;
     incident?: string;
@@ -24,4 +26,4 @@ export class Workplan {
 
 
 
-    
+

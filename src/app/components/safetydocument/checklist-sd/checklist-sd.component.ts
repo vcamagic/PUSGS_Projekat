@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { SafetydocumentService } from 'src/app/services/safetydocument.service';
 
 @Component({
   selector: 'app-checklist-sd',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChecklistSdComponent implements OnInit {
 
-  constructor() { }
+  @Output() pressedButton = new EventEmitter<string>();
+  constructor(public sdService: SafetydocumentService,private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  save(){
+    this.router.navigate(["safetydocuments"]);
+  }
+
+  change(){
+    this.sdService.putData().subscribe(res => {
+
+    });
+
   }
 
 }

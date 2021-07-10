@@ -1,1 +1,25 @@
-<p>checklist-sd works!</p>
+<div class="col col-md-9">
+  <br><br>
+      <div class="container text-center">
+      <span class="title">SAFETY DOCUMENT CHECKLIST</span>
+      </div>
+      <br><br>
+  <form autocomplete = "on" novalidate #form="ngForm">
+      <div class="row">
+          <div class="form-group">
+              <mat-slide-toggle  (change)="change()" color="primary" name="operations" #operations="ngModel" [(ngModel)]="sdService.formData.operationsComplited"><b>All work operations complited?</b></mat-slide-toggle>
+          </div>
+          <div class="form-group">
+              <mat-slide-toggle (change)="change()" color="primary" name="tags" #tags="ngModel" [(ngModel)]="sdService.formData.tagsRemoved"><b>All tags removed?</b></mat-slide-toggle>
+          </div>
+          <div class="form-group">
+              <mat-slide-toggle (change)="change()" color="primary" name="ground" #ground="ngModel" [(ngModel)]="sdService.formData.groundingRemoved"><b>Grounding removed?</b></mat-slide-toggle>
+          </div>
+          <div class="form-group">
+              <mat-slide-toggle (change)="change()" color="primary" name="ready" #ready="ngModel" [(ngModel)]="sdService.formData.readyForService"><b>Ready for service</b></mat-slide-toggle>
+          </div>
+
+          <button class="btn btn-class"  (click)="save()">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+      </div>
+  </form>
+</div>

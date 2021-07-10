@@ -4,13 +4,11 @@
 .btn-class{
     border-color:  #1D69AB;
     color:  #1D69AB; ;
-    width: 10%;
   }
-  
+
   .btn-class:hover{
     background-color: #1D69AB;
     color: white;
   }
-  
-  
-  
+
+

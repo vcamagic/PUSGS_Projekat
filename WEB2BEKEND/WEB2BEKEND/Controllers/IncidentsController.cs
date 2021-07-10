@@ -122,7 +122,10 @@ namespace WEB2BEKEND.Controllers
       {
         return NotFound();
       }
+
+      var street = await _context.Streets.FindAsync(call.Address);
       call.Id = 0;
+      call.Priority = street.cPriority;
       string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
       Notification notification = new Notification()
       {

@@ -1,28 +1,31 @@
 
 <form [formGroup]="basicInfoForm">
     <div class="main-container">
-    
+
     <div class="container">
         <div class="form-group">
         <label>Type:
         </label>
-        <select name="types" id="types" class="form-control" formControlName="type">
-            <option value="planiraniRad">Planned work</option>
-            <option value="neplaniraniRad">Unplanned work</option>
-            
+        <select name="type" class="form-control" id="type" formControlName="type">
+            <option value="Planned">Planned work</option>
+            <option value="Unplanned">Unplanned work</option>
+
           </select>
         </div >
         <div class="form-group">
-        <label>Status:
-            
-        </label>
-        <span class="span-bold">Draft</span>
+          <label>Switching Plan</label>
+          <select class="form-control" type="number" id="plan" name="plan" formControlName="plan">
+            <option *ngFor="let item of workplans" [ngValue]="item.id">{{item.id}}</option>
+          </select>
         </div>
       <div class="form-group">
-         
-              <label> Work plan:  </label>
-              <input class="form-control" type="text" formControlName="workplan">
-         
+        <label>Status</label>
+        <select class="form-control"  name="status" type="text" formControlName="status">
+          <option value="Drafted">Drafted</option>
+          <option value="Canceled">Canceled</option>
+          <option value="Executing">Executing</option>
+          <option value="Complited">Complited</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -30,42 +33,39 @@
         </label>
         <input class="form-control" type="text" [value]="userCreated"  formControlName="createdByUser" readonly >
     </div>
-      
+
         <div class="form-group">
-            <label>Crew: 
-            </label>
-            <input class="form-control" type="text" formControlName="crew">
+            <label>Crew:</label>
+            <select class="form-control" formControlName="crew" name="crew" id="crew">
+              <option *ngFor="let item of crews" [ngValue]="item.name">{{item.name}}</option>
+            </select>
         </div>
-         
+
         <div class="form-group">
-          <label>Details: 
+          <label>Details:
           </label>
-          <input class="form-control" type="text" formControlName="details">
+          <input class="form-control" type="text" name="details" id="details" formControlName="details">
       </div>
         <div class="form-group">
           <label>Notes:
           </label>
-          <input class="form-control" type="text" formControlName="notes">
-      </div>  
+          <input class="form-control" type="text"  name="notes" id="notes" formControlName="notes">
+      </div>
         <div class="form-group">
-            <label>Phone No: 
+            <label>Phone No:
             </label>
-            <input class="form-control" type="text" formControlName="phoneNum">
+            <input class="form-control" type="text"  name="notes" id="notes" formControlName="phoneNum">
         </div>
         <div class="form-group">
-          <label>Date Created: 
+          <label>Date Created:
           </label>
           <input class="form-control" [(ngModel)]="currentDate" [value]="currentDate" type="date" formControlName="dateCreated" readonly>
       </div>
-
-        
-       
-
         <br><br>
         <div class="form-group">
             <label></label>
-            <button class="btn btn-dark" (click)="onSave()" type="button"> <!--type=button-->
-               Save
+            <button class="btn btn-class"  (click)="onSave()" type="button"> <!--type=button-->
+              &nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i>
             </button>
         </div>
     </div>

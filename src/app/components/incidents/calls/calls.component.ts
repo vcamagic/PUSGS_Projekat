@@ -2,8 +2,10 @@ import { Component, OnInit, Output ,EventEmitter, ChangeDetectorRef} from '@angu
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Call } from 'src/app/entities/call/call';
+import { Street } from 'src/app/entities/street';
 import { CallsService } from 'src/app/services/calls.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
+import { SettingsService } from 'src/app/services/settings.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -22,11 +24,13 @@ export class CallsComponent implements OnInit {
   call : Call = new Call ("","","","","","");
   currentIncCalls : Call[] = [];
   @Output() pressedButton = new  EventEmitter<string>();
+  streets : Street[] = [];
+
 
   reportForm : FormGroup;
 
   constructor(public callsService: CallsService, private modalService: NgbModal,public incidentService: IncidentsService,private cdref: ChangeDetectorRef,
-    private userService: UserService) {
+    private userService: UserService,private settingsService: SettingsService) {
     this.new = "no";
     this.reportForm = new FormGroup({
       'reason': new FormControl(),
@@ -37,11 +41,19 @@ export class CallsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getStreets();
   }
 
   ngAfterContentChecked(){
     this.cdref.detectChanges();
+  }
+
+  getStreets(){
+    this.settingsService.loadStreets().subscribe(res=>{
+        this.streets=res as Street[];
+    },err=>{
+      console.log();
+    })
   }
 
   find(call : Call):boolean{
@@ -56,7 +68,7 @@ export class CallsComponent implements OnInit {
   }
 
   onChange(call: Call):void {
-      console.log("dupe call"+call.comment);
+      console.log("dupe call"+call.address);
       this.incidentService.putCallInIncident(call).subscribe(res=>{
         this.incidentService.incident.call.push(call);
       },err=>{

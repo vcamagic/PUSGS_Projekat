@@ -1,1 +1,35 @@
-<p>history-sd works!</p>
+
+<div class="col col-md-9">
+  <br><br>
+  <div class="container text-center">
+      <span class="title">SAFETY DOCUMENT HISTORY</span>
+  </div>
+  <br><br>
+  <div class="row" >
+      <div class="col col-md-6">
+          <button class="btn btn-danger btn-lg" (click)="issue()" ><i class="fa fa-check fa-lg"></i>Issue</button>
+      </div>
+      <div class="col col-md-6">
+          <button style="float: right;" class="btn btn-warning btn-lg" (click)="cancle()"><i class="fa fa-times fa-lg"></i>Cancel</button>
+      </div>
+  </div>
+  <table class="table text-center table-striped table-hover table-light">
+      <thead>
+          <tr>
+              <th>User</th>
+              <th>New state</th>
+              <th>Date</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of safetySevice.formData.history">
+              <td>{{item.email}}</td>
+              <td>{{item.state}}</td>
+              <td>{{item.date}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <button class="btn btn-class"  (click)="save()" type="button"> <!--type=button-->
+    &nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i>
+  </button>
+</div>

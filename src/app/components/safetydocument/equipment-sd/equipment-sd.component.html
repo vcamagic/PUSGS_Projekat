@@ -1,1 +1,98 @@
-<p>equipment-sd works!</p>
+<h4 class="text-center">Devices</h4>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <button class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
+          <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button>
+      </div>
+  </div>
+  <div class="row mt-2">
+      <div class="col-md-12">
+          <table id="devicesTable" class="table table-hover" maxWidth="500" mdbTableScroll [scrollX]='true' >
+              <thead>
+                  <tr>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[0]">Id</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[1]">Type</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[2]">Name</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[3]">Address</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[4]">X</th>
+                      <th scope="col" aria-controls="devicesTable" [mdbTableSort]="sdService.formData.elements" [sortBy]="headElements[5]">Y</th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr mdbTableCol *ngFor="let elem of sdService.formData.elements | slice: (page - 1) * pageSize : page * pageSize ">
+                      <td >{{elem.id}}</td>
+                      <td >{{elem.type}}</td>
+                      <td>{{elem.name}}</td>
+                      <td >{{elem.address}}</td>
+                      <td >{{elem.coordinateX}}</td>
+                      <td >{{elem.coordinateY}}</td>
+                      <td>
+                        <a style="width: 100%;" class="btn btn-danger" (click)="delete(elem.id)"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                    <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="sdService.formData.elements.length"
+                  ></ngb-pagination>
+                  </tfoot>
+          </table>
+          <button class="btn btn-class"  (click)="save()">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+      </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Select Elements</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form #form = "ngForm">
+          <div class="form-group">
+              <div  class="scrollable">
+                  <table class="table text-center table-striped table-light">
+                  <thead>
+                      <tr>
+                          <th>Id</th>
+                          <th>Type</th>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th>&nbsp;</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let element of Eles">
+                      <td>{{element.id}}</td>
+                      <td>{{element.type}}</td>
+                      <td>{{element.name}}</td>
+                      <td>{{element.address}}</td>
+                      <td *ngIf="sdService.formData.elements.length===0">
+                      <button class="btn btn-danger btn-sm" style="background-color:#d9534f;" (click)="onChange(element)">ADD</button>
+                      </td>
+                      <td *ngIf="sdService.formData.elements.length !== 0">
+                          <button *ngIf="!find(element)" class="btn btn-danger btn-sm" style="background-color:#d9534f;" (click)="onChange(element)">ADD</button>
+                          <i *ngIf="find(element)" class="fa fa-check fa-lg"></i>
+                      </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+                  </table>
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger btn-lg" (click)="add()">Close</button>
+  </div>
+  </ng-template>

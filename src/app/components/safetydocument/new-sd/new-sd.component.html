@@ -4,18 +4,18 @@
         <h4 class="text-center">NEW SAFETYDOCUMENT</h4>
         <div class="col-md-4">
             <div class="list-group">
-                <button  class="list-group-item" id="basicInfo" (click)="setButton('BasicInfo')">Basic Information</button>
-                <button  class="list-group-item" id="history" (click)="setButton('History')">History of Changes</button>
-                <button  class="list-group-item" id="equipment" (click)="setButton('Equipment')">Equipment</button>
-                <button class="list-group-item" id="multimedia" (click)="setButton('Multimedia')">Multimedia Attachments</button>
-                <button class="list-group-item" id="multimedia" (click)="setButton('CheckList')">CheckList</button>
+                <button  class="list-group-item" id="basicInfo" >Basic Information</button>
+                <button  class="list-group-item" id="history">History of Changes</button>
+                <button  class="list-group-item" id="equipment" >Equipment</button>
+                <button class="list-group-item" id="multimedia">Multimedia Attachments</button>
+                <button class="list-group-item" id="multimedia">CheckList</button>
             </div>
         </div>
         <div class="col-md-8">
-            <app-basic-info-sd [hidden]="pressedButton != 'BasicInfo'"></app-basic-info-sd>
-            <app-history-sd [hidden]="pressedButton != 'History'" ></app-history-sd>
-            <app-equipment-sd [hidden]="pressedButton != 'Equipment'"></app-equipment-sd>
-            <app-multimedia-sd [hidden]="pressedButton != 'Multimedia' "></app-multimedia-sd>
+            <app-basic-info-sd (pressedButton)="setButton($event)" [hidden]="pressedButton != 'BasicInfo'"></app-basic-info-sd>
+            <app-history-sd (pressedButton)="setButton($event)"  [hidden]="pressedButton != 'History'" ></app-history-sd>
+            <app-equipment-sd (pressedButton)="setButton($event)"  [hidden]="pressedButton != 'Equipment'"></app-equipment-sd>
+            <app-multimedia-sd (pressedButton)="setButton($event)"  [hidden]="pressedButton != 'Multimedia' "></app-multimedia-sd>
             <app-checklist-sd [hidden]="pressedButton != 'CheckList' "></app-checklist-sd>
         </div>
       </div>
@@ -27,4 +27,3 @@
       </div> -->
     </div>
   </div>
-  

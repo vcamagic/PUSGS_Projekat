@@ -13,8 +13,8 @@
             <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
-                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
+                     <th scope="col" class="sticky-col first-col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[0]">Id&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col"  class="sticky-col second-col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[1]">Start Date&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[5]" >Type&nbsp;<i class="fa fa-sort"></i></th>
@@ -30,8 +30,8 @@
                 </thead>
              <tbody>
                 <tr mdbTableCol *ngFor="let incident of incidents | slice: (page - 1) * pageSize : page * pageSize ">
-                    <td >{{incident.id}}</td>
-                    <td >{{incident.timeOfIncident}}</td>
+                    <td  class="sticky-col first-col" >{{incident.id}}</td>
+                    <td  class="sticky-col second-col" >{{incident.timeOfIncident}}</td>
                     <td>{{incident.status}}</td>
                     <td >{{incident.address}}</td>
                     <td>{{incident.type}}</td>
