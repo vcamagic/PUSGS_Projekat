@@ -5689,11 +5689,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zivko\\OneDrive\\Desktop\\webdjavo\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+      "projectUniqueName": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
       "projectName": "WEB2BEKEND",
-      "projectPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\webdjavo\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+      "projectPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
       "packagesPath": "C:\\Users\\zivko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\webdjavo\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
+      "outputPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

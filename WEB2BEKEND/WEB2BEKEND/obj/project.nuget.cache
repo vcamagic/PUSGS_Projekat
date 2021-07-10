@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VI6hJd0Y3B6LUNT4GZ6I8EybNpu0hXmOR6vEKSAKVqXb5LreMo9TyEYi9IkmQrvS6vfrfmgQPshN6T9EOrNPEA==",
+  "dgSpecHash": "OY4ylli7ZnJMAdheD7ztOqZolDGGB4PLaVW1dHDMUldeB0abtJdGE5JHoIAWlkJx3wdZ1sJS7XMfhTMwCKWTlg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zivko\\OneDrive\\Desktop\\webdjavo\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+  "projectFilePath": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zivko\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.0\\microsoft.aspnetcore.authentication.jwtbearer.3.1.0.nupkg.sha512",
     "C:\\Users\\zivko\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
