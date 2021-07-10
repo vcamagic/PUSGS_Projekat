@@ -18,6 +18,8 @@ export class WorkplanComponent implements OnInit{
 
   workplans : Workplan[] = [];
   page = 1;
+  username! : string;
+  mineWorkPlans : Workplan[] = [];
   pageSize = 4;
   collectionSize = 0;
   headElements = ['startDate', 'phoneNum', 'type', 'status', 'endDate'];
@@ -29,6 +31,25 @@ export class WorkplanComponent implements OnInit{
   ngOnInit(): void {
 
     this.getAll();
+  }
+
+  allWP()
+  {
+    this.getAll();
+  }
+  mineWP()
+  {
+    this.mineWorkPlans.length = 0;
+    this.username = localStorage.getItem('username')!;
+    this.workplans.forEach(element=>{
+      if(element.createdByUser == this.username )
+      {
+        this.mineWorkPlans.push(element);
+      }
+    })
+    this.workplans = this.mineWorkPlans;
+    
+    this.router.navigate(['/workplans']);
   }
 
   getAll() {
