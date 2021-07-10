@@ -10,6 +10,9 @@
                 <div *ngIf="registerForm.controls['username'].errors!.required">
                  Username is required.
                 </div>
+                <div *ngIf="registerForm.controls['username'].errors!.minlength">
+                    Username must be atleast 3 characters long.
+                    </div>
             </div>
         </div>
         <pre></pre>
@@ -43,6 +46,9 @@
                 <div *ngIf="registerForm.controls['email'].errors!.required">
                 Email is required.
                 </div>
+                <div *ngIf="registerForm.controls['email'].errors!.email">
+                    Email is not in correct format.
+                    </div>
             </div>
         </div>
         <pre></pre>
@@ -54,6 +60,9 @@
                 <div *ngIf="registerForm.controls['password'].errors!.required">
                 Password is required.
                 </div>
+                <div *ngIf="registerForm.controls['password'].errors!.minlength">
+                    Password must be atleast 8 characters long.
+                    </div>
             </div>
         </div>
         <pre></pre>
@@ -63,7 +72,7 @@
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="address">Adress</label><br>
+            <label for="address">Address</label><br>
             <input type="text" formControlName ="address" class="form-control" >
         </div>
         <pre></pre>

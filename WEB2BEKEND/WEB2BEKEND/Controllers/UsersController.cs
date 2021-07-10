@@ -159,10 +159,29 @@ namespace WEB2BEKEND.Controllers
     [Route("Register")]
     public async Task<ActionResult<User>> Register([FromBody] User userForm)
     {
+
+      List<User> lista = new List<User>();
+      foreach(var v in _context.Users.ToList())
+      {
+        lista.Add(v);
+      }
+
+      foreach(User juzer in lista.ToList())
+      {
+        if(juzer.Email == userForm.Email)
+        {
+          return BadRequest("User with this email already exists");
+        }
+        if (juzer.Username == userForm.Username)
+        {
+          return BadRequest("User with this username already exists");
+        }
+      }
       if (userForm == null)
       {
         return BadRequest("Invalid client request");
       }
+      
       User user = userForm;
       string state = "";
       if (user.InputState == "Admin")
