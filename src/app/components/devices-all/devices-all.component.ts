@@ -76,12 +76,15 @@ export class DevicesAllComponent implements OnInit {
       this.elementsService.postElement().subscribe(res=>{
         this.elementsService.loadElements().subscribe(res=>{
           this.IncEles= res as Element[];
+          this.elementsService.formData = new Element(0,"","","","","",false);
         })
       },err=>{
+
         console.log(err);
       });
     }
     else{
+      this.modal.dismissAll('Save click');
       this.elementsService.putElement().subscribe(res=>{
           this.getElements();
       },err=>{

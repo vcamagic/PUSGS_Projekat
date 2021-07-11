@@ -10,8 +10,8 @@ using WEB2BEKEND.Data;
 namespace WEB2BEKEND.Migrations
 {
     [DbContext(typeof(DefaultConnection))]
-    [Migration("20210710232920_dsadasdsaads")]
-    partial class dsadasdsaads
+    [Migration("20210711203146_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

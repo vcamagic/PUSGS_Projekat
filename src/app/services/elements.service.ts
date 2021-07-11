@@ -70,7 +70,7 @@ export class ElementsService {
   }
 
   postElement(){
-    return this.http.post<Element>("https://localhost:44396/api/Elements/PostElement", this.formData);
+    return this.http.post<Element>(`${this.baseUrl}/PostElement`, this.formData);
   }
 
   deleteElement(id : number){
@@ -78,7 +78,7 @@ export class ElementsService {
   }
 
   putElement(){
-    return this.http.put(`${this.baseUrl}/${this.formData.id}`,this.formData);
+    return this.http.put(`${this.baseUrl}/ChangeElement/${this.formData.id}`,this.formData);
   }
 
 

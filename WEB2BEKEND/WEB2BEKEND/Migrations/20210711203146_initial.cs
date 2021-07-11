@@ -79,6 +79,21 @@ namespace WEB2BEKEND.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "History",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    DocumentId = table.Column<string>(nullable: true),
+                    DateChange = table.Column<string>(nullable: true),
+                    ChangeBy = table.Column<string>(nullable: true),
+                    NewStatus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_History", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HistoryWP",
                 columns: table => new
                 {
@@ -275,21 +290,21 @@ namespace WEB2BEKEND.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "History",
+                name: "HistorySafeDocs",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    DocumentId = table.Column<string>(nullable: true),
-                    DateChange = table.Column<string>(nullable: true),
-                    ChangeBy = table.Column<string>(nullable: true),
-                    NewStatus = table.Column<string>(nullable: true),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(nullable: true),
+                    State = table.Column<string>(nullable: true),
+                    Date = table.Column<string>(nullable: true),
                     SafetyDocumentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_History", x => x.Id);
+                    table.PrimaryKey("PK_HistorySafeDocs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_History_SafetyDocuments_SafetyDocumentId",
+                        name: "FK_HistorySafeDocs_SafetyDocuments_SafetyDocumentId",
                         column: x => x.SafetyDocumentId,
                         principalTable: "SafetyDocuments",
                         principalColumn: "Id",
@@ -429,8 +444,8 @@ namespace WEB2BEKEND.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_History_SafetyDocumentId",
-                table: "History",
+                name: "IX_HistorySafeDocs_SafetyDocumentId",
+                table: "HistorySafeDocs",
                 column: "SafetyDocumentId");
 
             migrationBuilder.CreateIndex(
@@ -487,6 +502,9 @@ namespace WEB2BEKEND.Migrations
 
             migrationBuilder.DropTable(
                 name: "History");
+
+            migrationBuilder.DropTable(
+                name: "HistorySafeDocs");
 
             migrationBuilder.DropTable(
                 name: "HistoryWP");
