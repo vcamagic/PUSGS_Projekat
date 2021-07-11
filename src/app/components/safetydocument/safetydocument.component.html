@@ -2,7 +2,7 @@
     <div class="row content">
         <div class="col">
             <h4 id="heding" class="">SAFETY DOCUMENT</h4>
-            <button class="btn btn-class" routerLink="/safetydocuments/new">New&nbsp;<i class="fa fa-plus"></i></button>
+            <button *ngIf="userService.currentUser.type ==='Dispatcher'" class="btn btn-class" routerLink="/safetydocuments/new">New&nbsp;<i class="fa fa-plus"></i></button>
             &nbsp;
             Filter by&nbsp;
             <select [(ngModel)]="filter" (change)="filterChange()">
@@ -52,7 +52,7 @@
                       <td>{{safetydocument.phone}}</td>
                       <td>{{safetydocument.date}}</td>
                       <td>
-                        <a style="width: 45%;" class="btn btn-danger" (click)="delete(safetydocument)"><i class="fa fa-trash"></i></a>&nbsp;
+                        <a *ngIf="userService.currentUser.type ==='Dispatcher'" style="width: 45%;" class="btn btn-danger" (click)="delete(safetydocument)"><i class="fa fa-trash"></i></a>&nbsp;
                       <!--  <a style="width: 45%;" class="btn btn-info" (click)="details(safetydocument)"><i class="fa fa-info-circle fa-lg"></i></a>&nbsp;-->
                       </td>
                   </tr>

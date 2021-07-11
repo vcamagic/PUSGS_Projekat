@@ -3,7 +3,7 @@
   <div class="row">
       <div class="col-md-12">
           <button *ngIf="us.currentUser.type ==='Dispatcher' || us.currentUser.type ==='TeamMember'" class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
-          <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button>
+
       </div>
   </div>
   <div class="row mt-2">
@@ -17,7 +17,8 @@
                       <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[3]">Address</th>
                       <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[4]">X</th>
                       <th scope="col" aria-controls="devicesTable" [mdbTableSort]="incidentService.incident.elements" [sortBy]="headElements[5]">Y</th>
-                  </tr>
+                      <th>&nbsp;</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr mdbTableCol *ngFor="let elem of incidentService.incident.elements | slice: (page - 1) * pageSize : page * pageSize ">
@@ -27,6 +28,10 @@
                       <td >{{elem.address}}</td>
                       <td >{{elem.coordinateX}}</td>
                       <td >{{elem.coordinateY}}</td>
+                      <td>
+                        <a *ngIf="us.currentUser.type ==='Dispatcher' || us.currentUser.type ==='TeamMember'" style="width: 100%;" class="btn btn-danger" (click)="delete(elem.id)"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
+
                   </tr>
                   </tbody>
                   <tfoot>
@@ -38,7 +43,7 @@
                   </tfoot>
           </table>
           <button class="btn btn-class"  (click)="next()">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-
+          <button  class="btn btn-class" (click)="cancle()" routerLink="/incidents">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
       </div>
   </div>
 </div>

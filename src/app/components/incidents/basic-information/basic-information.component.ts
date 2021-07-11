@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output , EventEmitter} from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Incident } from 'src/app/entities/incident/incident';
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,7 @@ export class BasicInformationComponent implements OnInit {
   incidentForm : FormGroup;
   @Output() pressedButton = new  EventEmitter<string>();
 
-  constructor(public service: IncidentsService,private userService: UserService) {
+  constructor(public service: IncidentsService,private userService: UserService,private router: Router) {
     this.incidentForm = new FormGroup({
       "type" : new FormControl("",[Validators.required]),
       "priority" : new FormControl(""),
@@ -28,7 +29,7 @@ export class BasicInformationComponent implements OnInit {
       "timeOfIncident" : new FormControl("",[Validators.required]),
       "etr" : new FormControl("",[Validators.required]),
       "calls" : new FormControl(""),
-      "voltage" : new FormControl("",[Validators.required]),
+      "voltage" : new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$")]),
       "affectedConsumers" :  new FormControl(""),
       "sheduledTime" :  new FormControl("",[Validators.required])
     })
@@ -49,6 +50,11 @@ export class BasicInformationComponent implements OnInit {
 
   next(){
     this.pressedButton.emit('Devices');
+  }
+
+  cancle(){
+      this.service.incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
+      this.router.navigate(["incidents"]);
   }
 
 }

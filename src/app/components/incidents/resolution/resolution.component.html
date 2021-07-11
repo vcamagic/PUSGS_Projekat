@@ -23,6 +23,9 @@
                       <td>{{res.subCause}}</td>
                       <td >{{res.construction}}</td>
                       <td >{{res.material}}</td>
+                      <td>
+                        <a *ngIf="us.currentUser.type ==='Dispatcher' || us.currentUser.type ==='TeamMember'" style="width: 100%;" class="btn btn-danger" (click)="delete(res.id)"><i class="fa fa-trash fa-lg"></i></a>
+                    </td>
                     </tr>
                   </tbody>
                   <tfoot>
@@ -34,7 +37,8 @@
                   </tfoot>
           </table>
           <button class="btn btn-class"  (click)="next()">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-      </div>
+          <button  class="btn btn-class" (click)="cancle()" routerLink="/incidents">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
+        </div>
   </div>
 </div>
 

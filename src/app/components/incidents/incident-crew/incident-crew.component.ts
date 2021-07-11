@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Crew } from 'src/app/entities/crew';
+import { Incident } from 'src/app/entities/incident/incident';
 import { CrewService } from 'src/app/services/crew.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
 
@@ -18,7 +20,7 @@ export class IncidentCrewComponent implements OnInit {
   showBtn : boolean = true;
   @Output() pressedButton = new  EventEmitter<string>();
 
-  constructor(private crewService: CrewService,public incidentService: IncidentsService) { }
+  constructor(private crewService: CrewService,public incidentService: IncidentsService,private router: Router) { }
 
   ngOnInit() {
     this.getCrews();
@@ -43,6 +45,13 @@ export class IncidentCrewComponent implements OnInit {
 
   next(){
     this.pressedButton.emit('Multimedia');
+  }
+
+  cancle(){
+    this.incidentService.deleteData(this.incidentService.incident.id).subscribe(res=>{
+      this.incidentService.incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
+    })
+    this.router.navigate(["incidents"]);
   }
 
 }

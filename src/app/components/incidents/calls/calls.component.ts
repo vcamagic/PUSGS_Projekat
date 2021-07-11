@@ -1,7 +1,9 @@
 import { Component, OnInit, Output ,EventEmitter, ChangeDetectorRef} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Call } from 'src/app/entities/call/call';
+import { Incident } from 'src/app/entities/incident/incident';
 import { Street } from 'src/app/entities/street';
 import { CallsService } from 'src/app/services/calls.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
@@ -30,7 +32,7 @@ export class CallsComponent implements OnInit {
   reportForm : FormGroup;
 
   constructor(public callsService: CallsService, private modalService: NgbModal,public incidentService: IncidentsService,private cdref: ChangeDetectorRef,
-    private userService: UserService,private settingsService: SettingsService) {
+    private userService: UserService,private settingsService: SettingsService,private router: Router) {
     this.new = "no";
     this.reportForm = new FormGroup({
       'reason': new FormControl(),
@@ -95,4 +97,13 @@ export class CallsComponent implements OnInit {
   next(){
     this.pressedButton.emit('Crew');
   }
+
+  cancle(){
+    this.incidentService.deleteData(this.incidentService.incident.id).subscribe(res=>{
+      this.incidentService.incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
+    })
+
+    this.router.navigate(["incidents"]);
+  }
+
 }

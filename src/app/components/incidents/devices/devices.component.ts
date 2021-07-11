@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Incident } from 'src/app/entities/incident/incident';
 import { ElementsService } from 'src/app/services/elements.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +14,7 @@ import { Element } from "../../../entities/element/element"
 })
 export class DevicesComponent implements OnInit {
 
-  constructor(public elementsService: ElementsService,public incidentService: IncidentsService,private modalService : NgbModal,private cdref: ChangeDetectorRef,public us: UserService) { }
+  constructor(public elementsService: ElementsService,public incidentService: IncidentsService,private router: Router,private modalService : NgbModal,private cdref: ChangeDetectorRef,public us: UserService) { }
   IncEles : Element[] = [];
 
   headElements = ['id', 'type', 'name', 'address', 'coordinateX', 'coordinateY'];
@@ -73,6 +75,22 @@ export class DevicesComponent implements OnInit {
 
   next(){
     this.pressedButton.emit('Resolution');
+  }
+
+  cancle(){
+    this.incidentService.deleteData(this.incidentService.incident.id).subscribe(res=>{
+      this.incidentService.incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
+    })
+    this.router.navigate(["incidents"]);
+  }
+
+  delete(id : number){
+    if(confirm("Do you want to delete item?"))
+    {
+      this.incidentService.deleteDataElement(id).subscribe(res =>{
+        this.incidentService.incident.elements = this.incidentService.incident.elements.filter(item => item.id !== id);
+      });
+    }
   }
 
 }

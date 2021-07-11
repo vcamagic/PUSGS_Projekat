@@ -1,6 +1,7 @@
 import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Incident } from 'src/app/entities/incident/incident';
 import { Multimedia } from 'src/app/entities/multimedia';
 import { MultimediaIncident } from 'src/app/entities/multimedia-incident';
 import { IncidentsService } from 'src/app/services/incidents.service';
@@ -53,5 +54,13 @@ export class MultimediaComponent implements OnInit {
   next(){
     this.router.navigate(["incidents"]);
   }
+
+  cancle(){
+    this.incidentService.deleteData(this.incidentService.incident.id).subscribe(res=>{
+      this.incidentService.incident = new Incident("",0,"",false,"","","","","",0,0,0,"");
+    })
+    this.router.navigate(["incidents"]);
+  }
+
 
 }

@@ -66,4 +66,17 @@ export class IncidentsService {
     return this.http.delete(`${this.incidentsUrl}/${id}`)
   }
 
+  deleteDataElement(elementId : number){
+    return this.http.delete(`${this.incidentsUrl}/${this.incident.id}/${elementId}/devices`);
+  }
+  deleteDataCall(callId : number){
+    return this.http.delete(`${this.incidentsUrl}/${this.incident.id}/${callId}/calls`);
+  }
+  deleteDataResolution(resolutionId : number){
+    return this.http.delete(`${this.incidentsUrl}/${this.incident.id}/${resolutionId}/resolutions`);
+  }
+  deleteDataMultimedia(multimediaId : number){
+    return this.http.delete(`${this.incidentsUrl}/${this.incident.id}/${multimediaId}/multimedia`);
+  }
+
 }

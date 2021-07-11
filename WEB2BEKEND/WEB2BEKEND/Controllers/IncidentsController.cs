@@ -256,5 +256,72 @@ namespace WEB2BEKEND.Controllers
       return NoContent();
     }
 
+    [HttpDelete("{id}/{elementId}/devices")]
+
+    public async Task<IActionResult> DeleteIncidentElement(int id, int elementId)
+    {
+      _context.Incidents.Include(item => item.Elements).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      IncidentElement element = incident.Elements.Where(item => item.Id == elementId).FirstOrDefault();
+      incident.Elements.Remove(element);
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+
+    [HttpDelete("{id}/{callId}/calls")]
+
+    public async Task<IActionResult> DeleteIncidentCall(int id, int callId)
+    {
+      _context.Incidents.Include(item => item.Call).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      IncidentCall call = incident.Call.Where(item => item.Id == callId).FirstOrDefault();
+      incident.Call.Remove(call);
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+
+    [HttpDelete("{id}/{resolutionId}/resolutions")]
+   
+    public async Task<IActionResult> DeleteIncidentResolution(int id, int resolutionId)
+    {
+      _context.Incidents.Include(item => item.Resolutions).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      IncidentResolution resolution = incident.Resolutions.Where(item => item.Id == resolutionId).FirstOrDefault();
+      incident.Resolutions.Remove(resolution);
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+
+    [HttpDelete("{id}/{multimediaId}/multimedia")]
+    public async Task<IActionResult> DeleteIncidentMultimedia(int id, int multimediaId)
+    {
+      _context.Incidents.Include(item => item.Multimedia).ToList();
+      var incident = await _context.Incidents.FindAsync(id);
+
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      Multimedia m = incident.Multimedia.Where(item => item.Id == multimediaId).FirstOrDefault();
+      incident.Multimedia.Remove(m);
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+
   }
 }

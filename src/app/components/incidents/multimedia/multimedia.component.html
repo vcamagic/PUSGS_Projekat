@@ -11,6 +11,9 @@
       </ngx-dropzone>
       <br>
       <button class="btn btn-class" [disabled]="files.length===0" (click)="upload()"><i class="fa fa-upload fa-lg">&nbsp;Upload</i></button>
+
       <button class="btn btn-class"  (click)="next()">&nbsp;<i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-  </div>
+      <button  class="btn btn-class" (click)="cancle()" routerLink="/incidents">&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></button>
+
+    </div>
 </div>
