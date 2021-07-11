@@ -5,7 +5,7 @@ export class Workplan {
 
     id? : string;
     type?: string;
-    workplan?:string;
+    workplanSSS?:string;
     incident?: string;
     street?: string;
     startDate?: string;
