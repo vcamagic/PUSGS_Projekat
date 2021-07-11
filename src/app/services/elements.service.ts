@@ -78,7 +78,7 @@ export class ElementsService {
   }
 
   putElement(){
-    return this.http.put(`${this.baseUrl}/ChangeElement/${this.formData.id}`,this.formData);
+    return this.http.put(`${this.baseUrl}/${this.formData.id}`,this.formData);
   }
 
 
