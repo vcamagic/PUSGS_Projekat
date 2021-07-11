@@ -22,7 +22,7 @@ export class WorkRequestsComponent implements OnInit {
   collectionSize = 0;
   workRequests : WorkRequest[] = [];
   mineWorkRequests : WorkRequest[] = [];
-  displayedColumns = ['startDate', 'phoneNum','status','street','endDate','createdByUser'];
+  displayedColumns = ['startDate', 'phoneNum','status','street','endDate','createdByUser','equipment'];
  
   
   constructor(public workRequestService: WorkRequestsService,private router: Router) {

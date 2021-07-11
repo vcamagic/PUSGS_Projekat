@@ -26,7 +26,15 @@ export class DocumentService {
   loadHistory(): Observable<IHistory[]>{
     return this.http.get<IHistory[]>("https://localhost:44396/api/Document"); 
   }
-
+  saveElement(address: string) {
+   
+    const params = new HttpParams().append('address',address);
+    
+    this.http.put("https://localhost:44396/api/Document/SaveElement",null,{params: params})
+    .subscribe(
+      error=>console.log('greska',error)
+    );
+  }
   loadHistoryWP(): Observable<IHistory[]>{
     return this.http.get<IHistory[]>("https://localhost:44396/api/Document/GetHistoryWP"); 
   }

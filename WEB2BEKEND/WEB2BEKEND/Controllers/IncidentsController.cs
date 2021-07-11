@@ -217,14 +217,17 @@ namespace WEB2BEKEND.Controllers
           }
         }
 
-        // mm.X = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
-        // mm.Y = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
-
-        if (mm.X.Length > 0 && mm.Y.Length > 0)
+       // mm.X = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
+       // mm.Y = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
+       if(mm.X != null && mm.Y !=null)
         {
-          temp.Add(mm);
-          _context.Add(mm);
+            if (mm.X.Length > 0 && mm.Y.Length > 0)
+            {
+              temp.Add(mm);
+              _context.Add(mm);
+            }
         }
+
       }
     }
 
