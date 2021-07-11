@@ -49,7 +49,11 @@ namespace WEB2BEKEND.Controllers
     [Route("AddCall")]
     public async Task<IActionResult> AddCall(Call call)
     {
-      string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      string username = "";
+      if (call.Name!="")
+      {
+         username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+      }
       Notification notification = new Notification()
       {
         Type = "Success",

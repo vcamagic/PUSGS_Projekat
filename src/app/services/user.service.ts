@@ -84,15 +84,17 @@ export class UserService {
       const username = (<any>res).username;
       localStorage.setItem("username", username);
       const type = (<any>res).type;
+      console.log(type);
       localStorage.setItem("type", type);
       this.invalidLogin = false;
       this.http.get(`${this.usersUrl}/${credentials.email}`).subscribe(res=>{
         this.currentUser=res as User;
-        console.log(this.currentUser.email + "kdoaskd");
+        this.currentUser.type = type;
+        console.log(this.currentUser.type+"tip iz metode");
       })
-      
+
       if(type == 'Admin')
-      
+
       {
         this.router.navigate(["/verify"])
       }

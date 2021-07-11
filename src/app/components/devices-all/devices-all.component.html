@@ -16,7 +16,7 @@
         <button  class="btn btn-class col-md-1" (click)="reset()"><i class="fa fa-circle-o-notch">&nbsp;Reload</i></button>
       </div>
       <div class="row">
-        <button class="btn btn-class col-md-1" (click)="open1(content)"><i class="fa fa-plus">&nbsp; New</i></button>
+        <button *ngIf="us.currentUser.type ==='Admin'" class="btn btn-class col-md-1" (click)="open1(content)"><i class="fa fa-plus">&nbsp; New</i></button>
       </div>
       <div class="row">
         <div class="row mt-2">
@@ -42,8 +42,8 @@
                           <td >{{elem.coordinateX}}</td>
                           <td >{{elem.coordinateY}}</td>
                           <td>
-                            <a style="width: 45%;" class="btn btn-danger" (click)=(delete(elem.id))><i class="fa fa-trash fa-lg"></i></a>&nbsp;
-                            <a style="width: 45%;" class="btn btn-danger" (click)=(open(content,elem))><i class="fa fa-edit fa-lg"></i></a>
+                            <a *ngIf="us.currentUser.type ==='Admin'" style="width: 45%;" class="btn btn-danger" (click)=(delete(elem.id))><i class="fa fa-trash fa-lg"></i></a>&nbsp;
+                            <a *ngIf="us.currentUser.type ==='Admin'" style="width: 45%;" class="btn btn-danger" (click)=(open(content,elem))><i class="fa fa-edit fa-lg"></i></a>
                           </td>
                       </tr>
                       </tbody>

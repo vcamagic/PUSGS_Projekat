@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Street } from 'src/app/entities/street';
 import { ElementsService } from 'src/app/services/elements.service';
 import { SettingsService } from 'src/app/services/settings.service';
+import { UserService } from 'src/app/services/user.service';
 import { Element } from '../../entities/element/element'
 
 @Component({
@@ -12,7 +13,8 @@ import { Element } from '../../entities/element/element'
 })
 export class DevicesAllComponent implements OnInit {
 
-  constructor(public elementsService: ElementsService,private cdref: ChangeDetectorRef,private modal: NgbModal, public settingsService: SettingsService) { }
+  constructor(public elementsService: ElementsService,private cdref: ChangeDetectorRef,private modal: NgbModal, public settingsService: SettingsService,
+    public us: UserService) { }
   IncEles : Element[] = [];
   streets : Street[] = [];
   typeSearch : string = "";

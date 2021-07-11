@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@ang
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ElementsService } from 'src/app/services/elements.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
+import { UserService } from 'src/app/services/user.service';
 import { Element } from "../../../entities/element/element"
 
 @Component({
@@ -11,7 +12,7 @@ import { Element } from "../../../entities/element/element"
 })
 export class DevicesComponent implements OnInit {
 
-  constructor(public elementsService: ElementsService,public incidentService: IncidentsService,private modalService : NgbModal,private cdref: ChangeDetectorRef) { }
+  constructor(public elementsService: ElementsService,public incidentService: IncidentsService,private modalService : NgbModal,private cdref: ChangeDetectorRef,public us: UserService) { }
   IncEles : Element[] = [];
 
   headElements = ['id', 'type', 'name', 'address', 'coordinateX', 'coordinateY'];

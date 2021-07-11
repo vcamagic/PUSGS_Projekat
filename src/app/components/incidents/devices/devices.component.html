@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
       <div class="col-md-12">
-          <button class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
+          <button *ngIf="us.currentUser.type ==='Dispatcher' || us.currentUser.type ==='TeamMember'" class="btn btn-class" (click)="open(content)" >New&nbsp;<i class="fa fa-plus"></i></button>
           <button class="btn btn-class float-right">Filter&nbsp;<i class="fa fa-filter"></i></button>
       </div>
   </div>

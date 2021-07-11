@@ -23,7 +23,7 @@ namespace WEB2BEKEND.Controllers
       _context = context;
     }
 
-    [HttpGet/*,Authorize(Roles ="Admin, Worker, Team member")*/]
+    [HttpGet,Authorize(Roles = "Admin, Worker, Team member, Dispatcher")]
     public async Task<ActionResult<IEnumerable<Incident>>> GetIncidents()
     {
       _context.Incidents.Include(item => item.Elements).ToList();
@@ -36,7 +36,7 @@ namespace WEB2BEKEND.Controllers
 
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}"),Authorize(Roles = "Admin, Worker, Team member, Dispathcer")]
     public async Task<ActionResult<Incident>> GetIncidents(int id)
     {
       var inc = await _context.Incidents.FindAsync(id);
@@ -51,7 +51,7 @@ namespace WEB2BEKEND.Controllers
     }
 
     [HttpPost]
-    [Route("AddIncident")]
+    [Route("AddIncident"), Authorize(Roles = "Dispatcher")]
     public async Task<IActionResult> PostIncident(Incident incident)
 
     {
@@ -61,7 +61,7 @@ namespace WEB2BEKEND.Controllers
       return CreatedAtAction("GetIncidents", new { id = incident.Id }, incident);
     }
 
-    [HttpPost("{id}/Devices")]
+    [HttpPost("{id}/Devices"), Authorize(Roles = "Dispatcher")]
     public async Task<IActionResult> PostElementInIncident(int id, IncidentElement element)
     {
       _context.Incidents.Include(item => item.Elements).ToList();
@@ -75,6 +75,7 @@ namespace WEB2BEKEND.Controllers
       incident.Elements.Add(element);
       incident.Address = element.Address;
       var street = await _context.Streets.FindAsync(incident.Address);
+     
       incident.Priority = street.cPriority;
       incident.AffectedConsumers = 0;
       List<User> u = _context.Users.ToList();
@@ -95,7 +96,7 @@ namespace WEB2BEKEND.Controllers
       return NoContent();
     }
 
-    [HttpPost("{id}/Resolutions")]
+    [HttpPost("{id}/Resolutions"), Authorize(Roles = "Dispatcher")]
     public async Task<ActionResult<int>> PostResolutionInIncident(int id, IncidentResolution resolution)
     {
       _context.Incidents.Include(item => item.Resolutions).ToList();
@@ -112,7 +113,7 @@ namespace WEB2BEKEND.Controllers
 
     }
 
-    [HttpPost("{id}/Calls")]
+    [HttpPost("{id}/Calls"), Authorize(Roles = "Dispatcher")]
     public async Task<ActionResult<int>> PostCallInIncident(int id, IncidentCall call)
     {
       _context.Incidents.Include(item => item.Call).ToList();
@@ -148,7 +149,7 @@ namespace WEB2BEKEND.Controllers
 
     }
 
-    [HttpPost("{id}/Crew")]
+    [HttpPost("{id}/Crew"), Authorize(Roles = "Dispatcher")]
     public async Task<ActionResult<int>> PostCrewInIncident(int id, Crew crew)
     {
       var incident = await _context.Incidents.FindAsync(id);
@@ -164,7 +165,7 @@ namespace WEB2BEKEND.Controllers
 
     }
 
-    [HttpPost("{id}/Multimedia")]
+    [HttpPost("{id}/Multimedia"), Authorize(Roles = "Dispatcher")]
     public async Task<ActionResult<Multimedia>> PostMultimediaInIncident(int id, Multimedia multimedia)
     {
       _context.Incidents.Include(item => item.Multimedia).ToList();
@@ -231,7 +232,7 @@ namespace WEB2BEKEND.Controllers
       }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}"), Authorize(Roles = "Dispatcher")]
     public async Task<IActionResult> DeleteIncident(int id)
     {
       _context.Incidents.Include(item => item.Call).ToList();

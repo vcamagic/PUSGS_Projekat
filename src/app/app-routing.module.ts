@@ -38,11 +38,11 @@ import { ViewGuard } from './guardsA/view.guard';
 import { DevicesAllComponent  } from './components/devices-all/devices-all.component';
 const routes: Routes = [
   {
-    
+
     path:"",
     redirectTo: "login",
     pathMatch: "full"
-    
+
   },
   {
     path : "login",
@@ -99,23 +99,23 @@ const routes: Routes = [
 
   {
     path: 'settings', // child route path
-    component: getSettingsComponent(), 
+    component: getSettingsComponent(),
     canActivate: [AuthGuard],// child route component that the router renders
   },
 
   {
     path: 'ADMsettings', // child route path
-    component: getSettingsComponent(), 
+    component: getSettingsComponent(),
     canActivate: [AuthGuard],// child route component that the router renders
   },
- 
+
   {
     path: 'consumers/modifyConsumer',
         component: ModifyConsumerComponent,
         canActivate: [AuthGuard]
   },
   {
-    
+
     path:"verify",
     component: VerificationUserComponent,
     canActivate: [ViewGuard]
@@ -130,14 +130,17 @@ const routes: Routes = [
   {
     path:"safetydocuments",
     component: SafetydocumentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments/new",
     component: NewSdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments/new/basic-info",
     component: BasicInfoSdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"settings",
@@ -148,18 +151,22 @@ const routes: Routes = [
   {
     path:"safetydocuments/new/history",
     component: HistorySdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments/new/equipment",
     component: EquipmentSdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments/new/multimedia",
     component: MultimediaSdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"safetydocuments/new/checklist",
     component: ChecklistSdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"workrequests",
@@ -194,7 +201,7 @@ const routes: Routes = [
   },
   {
     path: 'devices',
-    component: DevicesComponent
+    component: DevicesComponent,
   },
   {
     path: 'crew',
@@ -206,7 +213,7 @@ const routes: Routes = [
   },
   {
     path: 'devices-all',
-    component: DevicesAllComponent
+    component: DevicesAllComponent,canActivate: [AuthGuard]
   }
 
 ]

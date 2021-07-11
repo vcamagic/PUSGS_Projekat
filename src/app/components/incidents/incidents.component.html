@@ -5,7 +5,7 @@
         <div class="col">
             <h4 id="heding" class="">INCIDENTS</h4>
 
-            <button class="btn btn-class" (click)="braa()" routerLink="/incidents/newincident">New&nbsp;<i class="fa fa-plus"></i></button>
+            <button *ngIf="us.currentUser.type ==='Dispatcher'" class="btn btn-class" (click)="braa()" routerLink="/incidents/newincident">New&nbsp;<i class="fa fa-plus"></i></button>
 
               Filter by&nbsp;
               <select  style="width: 100px;" [(ngModel)]="filter" (change)="filterChange()">
@@ -61,7 +61,7 @@
                     <td >{{incident.calls}}</td>
                     <td >{{incident.voltage}}</td>
                     <td>
-                      <a  style="width: 45%;" class="btn btn-danger" (click)="delete(incident)"><i class="fa fa-trash fa-lg"></i></a>&nbsp;
+                      <a   *ngIf="us.currentUser.type ==='Dispatcher'" style="width: 45%;" class="btn btn-danger" (click)="delete(incident)"><i class="fa fa-trash fa-lg"></i></a>&nbsp;
                    <!--  <a style="width: 45%;" class="btn btn-info" (click)="details(incident)"><i class="fa fa-info-circle fa-lg"></i></a>-->
                   </td>
                 </tr>
