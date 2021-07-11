@@ -13,24 +13,33 @@
                      <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[0]">Start date&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[1]">Phone number&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[2]" >Type&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[4]">Status&nbsp;<i class="fa fa-sort"></i></th>
-                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[3]" >End date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[3]">Status&nbsp;<i class="fa fa-sort"></i></th>
+                     <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[4]" >Create&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[5]" >End date&nbsp;<i class="fa fa-sort"></i></th>
+                    <th scope="col" aria-controls="workplansTable" [mdbTableSort]="workplans" [sortBy]="headElements[6]" >Crew&nbsp;<i class="fa fa-sort"></i></th>
+                   
                 </tr>
                 </thead>
              <tbody>
-                <tr mdbTableCol *ngFor="let workplan of workplans | slice: (page - 1) * 5 : page * 5 ">
+                <tr mdbTableCol *ngFor="let workplan of workplans | slice: (page - 1) * 7 : page * 7 ">
                     <td >{{workplan.startDate}}</td>
                     <td >{{workplan.phoneNum}}</td>
                     <td >{{workplan.type}}</td>
                     <td>{{workplan.status}}</td>
+                    <td> {{workplan.createdByUser}}</td>
                     <td >{{workplan.endDate}}</td>
+                    <td >{{workplan.crew}}</td>
                     <button class="btn btn2-class"  (click)="approve(workplan.phoneNum!)">Approve&nbsp;<i class="fa fa-plus"></i></button>
                     <button class="btn btn2-class"  (click)="cancel(workplan.phoneNum!)">Cancel&nbsp;<i class="fa fa-plus"></i></button>
                 </tr>
                 </tbody>
                 <tfoot>
-
-                </tfoot>
+                    <ngb-pagination
+                    [(page)]="page"
+                    [pageSize] = "pageSize"
+                    [collectionSize]="workplans.length"
+                  ></ngb-pagination>
+                  </tfoot>
             </table>
 
         </div>

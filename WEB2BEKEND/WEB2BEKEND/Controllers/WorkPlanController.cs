@@ -58,17 +58,19 @@ namespace WEB2BEKEND.Controllers
           _context.HistoryWP.Add(hm);
           await _context.SaveChangesAsync();
 
-
           string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
           Notification notification = new Notification()
           {
             Type = "Info",
-            Text = "Work plan approved!",
+            Text = "Work plan approved",
             Status = "Unread",
             TimeStamp = DateTime.Now.ToString(),
             User = _context.Users.FirstOrDefault(u => u.Username == username),
             Visible = true
           };
+
+          _context.Notifications.Add(notification);
+          await _context.SaveChangesAsync();
 
         }
 
@@ -111,12 +113,15 @@ namespace WEB2BEKEND.Controllers
           Notification notification = new Notification()
           {
             Type = "Info",
-            Text = "Work plan approved!",
+            Text = "Work plan canceled",
             Status = "Unread",
             TimeStamp = DateTime.Now.ToString(),
             User = _context.Users.FirstOrDefault(u => u.Username == username),
             Visible = true
           };
+
+          _context.Notifications.Add(notification);
+          await _context.SaveChangesAsync();
         }
 
       }

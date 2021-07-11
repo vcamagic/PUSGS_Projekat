@@ -20,12 +20,12 @@
         </div>
 
 
-      <div class="form-group">
+        <div class="form-group">
          
-              <label> Incident:  </label>
-              <input class="form-control" type="text" formControlName="incident">
-         
-      </div>
+          <label> Incident:         </label>
+          <button class="btn btn-class" (click)="open(content)" >Choose&nbsp;<i class="fa fa-plus"></i></button>
+     
+  </div>
       
         <div class="form-group">
             <label>Street: 
@@ -48,10 +48,11 @@
             <input class="form-control" type="text" [value]="userCreated"  formControlName="createdByUser" readonly >
         </div>
         <div class="form-group">
-            <label>Crew: 
-            </label>
-            <input class="form-control" type="text" formControlName="crew">
-        </div>
+         
+          <label> Crew:         </label>
+          <button class="btn btn-class" (click)="openCREW(content2)" >Choose&nbsp;<i class="fa fa-plus"></i></button>
+     
+  </div>
 
         <div class="form-group">
           <label>Purpose: 
@@ -95,3 +96,95 @@
 
     </div>
 </form>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Select incidents</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <form #form = "ngForm">
+          <div class="form-group">
+              <div  class="scrollable">
+                  <table class="table text-center table-striped table-light">
+                  <thead>
+                      <tr>
+                          <th>Status</th>
+                          <th>Type</th>
+                          <th>Eta</th>
+                          <th>Address</th>
+                          <th>&nbsp;</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let element of allIncidents">
+                      <td>{{element.status}}</td>
+                      <td>{{element.type}}</td>
+                      <td>{{element.eta}}</td>
+                      <td>{{element.address}}</td>
+                      
+                      <button  style="background-color:white;" (click)="onChange(element)">ADD</button>
+                    
+                      
+                      
+                  </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+                  </table>
+              </div>
+          </div>
+      </form>
+  </div>
+ 
+  </ng-template>
+
+
+
+
+  <ng-template #content2 let-modal>
+    <div class="modal-header2">
+        <h4 class="modal-title2" id="modal-basic-title-2">Select crews</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body2">
+        <form #form = "ngForm">
+            <div class="form-group">
+                <div  class="scrollable">
+                    <table class="table text-center table-striped table-light">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Crew Members</th>
+                            <th>Eta</th>
+                            <th>Address</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let element of allCrews">
+                        <td>{{element.name}}</td>
+                        <td>{{element.crewMembers}}</td>
+
+                        
+                        <button  style="background-color:white;" (click)="onChangeCREW(element)">ADD</button>
+                      
+                        
+                        
+                    </tr>
+                  </tbody>
+                  <tfoot>
+  
+                  </tfoot>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+   
+    </ng-template>

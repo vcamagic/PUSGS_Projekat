@@ -9,6 +9,7 @@ import {WorkRequest } from 'src/app/entities/work-request/work-request';
 import {WorkRequestsService} from 'src/app/services/work-requests.service';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-work-requests',
   templateUrl: './work-requests.component.html',
@@ -18,6 +19,7 @@ export class WorkRequestsComponent implements OnInit {
   page = 10;
   pageSize = 3;
   username! : string;
+
   id!:string;
   collectionSize = 0;
   workRequests : WorkRequest[] = [];

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ElementsService } from 'src/app/services/elements.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { Element } from 'src/app/entities/element/element';
+import { DocumentService } from 'src/app/services/document.service';
 @Component({
   selector: 'app-equipment',
   templateUrl: './equipment.component.html',
@@ -13,6 +14,7 @@ export class EquipmentComponent implements OnInit {
     //public component = "devices";
     //public toNavbar = ["", this.component];
   
+    public elementToPush!:Element;
     public allElements : Element[] = [];
     public usedElements : Element[] = [];
     allElementsList: Element[][];
@@ -21,7 +23,7 @@ export class EquipmentComponent implements OnInit {
     public pageSize = 3;
     public pageSizeUsed = 3;
     
-    constructor(private router: Router, private _sharedService: SharedService, private elementsService: ElementsService) { 
+    constructor(private router: Router, private _sharedService: SharedService, private elementsService: ElementsService, private documentService: DocumentService) { 
       this.allElementsList = new Array<Array<Element>>();
   
     }
@@ -47,19 +49,20 @@ export class EquipmentComponent implements OnInit {
   
   
     onSave() {
-      //console.log(this.elementForm.value.elementName) 
-      //emituj vrijednost u roditeljsku komponentu(NAVBAR)
-      
-      //prebaci na sledeca polja
-  
-      //this._sharedService.emitChange(this.toNavbar);
+      this.documentService.saveElementWP(this.elementToPush.address);
       this.router.navigate(['/workplans']);
     }
   
     onSelect(elementId : string) {
-     console.log(elementId);
-     this.usedElements = this.elementsService.moveElementToUsedElements(elementId, this.usedElements);
-     this.allElements = this.allElements.filter(item => item.id.toString() != elementId);
+      console.log("ID EL"+elementId);
+
+      this.usedElements = this.elementsService.moveElementToUsedElements(elementId, this.usedElements);
+      
+      this.elementToPush = this.allElements.find(x=>x.id.toString()==elementId)!;
+      console.log("EL TU PUS: "+this.elementToPush.address);
+     // console.log("USED: "+this.usedElements.length);
+      // console.log("ALL :"+this.allElements.length);
+      this.allElements = this.allElements.filter(item => item.id.toString() != elementId);
      
     }
     onRemove(elementId : string) {

@@ -22,7 +22,7 @@ export class WorkplanComponent implements OnInit{
   mineWorkPlans : Workplan[] = [];
   pageSize = 4;
   collectionSize = 0;
-  headElements = ['startDate', 'phoneNum', 'type', 'status', 'endDate'];
+  headElements = ['startDate', 'phoneNum', 'type', 'status', 'createdByUser', 'endDate', 'crew'];
 
   
   constructor(public workplansservice: WorkplansService,private router: Router) {

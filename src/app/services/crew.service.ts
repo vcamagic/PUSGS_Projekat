@@ -15,6 +15,13 @@ loadlCrew(): Observable<Crew[]>{
   return this.http.get<Crew[]>("https://localhost:44396/api/Crew/GetCrew");
 }
 
+readonly crewsUrl = 'https://localhost:44396/api/Crew/GetCrew';
+
+getAllCrews(): Observable<Crew[]>{
+  return this.http.get<Crew[]>(this.crewsUrl);
+  this.http.get(this.crewsUrl)
+}
+
 saveCrew(crew: Crew){
   return this.http.post<Crew>("https://localhost:44396/api/Crew/AddCrew", crew)
   .subscribe(
