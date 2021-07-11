@@ -8,6 +8,9 @@ import { WorkRequestsService } from 'src/app/services/work-requests.service';
 import { WorkplansService } from 'src/app/services/workplans.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Incident } from 'src/app/entities/incident/incident';
+import { Crew } from 'src/app/entities/crew';
+import { CrewService } from 'src/app/services/crew.service';
+import { disableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-basic-info',
@@ -17,7 +20,9 @@ import { Incident } from 'src/app/entities/incident/incident';
 export class BasicInfoComponent implements OnInit {
   workPlans! : Workplan;
   incidentStreet : any;
+  crewName : any;
   allIncidents: Incident[] = [];
+  allCrews: Crew[] = [];
   basicInfoForm = new FormGroup({
     type: new FormControl(''),
     status: new FormControl('Draft'),
@@ -45,12 +50,14 @@ export class BasicInfoComponent implements OnInit {
   public toNavbar = [this.basicInfoForm, this.component];
  
 
-  constructor(private router: Router, private _workService: WorkplansService, private modalService : NgbModal,public incidentsService : IncidentsService,) { }
+  constructor(private router: Router, private _workService: WorkplansService, private modalService : NgbModal,public incidentsService : IncidentsService,public crewService : CrewService,) { }
 
   ngOnInit(): void {
     this.userCreated = localStorage.username;
     this.currentDate =new Date().toISOString().split('T')[0];
+    this.getCrews();
     this.getIncidents();
+
     console.log(this.currentDate);
 
   }
@@ -59,6 +66,7 @@ export class BasicInfoComponent implements OnInit {
     this.workPlans = this.basicInfoForm.value;
     //this._workService.emitChange(this.toNavbar);
     this.workPlans.incident = this.incidentStreet;
+    this.workPlans.crew = this.crewName;
     this._workService.saveWorkPlan(this.workPlans)
     this.router.navigate(['/workplans/newworkplan']);
   }
@@ -66,6 +74,14 @@ export class BasicInfoComponent implements OnInit {
   getIncidents() {
     this.incidentsService.getAllIncidents()
       .subscribe(response => {this.allIncidents = response;
+      },err =>{
+          console.log(err);
+      });
+  }
+
+  getCrews() {
+    this.crewService.getAllCrews()
+      .subscribe(response => {this.allCrews = response;
       },err =>{
           console.log(err);
       });
@@ -80,8 +96,21 @@ export class BasicInfoComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  onChangeCREW(element : Crew){
+   
+    console.log(element);
+    
+    this.crewName = element.name;
+    console.log("ovo je crew "+ this.crewName);
+    this.modalService.dismissAll();
+  }
+
   open(content: any){
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result)=>{});
+}
+
+openCREW(content2: any){
+  this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title-2'}).result.then((result)=>{});
 }
 
 }
