@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ElementsService } from 'src/app/services/elements.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { Element } from 'src/app/entities/element/element';
+import { DocumentService } from 'src/app/services/document.service';
 
 @Component({
   selector: 'app-equipment-wr',
@@ -15,7 +16,7 @@ import { Element } from 'src/app/entities/element/element';
 
     //public component = "devices";
     //public toNavbar = ["", this.component];
-  
+    public elementToPush!:Element;
     public allElements : Element[] = [];
     public usedElements : Element[] = [];
     allElementsList: Element[][];
@@ -24,7 +25,7 @@ import { Element } from 'src/app/entities/element/element';
     public pageSize = 3;
     public pageSizeUsed = 3;
     
-    constructor(private router: Router, private _sharedService: SharedService, private elementsService: ElementsService) { 
+    constructor(private router: Router, private _sharedService: SharedService, private elementsService: ElementsService,private documentService: DocumentService) { 
       this.allElementsList = new Array<Array<Element>>();
   
     }
@@ -51,13 +52,19 @@ import { Element } from 'src/app/entities/element/element';
   
     onSave() {
    
-        
+      this.documentService.saveElement(this.elementToPush.address);
       this.router.navigate(['/workrequests']);
     }
   
     onSelect(elementId : string) {
-     console.log(elementId);
+    console.log("ID EL"+elementId);
+
      this.usedElements = this.elementsService.moveElementToUsedElements(elementId, this.usedElements);
+     
+     this.elementToPush = this.allElements.find(x=>x.id.toString()==elementId)!;
+     console.log("EL TU PUS: "+this.elementToPush.address);
+    // console.log("USED: "+this.usedElements.length);
+     // console.log("ALL :"+this.allElements.length);
      this.allElements = this.allElements.filter(item => item.id.toString() != elementId);
      
     }

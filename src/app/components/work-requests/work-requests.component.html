@@ -20,6 +20,7 @@
                       <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[3]" >Address&nbsp;<i class="fa fa-sort"></i></th>
                       <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[4]">End date&nbsp;<i class="fa fa-sort"></i></th>
                       <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[5]">Created by&nbsp;<i class="fa fa-sort"></i></th>
+                      <th scope="col" aria-controls="workrequestsTable" [mdbTableSort]="workRequests" [sortBy]="displayedColumns[6]">Equipment&nbsp;<i class="fa fa-sort"></i></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -31,6 +32,7 @@
                         <td >{{workrequest.street}}</td>
                         <td >{{workrequest.endDate}}</td>
                         <td >{{workrequest.createdByUser}}</td>
+                        <td >{{workrequest.equipment}}</td>
                         <button class="btn btn2-class"  (click)="approve(workrequest.phoneNum!)">Approve&nbsp;<i class="fa fa-plus"></i></button>
                         <button class="btn btn2-class"  (click)="cancel(workrequest.phoneNum!)">Cancel&nbsp;<i class="fa fa-plus"></i></button>
                       </tr>
