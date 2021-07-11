@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {}
+    "C:\\Users\\Vlada\\Desktop\\projekatjebeni\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {
+    "C:\\Users\\Vlada\\Desktop\\projekatjebeni\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+        "projectUniqueName": "C:\\Users\\Vlada\\Desktop\\projekatjebeni\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
         "projectName": "WEB2BEKEND",
-        "projectPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
-        "packagesPath": "C:\\Users\\zivko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zivko\\OneDrive\\Desktop\\web2\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
+        "projectPath": "C:\\Users\\Vlada\\Desktop\\projekatjebeni\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\WEB2BEKEND.csproj",
+        "packagesPath": "C:\\Users\\Vlada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlada\\Desktop\\projekatjebeni\\PUSGS_Projekat\\WEB2BEKEND\\WEB2BEKEND\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zivko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vlada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

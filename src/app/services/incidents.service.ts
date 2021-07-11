@@ -60,6 +60,10 @@ export class IncidentsService {
   putMultimediaInIncident(multimedia: MultimediaIncident){
     return this.http.post(`${this.incidentsUrl}/${this.incident.id}/Multimedia`,multimedia)
   }
-  
+
+
+  deleteData(id : number){
+    return this.http.delete(`${this.incidentsUrl}/${id}`)
+  }
 
 }

@@ -52,7 +52,7 @@ namespace WEB2BEKEND.Controllers
 
     [HttpPost]
     [Route("AddIncident")]
-    public async   Task<IActionResult> PostIncident(Incident incident)
+    public async Task<IActionResult> PostIncident(Incident incident)
 
     {
       _context.Incidents.Add(incident);
@@ -62,12 +62,12 @@ namespace WEB2BEKEND.Controllers
     }
 
     [HttpPost("{id}/Devices")]
-    public async Task<IActionResult> PostElementInIncident(int id,IncidentElement element)
+    public async Task<IActionResult> PostElementInIncident(int id, IncidentElement element)
     {
       _context.Incidents.Include(item => item.Elements).ToList();
       var incident = await _context.Incidents.FindAsync(id);
 
-      if(incident == null)
+      if (incident == null)
       {
         return NotFound();
       }
@@ -78,7 +78,7 @@ namespace WEB2BEKEND.Controllers
       incident.Priority = street.cPriority;
       incident.AffectedConsumers = 0;
       List<User> u = _context.Users.ToList();
-      foreach(User user in u)
+      foreach (User user in u)
       {
         if (user.Address == incident.Address)
           incident.AffectedConsumers++;
@@ -96,7 +96,7 @@ namespace WEB2BEKEND.Controllers
     }
 
     [HttpPost("{id}/Resolutions")]
-    public async Task<ActionResult<int>> PostResolutionInIncident (int id,IncidentResolution resolution)
+    public async Task<ActionResult<int>> PostResolutionInIncident(int id, IncidentResolution resolution)
     {
       _context.Incidents.Include(item => item.Resolutions).ToList();
       var incident = await _context.Incidents.FindAsync(id);
@@ -165,7 +165,7 @@ namespace WEB2BEKEND.Controllers
     }
 
     [HttpPost("{id}/Multimedia")]
-    public async Task<ActionResult<Multimedia>> PostMultimediaInIncident(int id,Multimedia multimedia)
+    public async Task<ActionResult<Multimedia>> PostMultimediaInIncident(int id, Multimedia multimedia)
     {
       _context.Incidents.Include(item => item.Multimedia).ToList();
 
@@ -197,28 +197,28 @@ namespace WEB2BEKEND.Controllers
         temp.Add(item);
       }
 
-      foreach (var inc in _context.Incidents.Include(x=>x.Elements))
+      foreach (var inc in _context.Incidents.Include(x => x.Elements))
       {
-        if(inc.Crew != null)
+        if (inc.Crew != null)
         {
-            mm.CrewName = inc.Crew.Name;
-            count++;
+          mm.CrewName = inc.Crew.Name;
+          count++;
         }
-       
+
         mm.Id = Guid.NewGuid().ToString();
         mm.IncidentId = inc.Id;
         count2++;
-        foreach(IncidentElement incEl in inc.Elements.ToList())
+        foreach (IncidentElement incEl in inc.Elements.ToList())
         {
-          if(incEl.Address == inc.Address)
+          if (incEl.Address == inc.Address)
           {
             mm.X = incEl.CoordinateX;
             mm.Y = incEl.CoordinateY;
           }
         }
-        
-       // mm.X = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
-       // mm.Y = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
+
+        // mm.X = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateX;
+        // mm.Y = inc.Elements.ToList().Find(x => x.Address.ToLower() == inc.Address.ToLower()).CoordinateY;
 
         if (mm.X.Length > 0 && mm.Y.Length > 0)
         {
@@ -226,6 +226,30 @@ namespace WEB2BEKEND.Controllers
           _context.Add(mm);
         }
       }
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteIncident(int id)
+    {
+      _context.Incidents.Include(item => item.Call).ToList();
+      _context.Incidents.Include(item => item.Elements).ToList();
+      _context.Incidents.Include(item => item.Resolutions).ToList();
+      _context.Incidents.Include(item => item.Multimedia).ToList();
+
+      foreach(var item in _context.Incidents)
+      {
+        _context.Entry(item).Reference(item => item.Crew).Load();
+      }
+
+      var incident = await _context.Incidents.FindAsync(id);
+      if (incident == null)
+      {
+        return NotFound();
+      }
+      _context.Incidents.Remove(incident);
+      await _context.SaveChangesAsync();
+
+      return NoContent();
     }
 
   }

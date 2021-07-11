@@ -4,12 +4,28 @@
     <div class="row content">
         <div class="col">
             <h4 id="heding" class="">INCIDENTS</h4>
-            <button class="btn btn-class" routerLink="/incidents/newincident">New&nbsp;<i class="fa fa-plus"></i></button>
-            <span class="allmine">
-                <button style="width: 10%;" class="btn btn-class">All</button>
-                <button  style="width: 10%;" class="btn btn-class">Mine</button>
-            </span>
-            <button style="width: 10%;"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+
+            <button class="btn btn-class" (click)="braa()" routerLink="/incidents/newincident">New&nbsp;<i class="fa fa-plus"></i></button>
+
+              Filter by&nbsp;
+              <select  style="width: 100px;" [(ngModel)]="filter" (change)="filterChange()">
+                  <option value="All">All</option>
+                  <option value="Mine">Mine</option>
+              </select>
+              <select [(ngModel)]="searchStatus">
+                <option value="" disabled hidden selected>Status...</option>
+                <option value="Drafted">Drafted</option>
+                <option value="Canceled">Canceled</option>
+                <option value="Executing">Executing</option>
+                <option value="Complited">Complited</option>
+            </select>
+            <select [(ngModel)]="searchType">
+              <option value="" disabled hidden selected>Type...</option>
+              <option value="planned">Planned</option>
+              <option value="unplanned">Unplanned</option>
+          </select>
+            <button style="width: 10%;" (click)="search()"  id="filter" class="btn btn-class">Filter&nbsp;<i class="fa fa-filter"></i></button>
+            <button style="width: 10%;" (click)="reset()" class="btn btn-danger"><i class="fa fa-refresh"></i></button>
             <table  id="incidentsTable"  mdbTableScroll [scrollX]='true' maxWidth="1000" class="table  table-hover">
                 <thead>
                 <tr>
@@ -26,7 +42,8 @@
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[11]" >Affected Customers&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[12]" >No. Of Calls&nbsp;<i class="fa fa-sort"></i></th>
                     <th scope="col" aria-controls="incidentsTable" [mdbTableSort]="incidents" [sortBy]="headElements[13]" >Voltage&nbsp;<i class="fa fa-sort"></i></th>
-                </tr>
+                    <th>&nbsp;</th>
+                  </tr>
                 </thead>
              <tbody>
                 <tr mdbTableCol *ngFor="let incident of incidents | slice: (page - 1) * pageSize : page * pageSize ">
@@ -43,6 +60,10 @@
                     <td >{{incident.affectedConsumers}}</td>
                     <td >{{incident.calls}}</td>
                     <td >{{incident.voltage}}</td>
+                    <td>
+                      <a  style="width: 45%;" class="btn btn-danger" (click)="delete(incident)"><i class="fa fa-trash fa-lg"></i></a>&nbsp;
+                   <!--  <a style="width: 45%;" class="btn btn-info" (click)="details(incident)"><i class="fa fa-info-circle fa-lg"></i></a>-->
+                  </td>
                 </tr>
                 </tbody>
                 <tfoot>

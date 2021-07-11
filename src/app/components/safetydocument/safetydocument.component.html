@@ -3,18 +3,20 @@
         <div class="col">
             <h4 id="heding" class="">SAFETY DOCUMENT</h4>
             <button class="btn btn-class" routerLink="/safetydocuments/new">New&nbsp;<i class="fa fa-plus"></i></button>
-            <span class="allmine">
-                <button style="width: 10%;" class="btn btn-class">All</button>
-                <button  style="width: 10%;" class="btn btn-class">Mine</button>
-            </span>
-            <select class="form-control" [(ngModel)]="searchStatus">
+            &nbsp;
+            Filter by&nbsp;
+            <select [(ngModel)]="filter" (change)="filterChange()">
+                <option value="All">All</option>
+                <option value="Mine">Mine</option>
+            </select>
+            <select [(ngModel)]="searchStatus">
               <option value="" disabled hidden selected>Status</option>
               <option value="Drafted">Drafted</option>
               <option value="Canceled">Canceled</option>
               <option value="Executing">Executing</option>
               <option value="Complited">Complited</option>
             </select>
-            <select class="form-control" [(ngModel)]="searchType">
+            <select  [(ngModel)]="searchType">
               <option value="" disabled hidden selected>Type</option>
               <option value="Planned">Planned</option>
               <option value="Unplanned">Unplanned</option>
@@ -51,7 +53,7 @@
                       <td>{{safetydocument.date}}</td>
                       <td>
                         <a style="width: 45%;" class="btn btn-danger" (click)="delete(safetydocument)"><i class="fa fa-trash"></i></a>&nbsp;
-                        <a style="width: 45%;" class="btn btn-info" (click)="details(safetydocument)"><i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
+                      <!--  <a style="width: 45%;" class="btn btn-info" (click)="details(safetydocument)"><i class="fa fa-info-circle fa-lg"></i></a>&nbsp;-->
                       </td>
                   </tr>
                   </tbody>

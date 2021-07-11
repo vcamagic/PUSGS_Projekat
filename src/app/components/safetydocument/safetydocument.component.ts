@@ -25,6 +25,7 @@ export class SafetydocumentComponent implements OnInit {
   searchStatus : string = "";
   searchType : string = "";
   searchList : SafetyDocument[]= [];
+  filter : string = "All";
 
 
   constructor(public safetyDocumentsService: SafetydocumentService,public userService: UserService,private router: Router) {
@@ -49,11 +50,23 @@ export class SafetydocumentComponent implements OnInit {
   }
 
   search(){
-
+    if(this.filter ==='All'){
+      this.safetyDocuments = this.searchList.filter(item => item.status.match(this.searchStatus) &&
+      item.type.match(this.searchType));
+    }
+    else if(this.filter ==='Mine'){
+      this.safetyDocuments = this.searchList.filter(item => item.status.match(this.searchStatus) &&
+      item.type.match(this.searchType) && item.creator === this.userService.currentUser.email);
+    }
   }
 
   reset(){
-
+    if(this.filter ==='All')
+      this.safetyDocuments = this.searchList;
+    else if(this.filter ==='Mine')
+      this.safetyDocuments = this.searchList.filter(item => item.creator === this.userService.currentUser.email);
+    this.searchType = '';
+    this.searchStatus = '';
   }
 
   delete(item : SafetyDocument){
@@ -67,6 +80,15 @@ export class SafetydocumentComponent implements OnInit {
 
   details(item: SafetyDocument){
 
+  }
+
+  filterChange(){
+    if(this.filter === "Mine"){
+      this.safetyDocuments = this.searchList.filter(item => item.creator === this.userService.currentUser.email);
+    }
+    else{
+      this.safetyDocuments = this.searchList;
+    }
   }
 
 }
